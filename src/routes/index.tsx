@@ -1,18 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroLab from "@/assets/hero-lab.jpg";
-import bottlesRow from "@/assets/bottles-row.jpg";
+import mango12 from "@/assets/bottles/mango-12.jpg.asset.json";
+import sambac8 from "@/assets/bottles/sambac-8.jpg.asset.json";
+import vetiver16 from "@/assets/bottles/vetiver-16.jpg.asset.json";
+import bergamote10 from "@/assets/bottles/bergamote-10.jpg.asset.json";
+import spice21 from "@/assets/bottles/spice-21.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "The Aroma Project — Engineered Fragrances" },
+      { title: "T.A.P — The Aroma Project · Engineered Fragrances" },
       {
         name: "description",
         content:
-          "T.A.P — a raw laboratory of engineered fragrances. Five compositions. Direct from the lab.",
+          "T.A.P — The Aroma Project. Five engineered fragrances: Mango 12, Sambac 8, Vetiver 16, Bergamote 10, Spice 21. 48ml. ₹999. Direct from the lab.",
       },
-      { property: "og:title", content: "The Aroma Project — Engineered Fragrances" },
-      { property: "og:description", content: "Five engineered fragrances. Direct from the lab." },
+      { property: "og:title", content: "T.A.P — The Aroma Project" },
+      {
+        property: "og:description",
+        content:
+          "Five engineered fragrances. Raw materials from Konkan, Madurai, Les Cayes, Calabria, Malabar. 48ml · ₹999.",
+      },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -20,46 +28,72 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const FRAGRANCES = [
+type Fragrance = {
+  code: string;
+  name: string;
+  family: string;
+  notes: [string, string, string];
+  origin: string;
+  engineered: string;
+  story: string;
+  image: string;
+};
+
+const FRAGRANCES: Fragrance[] = [
   {
     code: "TAP-01",
-    name: "Concrete",
-    family: "Mineral / Woody",
-    notes: ["Vetiver", "Iso E Super", "Wet Stone", "Ambroxan"],
-    abv: "20%",
-    batch: "0001 / 250",
+    name: "Mango 12",
+    family: "Tropical / Fresh",
+    notes: ["Citrus", "Tropical", "Amber"],
+    origin: "Konkan, India",
+    engineered: "Engineered to feel refreshing and uplifted.",
+    story:
+      "Mango 12 captures the essence of vibrant tropical Konkan mangoes blended with crisp citrus and warm woods.",
+    image: mango12.url,
   },
   {
     code: "TAP-02",
-    name: "Solvent",
-    family: "Aldehydic / Citrus",
-    notes: ["Bergamot", "Aldehyde C-12", "Petitgrain", "White Musk"],
-    abv: "22%",
-    batch: "0001 / 250",
+    name: "Sambac 8",
+    family: "Floral / Soft",
+    notes: ["Fresh", "Floral", "Musk"],
+    origin: "Madurai, S. India",
+    engineered: "Engineered to feel soft and gentle.",
+    story:
+      "Sambac 8 inherits an exceptionally intense sweet floral scent from jasmines found in the Madurai region of southern India, blended with rich creamy vanilla and musk.",
+    image: sambac8.url,
   },
   {
     code: "TAP-03",
-    name: "Graphite",
-    family: "Smoky / Leather",
-    notes: ["Birch Tar", "Cade", "Leather Accord", "Labdanum"],
-    abv: "24%",
-    batch: "0001 / 200",
+    name: "Vetiver 16",
+    family: "Earthy / Woody",
+    notes: ["Citrus", "Woody", "Musk"],
+    origin: "Les Cayes, Haiti",
+    engineered: "Engineered for a long-lasting boost.",
+    story:
+      "Vetiver 16 envelops the earthy, damp vibes of Haitian vetiver found in Les Cayes, blended with dry woods and musk.",
+    image: vetiver16.url,
   },
   {
     code: "TAP-04",
-    name: "Oxide",
-    family: "Metallic / Floral",
-    notes: ["Iris ISO", "Steel Accord", "Violet Leaf", "Suede"],
-    abv: "20%",
-    batch: "0001 / 250",
+    name: "Bergamote 10",
+    family: "Citrus / Leather",
+    notes: ["Citrus", "Oriental", "Woody"],
+    origin: "Reggio Calabria, Italy",
+    engineered: "Engineered for deep emotional and psychological impact.",
+    story:
+      "Bergamote 10 brings the complex citrus freshness of bergamot from Reggio Calabria in southern Italy, blended with spicy woods and leather.",
+    image: bergamote10.url,
   },
   {
     code: "TAP-05",
-    name: "Reagent",
-    family: "Aromatic / Spicy",
-    notes: ["Black Pepper", "Cardamom", "Cypress", "Cashmeran"],
-    abv: "22%",
-    batch: "0001 / 200",
+    name: "Spice 21",
+    family: "Spicy / Warm",
+    notes: ["Warm", "Spicy", "Amber"],
+    origin: "Malabar, W. India",
+    engineered: "Engineered to boost body and mind.",
+    story:
+      "Spice 21 lets in the heat of Indian spices from the Malabar coast of western India, blended with sweet, warm woods.",
+    image: spice21.url,
   },
 ];
 
@@ -71,6 +105,7 @@ function Index() {
       <Hero />
       <Manifest />
       <Catalogue />
+      <Sourcing />
       <Process />
       <Newsletter />
       <Footer />
@@ -82,9 +117,9 @@ function TopBar() {
   return (
     <div className="border-b border-border bg-foreground text-background">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-1.5 mono text-[10px] tracking-[0.2em] uppercase">
-        <span>Batch 0001 — Now Shipping Worldwide</span>
-        <span className="hidden md:inline">LAB / 51.5074° N, 0.1278° W</span>
-        <span>Free Carrier · Orders &gt; €120</span>
+        <span>Batch 0001 — Now Shipping</span>
+        <span className="hidden md:inline">LAB / Made in India</span>
+        <span>Free Ship · Orders &gt; ₹2,500</span>
       </div>
     </div>
   );
@@ -99,8 +134,13 @@ function Nav() {
           <span className="ticker-label hidden sm:inline">The Aroma Project</span>
         </a>
         <nav className="hidden gap-8 md:flex">
-          {["Catalogue", "Process", "Lab Notes", "Contact"].map((l) => (
-            <a key={l} href={`#${l.toLowerCase().replace(" ", "-")}`} className="mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground transition hover:text-foreground">
+          {[
+            ["Catalogue", "catalogue"],
+            ["Sourcing", "sourcing"],
+            ["Process", "process"],
+            ["Lab Notes", "lab-notes"],
+          ].map(([l, id]) => (
+            <a key={id} href={`#${id}`} className="mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground transition hover:text-foreground">
               {l}
             </a>
           ))}
@@ -135,9 +175,9 @@ function Hero() {
               </h1>
               <p className="max-w-md text-base leading-relaxed text-muted-foreground">
                 The Aroma Project is a working laboratory.
-                Five compositions, distilled in small batches,
-                shipped direct from the bench. No marketing.
-                No mascots. Just the formula.
+                Five compositions, raw materials sourced from
+                Konkan to Calabria, distilled in small batches
+                and shipped direct from the bench.
               </p>
               <div className="flex flex-wrap gap-3 pt-4">
                 <a
@@ -157,8 +197,8 @@ function Hero() {
             <div className="mt-16 grid grid-cols-3 gap-6 border-t border-border pt-8">
               {[
                 ["05", "Compositions"],
-                ["200—250", "Per Batch"],
-                ["50ml", "Standard Flask"],
+                ["48ml", "Per Flask"],
+                ["₹999", "Each"],
               ].map(([v, l]) => (
                 <div key={l}>
                   <div className="mono text-2xl">{v}</div>
@@ -167,11 +207,11 @@ function Hero() {
               ))}
             </div>
           </div>
-          <div className="col-span-1 relative border-l-0 border-t border-border lg:col-span-5 lg:border-l lg:border-t-0">
-            <img src={heroLab} alt="Laboratory still life with grey perfume bottle and glassware" className="h-full max-h-[720px] w-full object-cover grayscale" />
+          <div className="col-span-1 relative border-l-0 border-t border-border lg:col-span-5 lg:border-l lg:border-t-0 bg-muted">
+            <img src={spice21.url} alt="T.A.P Spice 21 — silver perfume bottle" className="h-full max-h-[720px] w-full object-cover" />
             <div className="absolute bottom-0 left-0 right-0 flex justify-between border-t border-border bg-background/90 px-4 py-2 mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground backdrop-blur">
-              <span>FIG. 001 — Bench Study</span>
-              <span>ISO 8589</span>
+              <span>FIG. 005 — TAP-05 / Spice 21</span>
+              <span>48 ML · 1.62 FL.OZ</span>
             </div>
           </div>
         </div>
@@ -216,33 +256,19 @@ function Catalogue() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -m-px">
+        <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {FRAGRANCES.map((f, i) => (
             <FragranceCard key={f.code} f={f} idx={i} />
           ))}
-          <div className="hidden lg:flex items-center justify-center border border-border p-10 text-center bg-grid">
-            <div className="space-y-3">
-              <span className="ticker-label">In Development</span>
-              <div className="font-display text-3xl tracking-[-0.02em] text-muted-foreground">TAP-06</div>
-              <div className="ticker-label">Q3 2026</div>
-            </div>
-          </div>
-          <div className="hidden md:flex lg:hidden items-center justify-center border border-border p-10 text-center bg-grid">
-            <div className="space-y-3">
-              <span className="ticker-label">In Development</span>
-              <div className="font-display text-3xl tracking-[-0.02em] text-muted-foreground">TAP-06</div>
-              <div className="ticker-label">Q3 2026</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function FragranceCard({ f, idx }: { f: typeof FRAGRANCES[number]; idx: number }) {
+function FragranceCard({ f, idx }: { f: Fragrance; idx: number }) {
   return (
-    <article className="group relative flex flex-col border border-border bg-card p-6 transition hover:bg-background">
+    <article className="group relative flex flex-col bg-background p-5 transition hover:bg-card">
       <div className="flex items-start justify-between">
         <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
           {f.code}
@@ -252,54 +278,96 @@ function FragranceCard({ f, idx }: { f: typeof FRAGRANCES[number]; idx: number }
         </span>
       </div>
 
-      <div className="my-10 flex h-44 items-end justify-center">
-        <div className="relative flex h-40 w-16 flex-col items-center">
-          <div className="h-3 w-7 bg-foreground" />
-          <div className="h-2 w-10 bg-steel" />
-          <div className="relative flex-1 w-full overflow-hidden border border-border bg-gradient-to-b from-transparent via-muted to-accent">
-            <div className="absolute inset-x-2 bottom-2 top-1/3 bg-foreground/15 backdrop-blur-sm" />
-          </div>
-        </div>
+      <div className="my-6 flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid">
+        <img
+          src={f.image}
+          alt={`T.A.P ${f.name} — 48ml eau de parfum`}
+          className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          loading={idx < 2 ? "eager" : "lazy"}
+        />
       </div>
 
-      <h3 className="font-display text-3xl tracking-[-0.02em] font-light">{f.name}</h3>
-      <div className="mono mt-1 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-        {f.family}
+      <h3 className="mono text-lg uppercase tracking-[0.15em] font-medium">{f.name}</h3>
+      <div className="mono mt-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+        {f.family} · {f.origin}
       </div>
 
-      <dl className="mt-6 space-y-1.5 border-t border-border pt-4 text-xs">
-        {f.notes.map((n) => (
-          <div key={n} className="flex justify-between text-muted-foreground">
-            <dt className="mono uppercase tracking-[0.15em]">{n}</dt>
-            <dd className="mono">●</dd>
+      <dl className="mt-5 space-y-1 border-t border-border pt-4 text-xs">
+        <div className="ticker-label mb-2">Notes</div>
+        {f.notes.map((n, i) => (
+          <div key={n} className="flex gap-3 text-foreground/80">
+            <dt className="mono w-6 text-muted-foreground">{String(i + 1).padStart(2, "0")}</dt>
+            <dd className="mono uppercase tracking-[0.15em]">{n}</dd>
           </div>
         ))}
       </dl>
 
-      <div className="mt-6 grid grid-cols-2 gap-4 border-t border-border pt-4">
+      <div className="mt-5 flex items-end justify-between border-t border-border pt-4">
         <div>
-          <div className="ticker-label">Concentration</div>
-          <div className="mono mt-1 text-sm">{f.abv}</div>
+          <div className="ticker-label">Vol</div>
+          <div className="mono mt-1 text-xs">48 ml · 1.62 fl.oz</div>
         </div>
-        <div>
-          <div className="ticker-label">Batch</div>
-          <div className="mono mt-1 text-sm">{f.batch}</div>
+        <div className="text-right">
+          <div className="ticker-label">Price</div>
+          <div className="mono mt-1 text-base">₹ 999</div>
         </div>
       </div>
 
-      <div className="mt-6 flex items-center justify-between border-t border-border pt-4">
-        <span className="font-display text-2xl tracking-[-0.02em]">€ 145</span>
-        <button className="mono border border-foreground bg-transparent px-4 py-2 text-[10px] uppercase tracking-[0.2em] transition hover:bg-foreground hover:text-background">
-          Acquire ↗
-        </button>
-      </div>
+      <button className="mono mt-4 border border-foreground bg-transparent px-4 py-2.5 text-[10px] uppercase tracking-[0.2em] transition hover:bg-foreground hover:text-background">
+        Acquire ↗
+      </button>
     </article>
+  );
+}
+
+function Sourcing() {
+  return (
+    <section id="sourcing" className="border-b border-border bg-card">
+      <div className="mx-auto max-w-[1400px] px-6 py-20">
+        <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-6">
+          <div className="space-y-3">
+            <span className="ticker-label">§ 03 / Sourcing</span>
+            <h2 className="font-display text-4xl tracking-[-0.03em] md:text-5xl font-light">
+              Raw materials, real places.
+            </h2>
+          </div>
+          <span className="mono hidden text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:inline">
+            5 origins · 4 countries
+          </span>
+        </div>
+
+        <ol className="grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-5">
+          {FRAGRANCES.map((f, i) => (
+            <li key={f.code} className="flex flex-col gap-4 bg-background p-6">
+              <div className="flex items-center justify-between">
+                <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                  Origin / 0{i + 1}
+                </span>
+                <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                  {f.code}
+                </span>
+              </div>
+              <div>
+                <div className="mono text-sm uppercase tracking-[0.15em]">{f.origin}</div>
+                <div className="ticker-label mt-1">{f.name}</div>
+              </div>
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                {f.story}
+              </p>
+              <p className="mono mt-auto text-[10px] uppercase tracking-[0.18em] text-steel">
+                {f.engineered}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
   );
 }
 
 function Process() {
   const steps = [
-    ["Source", "Raw materials catalogued and weighed to the milligram. Natural absolutes alongside synthesised molecules."],
+    ["Source", "Raw materials catalogued from Konkan, Madurai, Les Cayes, Calabria and Malabar. Weighed to the milligram."],
     ["Compose", "Formulas drafted on paper, mixed on the bench. Iterated across 40–60 trial flasks per composition."],
     ["Macerate", "Each batch rests in amber glass for 6 weeks. Filtered, decanted, and bottled by hand."],
     ["Dispatch", "Sealed, numbered, and shipped direct. No retailers. No middlemen."],
@@ -309,13 +377,13 @@ function Process() {
       <div className="mx-auto max-w-[1400px] px-6 py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-3 space-y-3">
-            <span className="ticker-label">§ 03 / Process</span>
+            <span className="ticker-label">§ 04 / Process</span>
             <h2 className="font-display text-4xl tracking-[-0.03em] font-light md:text-5xl">
               Bench to bottle.
             </h2>
           </div>
           <div className="md:col-span-9">
-            <img src={bottlesRow} alt="Five perfume flasks arranged on a concrete laboratory bench" className="mb-10 w-full grayscale" />
+            <img src={heroLab} alt="Laboratory still life with glassware" className="mb-10 w-full grayscale" />
             <ol className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
               {steps.map(([title, body], i) => (
                 <li key={title} className="flex flex-col gap-3 bg-background p-6">
@@ -339,7 +407,7 @@ function Newsletter() {
     <section id="lab-notes" className="border-b border-border bg-foreground text-background">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-6 py-20 md:grid-cols-12">
         <div className="md:col-span-6 space-y-4">
-          <span className="mono text-[10px] uppercase tracking-[0.2em] text-background/60">§ 04 / Lab Notes</span>
+          <span className="mono text-[10px] uppercase tracking-[0.2em] text-background/60">§ 05 / Lab Notes</span>
           <h2 className="font-display text-4xl tracking-[-0.03em] font-light md:text-6xl">
             Dispatches from the bench.
           </h2>
@@ -372,7 +440,7 @@ function Footer() {
             <div className="mono text-xs tracking-[0.3em]">T.A.P</div>
             <p className="max-w-xs text-sm text-muted-foreground">
               The Aroma Project. A working laboratory of engineered fragrances.
-              Mixed, bottled and dispatched from London.
+              Mixed, bottled and dispatched direct.
             </p>
           </div>
           <div className="space-y-3">
@@ -383,14 +451,14 @@ function Footer() {
           </div>
           <div className="space-y-3">
             <div className="ticker-label">Contact</div>
-            <div className="mono text-xs">lab@aromaproject.co</div>
-            <div className="mono text-xs">+44 (0)20 0000 0000</div>
-            <div className="mono text-xs">Unit 4, Hackney Wick<br />London E9</div>
+            <div className="mono text-xs">lab@aromaproject.in</div>
+            <div className="mono text-xs">48 ml · 1.62 fl.oz</div>
+            <div className="mono text-xs">₹ 999 per flask</div>
           </div>
         </div>
         <div className="hairline mt-12 flex flex-col justify-between gap-3 pt-6 mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground sm:flex-row">
-          <span>© 2026 The Aroma Project Ltd.</span>
-          <span>All formulas proprietary · Made in UK</span>
+          <span>© 2026 The Aroma Project</span>
+          <span>All formulas proprietary · Made in India</span>
         </div>
       </div>
     </footer>
