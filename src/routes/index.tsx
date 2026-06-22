@@ -5,6 +5,7 @@ import sambac8 from "@/assets/bottles/sambac-8.jpg.asset.json";
 import vetiver16 from "@/assets/bottles/vetiver-16.jpg.asset.json";
 import bergamote10 from "@/assets/bottles/bergamote-10.jpg.asset.json";
 import spice21 from "@/assets/bottles/spice-21.jpg.asset.json";
+import labBanner from "@/assets/lab-banner.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
