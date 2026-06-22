@@ -104,6 +104,7 @@ function Index() {
       <TopBar />
       <Nav />
       <Hero />
+      <VideoBanner />
       <Manifest />
       <Catalogue />
       <Sourcing />
