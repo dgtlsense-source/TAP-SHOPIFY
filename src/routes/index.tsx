@@ -5,6 +5,7 @@ import sambac8 from "@/assets/bottles/sambac-8.jpg.asset.json";
 import vetiver16 from "@/assets/bottles/vetiver-16.jpg.asset.json";
 import bergamote10 from "@/assets/bottles/bergamote-10.jpg.asset.json";
 import spice21 from "@/assets/bottles/spice-21.jpg.asset.json";
+import labBanner from "@/assets/lab-banner.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -103,6 +104,7 @@ function Index() {
       <TopBar />
       <Nav />
       <Hero />
+      <VideoBanner />
       <Manifest />
       <Catalogue />
       <Sourcing />
@@ -426,6 +428,25 @@ function Newsletter() {
             Subscribe ↗
           </button>
         </form>
+      </div>
+    </section>
+  );
+}
+
+function VideoBanner() {
+  return (
+    <section className="relative w-full overflow-hidden border-b border-border">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="h-[40vh] w-full object-cover md:h-[50vh]"
+        src={labBanner.url}
+      />
+      <div className="absolute bottom-0 left-0 right-0 flex justify-between border-t border-border bg-background/80 px-6 py-2 mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground backdrop-blur">
+        <span>Batch 0001 — Atmosphere Study</span>
+        <span>Vol. 01 — 2026</span>
       </div>
     </section>
   );
