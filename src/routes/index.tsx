@@ -248,11 +248,14 @@ function Hero() {
           </div>
           <div className="col-span-1 relative border-l-0 border-t border-border lg:col-span-5 lg:border-l lg:border-t-0 bg-muted">
             <img src={spice21.url} alt="T.A.P Spice 21 — silver perfume bottle" className="h-full max-h-[720px] w-full object-cover" />
+            <span className="tape absolute left-4 top-4 rotate-3">Specimen 005 / handle with glee</span>
+            <span className="sticker absolute right-4 top-6 -rotate-6 animate-drip">🌶️ hot stuff</span>
             <div className="absolute bottom-0 left-0 right-0 flex justify-between border-t border-border bg-background/90 px-4 py-2 mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground backdrop-blur">
               <span>FIG. 005 — TAP-05 / Spice 21</span>
               <span>48 ML · 1.62 FL.OZ</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
