@@ -38,6 +38,9 @@ type Fragrance = {
   engineered: string;
   story: string;
   image: string;
+  vibe: string;
+  emoji: string;
+  tilt: string;
 };
 
 const FRAGRANCES: Fragrance[] = [
@@ -51,6 +54,9 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Mango 12 captures the essence of vibrant tropical Konkan mangoes blended with crisp citrus and warm woods.",
     image: mango12.url,
+    vibe: "smells like skipping class in May.",
+    emoji: "🥭",
+    tilt: "-rotate-2",
   },
   {
     code: "TAP-02",
@@ -62,6 +68,9 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Sambac 8 inherits an exceptionally intense sweet floral scent from jasmines found in the Madurai region of southern India, blended with rich creamy vanilla and musk.",
     image: sambac8.url,
+    vibe: "smells like a temple courtyard at dusk.",
+    emoji: "🌼",
+    tilt: "rotate-1",
   },
   {
     code: "TAP-03",
@@ -73,6 +82,9 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Vetiver 16 envelops the earthy, damp vibes of Haitian vetiver found in Les Cayes, blended with dry woods and musk.",
     image: vetiver16.url,
+    vibe: "smells like wet soil and quiet confidence.",
+    emoji: "🌱",
+    tilt: "-rotate-1",
   },
   {
     code: "TAP-04",
@@ -84,6 +96,9 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Bergamote 10 brings the complex citrus freshness of bergamot from Reggio Calabria in southern Italy, blended with spicy woods and leather.",
     image: bergamote10.url,
+    vibe: "smells like a freshly peeled orange in a leather chair.",
+    emoji: "🍊",
+    tilt: "rotate-2",
   },
   {
     code: "TAP-05",
@@ -95,8 +110,12 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Spice 21 lets in the heat of Indian spices from the Malabar coast of western India, blended with sweet, warm woods.",
     image: spice21.url,
+    vibe: "smells like a chai pan at sunrise.",
+    emoji: "🌶️",
+    tilt: "-rotate-2",
   },
 ];
+
 
 function Index() {
   return (
