@@ -135,16 +135,29 @@ function Index() {
 }
 
 function TopBar() {
+  const items = [
+    "Batch 0001 — now shipping",
+    "Free ship over ₹2,500",
+    "Made in a real lab, not a mood board",
+    "48ml flasks · ₹999 each",
+    "Sniff-tested by 1 chemist + 1 dog 🐕",
+    "Smell loudly. Apologise later.",
+  ];
+  const loop = [...items, ...items];
   return (
-    <div className="border-b border-border bg-foreground text-background">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-1.5 mono text-[10px] tracking-[0.2em] uppercase">
-        <span>Batch 0001 — Now Shipping</span>
-        <span className="hidden md:inline">LAB / Made in India</span>
-        <span>Free Ship · Orders &gt; ₹2,500</span>
+    <div className="overflow-hidden border-b border-border bg-foreground text-background">
+      <div className="flex animate-marquee whitespace-nowrap py-1.5 mono text-[10px] tracking-[0.2em] uppercase">
+        {loop.map((t, i) => (
+          <span key={i} className="px-6 flex items-center gap-6">
+            <span>{t}</span>
+            <span aria-hidden className="text-background/40">◆</span>
+          </span>
+        ))}
       </div>
     </div>
   );
 }
+
 
 function Nav() {
   return (
