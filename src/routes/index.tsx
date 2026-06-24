@@ -197,16 +197,20 @@ function Hero() {
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-0 lg:grid-cols-12">
           <div className="col-span-1 flex flex-col justify-between px-6 py-16 lg:col-span-7 lg:py-28">
             <div className="space-y-10">
-              <div className="flex items-center gap-3">
-                <span className="h-px w-12 bg-foreground" />
-                <span className="ticker-label">Vol. 01 — 2026 / Edition I</span>
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="tape -rotate-2">Vol. 01 — 2026 / Edition I</span>
+                <span className="sticker animate-wobble">Batch 0001 · Fresh ↗</span>
               </div>
               <h1 className="font-display text-[clamp(2.75rem,8vw,7.5rem)] leading-[0.92] tracking-[-0.04em] font-light">
                 Engineered<br />
                 <span className="italic text-steel">scent,</span><br />
-                raw and<br />
-                unfinished.
+                raw &amp; a little<br />
+                <span className="relative inline-block">
+                  <span className="absolute inset-x-0 bottom-2 h-4 bg-[var(--tape)] -z-0" aria-hidden />
+                  <span className="relative">unhinged.</span>
+                </span>
               </h1>
+
               <p className="max-w-md text-base leading-relaxed text-muted-foreground">
                 The Aroma Project is a working laboratory.
                 Five compositions, raw materials sourced from
