@@ -38,6 +38,9 @@ type Fragrance = {
   engineered: string;
   story: string;
   image: string;
+  vibe: string;
+  emoji: string;
+  tilt: string;
 };
 
 const FRAGRANCES: Fragrance[] = [
@@ -51,6 +54,9 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Mango 12 captures the essence of vibrant tropical Konkan mangoes blended with crisp citrus and warm woods.",
     image: mango12.url,
+    vibe: "smells like skipping class in May.",
+    emoji: "🥭",
+    tilt: "-rotate-2",
   },
   {
     code: "TAP-02",
@@ -62,6 +68,9 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Sambac 8 inherits an exceptionally intense sweet floral scent from jasmines found in the Madurai region of southern India, blended with rich creamy vanilla and musk.",
     image: sambac8.url,
+    vibe: "smells like a temple courtyard at dusk.",
+    emoji: "🌼",
+    tilt: "rotate-1",
   },
   {
     code: "TAP-03",
@@ -73,6 +82,9 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Vetiver 16 envelops the earthy, damp vibes of Haitian vetiver found in Les Cayes, blended with dry woods and musk.",
     image: vetiver16.url,
+    vibe: "smells like wet soil and quiet confidence.",
+    emoji: "🌱",
+    tilt: "-rotate-1",
   },
   {
     code: "TAP-04",
@@ -84,6 +96,9 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Bergamote 10 brings the complex citrus freshness of bergamot from Reggio Calabria in southern Italy, blended with spicy woods and leather.",
     image: bergamote10.url,
+    vibe: "smells like a freshly peeled orange in a leather chair.",
+    emoji: "🍊",
+    tilt: "rotate-2",
   },
   {
     code: "TAP-05",
@@ -95,8 +110,12 @@ const FRAGRANCES: Fragrance[] = [
     story:
       "Spice 21 lets in the heat of Indian spices from the Malabar coast of western India, blended with sweet, warm woods.",
     image: spice21.url,
+    vibe: "smells like a chai pan at sunrise.",
+    emoji: "🌶️",
+    tilt: "-rotate-2",
   },
 ];
+
 
 function Index() {
   return (
@@ -116,16 +135,29 @@ function Index() {
 }
 
 function TopBar() {
+  const items = [
+    "Batch 0001 — now shipping",
+    "Free ship over ₹2,500",
+    "Made in a real lab, not a mood board",
+    "48ml flasks · ₹999 each",
+    "Sniff-tested by 1 chemist + 1 dog 🐕",
+    "Smell loudly. Apologise later.",
+  ];
+  const loop = [...items, ...items];
   return (
-    <div className="border-b border-border bg-foreground text-background">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-1.5 mono text-[10px] tracking-[0.2em] uppercase">
-        <span>Batch 0001 — Now Shipping</span>
-        <span className="hidden md:inline">LAB / Made in India</span>
-        <span>Free Ship · Orders &gt; ₹2,500</span>
+    <div className="overflow-hidden border-b border-border bg-foreground text-background">
+      <div className="flex animate-marquee whitespace-nowrap py-1.5 mono text-[10px] tracking-[0.2em] uppercase">
+        {loop.map((t, i) => (
+          <span key={i} className="px-6 flex items-center gap-6">
+            <span>{t}</span>
+            <span aria-hidden className="text-background/40">◆</span>
+          </span>
+        ))}
       </div>
     </div>
   );
 }
+
 
 function Nav() {
   return (
@@ -165,22 +197,27 @@ function Hero() {
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-0 lg:grid-cols-12">
           <div className="col-span-1 flex flex-col justify-between px-6 py-16 lg:col-span-7 lg:py-28">
             <div className="space-y-10">
-              <div className="flex items-center gap-3">
-                <span className="h-px w-12 bg-foreground" />
-                <span className="ticker-label">Vol. 01 — 2026 / Edition I</span>
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="tape -rotate-2">Vol. 01 — 2026 / Edition I</span>
+                <span className="sticker animate-wobble">Batch 0001 · Fresh ↗</span>
               </div>
               <h1 className="font-display text-[clamp(2.75rem,8vw,7.5rem)] leading-[0.92] tracking-[-0.04em] font-light">
                 Engineered<br />
                 <span className="italic text-steel">scent,</span><br />
-                raw and<br />
-                unfinished.
+                raw &amp; a little<br />
+                <span className="relative inline-block">
+                  <span className="absolute inset-x-0 bottom-2 h-4 bg-[var(--tape)] -z-0" aria-hidden />
+                  <span className="relative">unhinged.</span>
+                </span>
               </h1>
+
               <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-                The Aroma Project is a working laboratory.
-                Five compositions, raw materials sourced from
-                Konkan to Calabria, distilled in small batches
-                and shipped direct from the bench.
+                The Aroma Project is a working laboratory pretending to be a perfume brand.
+                Five compositions. Real raw materials from Konkan to Calabria.
+                Distilled in tiny batches and shipped from the bench — still smelling
+                faintly of the chemist who made them.
               </p>
+
               <div className="flex flex-wrap gap-3 pt-4">
                 <a
                   href="#catalogue"
@@ -211,11 +248,14 @@ function Hero() {
           </div>
           <div className="col-span-1 relative border-l-0 border-t border-border lg:col-span-5 lg:border-l lg:border-t-0 bg-muted">
             <img src={spice21.url} alt="T.A.P Spice 21 — silver perfume bottle" className="h-full max-h-[720px] w-full object-cover" />
+            <span className="tape absolute left-4 top-4 rotate-3">Specimen 005 / handle with glee</span>
+            <span className="sticker absolute right-4 top-6 -rotate-6 animate-drip">🌶️ hot stuff</span>
             <div className="absolute bottom-0 left-0 right-0 flex justify-between border-t border-border bg-background/90 px-4 py-2 mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground backdrop-blur">
               <span>FIG. 005 — TAP-05 / Spice 21</span>
               <span>48 ML · 1.62 FL.OZ</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -231,12 +271,13 @@ function Manifest() {
         </div>
         <div className="md:col-span-9">
           <p className="text-2xl leading-snug tracking-[-0.02em] md:text-4xl">
-            We treat perfumery as <em className="italic text-steel">applied chemistry</em>.
-            Every flask is mixed, macerated and filtered on the bench —
-            then numbered, capped and shipped. The label is the data sheet.
-            The packaging is the packaging.
+            We treat perfumery as <em className="italic text-steel">applied chemistry</em>
+            with a sense of humour. Every flask is mixed, macerated and filtered on
+            the bench — then numbered, capped, kissed for luck, and shipped.
+            The label is the data sheet. The packaging is the packaging.
           </p>
         </div>
+
       </div>
     </section>
   );
@@ -246,17 +287,17 @@ function Catalogue() {
   return (
     <section id="catalogue" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-6 py-20">
-        <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-6">
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-6 border-b border-border pb-6">
           <div className="space-y-3">
             <span className="ticker-label">§ 02 / Catalogue</span>
             <h2 className="font-display text-4xl tracking-[-0.03em] md:text-6xl font-light">
-              Five compositions.
+              Five compositions.<br />
+              <span className="italic text-steel">Pick your personality.</span>
             </h2>
           </div>
-          <span className="mono hidden text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:inline">
-            TAP-01 → TAP-05
-          </span>
+          <span className="tape rotate-2 hidden md:inline">TAP-01 → TAP-05 · sniff freely</span>
         </div>
+
 
         <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {FRAGRANCES.map((f, i) => (
@@ -270,10 +311,13 @@ function Catalogue() {
 
 function FragranceCard({ f, idx }: { f: Fragrance; idx: number }) {
   return (
-    <article className="group relative flex flex-col bg-background p-5 transition hover:bg-card">
-      <div className="flex items-start justify-between">
+    <article className="group relative flex flex-col bg-background p-5 transition hover-tilt hover:bg-card">
+      <span className={`tape absolute -top-2 left-4 ${f.tilt} z-10`}>
+        {f.emoji} {f.code}
+      </span>
+      <div className="flex items-start justify-between pt-3">
         <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          {f.code}
+          {f.family}
         </span>
         <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
           № {String(idx + 1).padStart(2, "0")} / 05
@@ -284,14 +328,17 @@ function FragranceCard({ f, idx }: { f: Fragrance; idx: number }) {
         <img
           src={f.image}
           alt={`T.A.P ${f.name} — 48ml eau de parfum`}
-          className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.06] group-hover:rotate-2"
           loading={idx < 2 ? "eager" : "lazy"}
         />
       </div>
 
       <h3 className="mono text-lg uppercase tracking-[0.15em] font-medium">{f.name}</h3>
-      <div className="mono mt-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-        {f.family} · {f.origin}
+      <p className="mt-2 text-sm italic leading-snug text-steel">
+        “{f.vibe}”
+      </p>
+      <div className="mono mt-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+        {f.origin}
       </div>
 
       <dl className="mt-5 space-y-1 border-t border-border pt-4 text-xs">
@@ -315,9 +362,10 @@ function FragranceCard({ f, idx }: { f: Fragrance; idx: number }) {
         </div>
       </div>
 
-      <button className="mono mt-4 border border-foreground bg-transparent px-4 py-2.5 text-[10px] uppercase tracking-[0.2em] transition hover:bg-foreground hover:text-background">
-        Acquire ↗
+      <button className="mono mt-4 border border-foreground bg-transparent px-4 py-2.5 text-[10px] uppercase tracking-[0.2em] transition hover:-rotate-1 hover:bg-[var(--tape)] hover:text-[var(--tape-ink)]">
+        Take it home ↗
       </button>
+
     </article>
   );
 }
