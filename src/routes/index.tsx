@@ -212,11 +212,12 @@ function Hero() {
               </h1>
 
               <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-                The Aroma Project is a working laboratory.
-                Five compositions, raw materials sourced from
-                Konkan to Calabria, distilled in small batches
-                and shipped direct from the bench.
+                The Aroma Project is a working laboratory pretending to be a perfume brand.
+                Five compositions. Real raw materials from Konkan to Calabria.
+                Distilled in tiny batches and shipped from the bench — still smelling
+                faintly of the chemist who made them.
               </p>
+
               <div className="flex flex-wrap gap-3 pt-4">
                 <a
                   href="#catalogue"
