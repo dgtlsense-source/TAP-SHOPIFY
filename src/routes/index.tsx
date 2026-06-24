@@ -125,6 +125,7 @@ function Index() {
       <Hero />
       <VideoBanner />
       <Manifest />
+      <About />
       <Catalogue />
       <Sourcing />
       <Process />
