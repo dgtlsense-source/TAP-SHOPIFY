@@ -271,12 +271,13 @@ function Manifest() {
         </div>
         <div className="md:col-span-9">
           <p className="text-2xl leading-snug tracking-[-0.02em] md:text-4xl">
-            We treat perfumery as <em className="italic text-steel">applied chemistry</em>.
-            Every flask is mixed, macerated and filtered on the bench —
-            then numbered, capped and shipped. The label is the data sheet.
-            The packaging is the packaging.
+            We treat perfumery as <em className="italic text-steel">applied chemistry</em>
+            with a sense of humour. Every flask is mixed, macerated and filtered on
+            the bench — then numbered, capped, kissed for luck, and shipped.
+            The label is the data sheet. The packaging is the packaging.
           </p>
         </div>
+
       </div>
     </section>
   );
