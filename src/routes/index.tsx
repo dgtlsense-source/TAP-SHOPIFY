@@ -311,10 +311,13 @@ function Catalogue() {
 
 function FragranceCard({ f, idx }: { f: Fragrance; idx: number }) {
   return (
-    <article className="group relative flex flex-col bg-background p-5 transition hover:bg-card">
-      <div className="flex items-start justify-between">
+    <article className="group relative flex flex-col bg-background p-5 transition hover-tilt hover:bg-card">
+      <span className={`tape absolute -top-2 left-4 ${f.tilt} z-10`}>
+        {f.emoji} {f.code}
+      </span>
+      <div className="flex items-start justify-between pt-3">
         <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          {f.code}
+          {f.family}
         </span>
         <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
           № {String(idx + 1).padStart(2, "0")} / 05
@@ -325,14 +328,17 @@ function FragranceCard({ f, idx }: { f: Fragrance; idx: number }) {
         <img
           src={f.image}
           alt={`T.A.P ${f.name} — 48ml eau de parfum`}
-          className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+          className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.06] group-hover:rotate-2"
           loading={idx < 2 ? "eager" : "lazy"}
         />
       </div>
 
       <h3 className="mono text-lg uppercase tracking-[0.15em] font-medium">{f.name}</h3>
-      <div className="mono mt-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-        {f.family} · {f.origin}
+      <p className="mt-2 text-sm italic leading-snug text-steel">
+        “{f.vibe}”
+      </p>
+      <div className="mono mt-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+        {f.origin}
       </div>
 
       <dl className="mt-5 space-y-1 border-t border-border pt-4 text-xs">
@@ -356,9 +362,10 @@ function FragranceCard({ f, idx }: { f: Fragrance; idx: number }) {
         </div>
       </div>
 
-      <button className="mono mt-4 border border-foreground bg-transparent px-4 py-2.5 text-[10px] uppercase tracking-[0.2em] transition hover:bg-foreground hover:text-background">
-        Acquire ↗
+      <button className="mono mt-4 border border-foreground bg-transparent px-4 py-2.5 text-[10px] uppercase tracking-[0.2em] transition hover:-rotate-1 hover:bg-[var(--tape)] hover:text-[var(--tape-ink)]">
+        Take it home ↗
       </button>
+
     </article>
   );
 }
