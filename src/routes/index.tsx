@@ -287,17 +287,17 @@ function Catalogue() {
   return (
     <section id="catalogue" className="border-b border-border">
       <div className="mx-auto max-w-[1400px] px-6 py-20">
-        <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-6">
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-6 border-b border-border pb-6">
           <div className="space-y-3">
             <span className="ticker-label">§ 02 / Catalogue</span>
             <h2 className="font-display text-4xl tracking-[-0.03em] md:text-6xl font-light">
-              Five compositions.
+              Five compositions.<br />
+              <span className="italic text-steel">Pick your personality.</span>
             </h2>
           </div>
-          <span className="mono hidden text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:inline">
-            TAP-01 → TAP-05
-          </span>
+          <span className="tape rotate-2 hidden md:inline">TAP-01 → TAP-05 · sniff freely</span>
         </div>
+
 
         <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {FRAGRANCES.map((f, i) => (
