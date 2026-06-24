@@ -283,6 +283,76 @@ function Manifest() {
   );
 }
 
+function About() {
+  return (
+    <section id="about" className="border-b border-border bg-card">
+      <div className="mx-auto max-w-[1400px] px-6 py-20">
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-6 border-b border-border pb-6">
+          <div className="space-y-3">
+            <span className="ticker-label">§ 00 / About T.A.P</span>
+            <h2 className="font-display text-4xl tracking-[-0.03em] font-light md:text-6xl">
+              Engineered in a lab.<br />
+              <span className="italic text-steel">Playful by nature.</span>
+            </h2>
+          </div>
+          <span className="tape -rotate-1">EST. 2026 · BATCH MENTALITY</span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+          <div className="md:col-span-7 space-y-8">
+            <p className="text-2xl leading-snug tracking-[-0.02em] md:text-4xl">
+              The Aroma Project is not a perfume house. It is a <em className="italic text-steel">working fragrance laboratory</em> that treats every bottle like a small experiment — raw materials, precise formulas, and a healthy refusal to take ourselves too seriously.
+            </p>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div className="space-y-3">
+                <span className="ticker-label">The Lab Concept</span>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  We engineer scent the way a chemist engineers a reaction: measure, mix, iterate, fail loudly, repeat. Each composition is tested across dozens of trial flasks before it earns a code.
+                </p>
+              </div>
+              <div className="space-y-3">
+                <span className="ticker-label">Sourcing Stories</span>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Mango from Konkan, jasmine from Madurai, vetiver from Les Cayes, bergamot from Calabria, spice from Malabar. We source from places, not suppliers.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:col-span-5 space-y-4">
+            <div className="border border-border bg-background p-6">
+              <div className="mb-4 flex items-center justify-between">
+                <span className="ticker-label">Lab Values</span>
+                <span className="sticker animate-wobble">NO BS</span>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  ["Small batches", "We do not warehouse. We make, macerate, bottle, and ship in numbered batches."],
+                  ["Radical honesty", "What is on the label is in the bottle. No fantasy notes, no marketing fairy tales."],
+                  ["Playful precision", "The formulas are serious. The names, stickers, and vibes are not."],
+                  ["Direct dispatch", "No middlemen, no retail markup. From the bench to your doorstep."],
+                ].map(([title, body]) => (
+                  <li key={title} className="border-b border-border pb-4 last:border-0 last:pb-0">
+                    <div className="mono text-xs uppercase tracking-[0.15em]">{title}</div>
+                    <p className="mt-1 text-sm text-muted-foreground">{body}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex items-center gap-4 border border-border bg-background p-4">
+              <span className="text-3xl">🧪</span>
+              <div>
+                <div className="mono text-xs uppercase tracking-[0.2em]">Batch 0001</div>
+                <div className="text-sm text-muted-foreground">Five formulas. One lab. Infinite curiosity.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Catalogue() {
   return (
     <section id="catalogue" className="border-b border-border">
