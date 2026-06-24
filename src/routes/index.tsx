@@ -170,6 +170,7 @@ function Nav() {
         </a>
         <nav className="hidden gap-8 md:flex">
           {[
+            ["About", "about"],
             ["Catalogue", "catalogue"],
             ["Sourcing", "sourcing"],
             ["Process", "process"],
