@@ -138,7 +138,6 @@ function Nav() {
           {[
             ["Catalogue", "catalogue"],
             ["Sourcing", "sourcing"],
-            ["Process", "process"],
             ["Lab Notes", "lab-notes"],
           ].map(([l, id]) => (
             <a key={id} href={`#${id}`} className="mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground transition hover:text-foreground">
@@ -186,12 +185,6 @@ function Hero() {
                   className="mono inline-flex items-center border border-foreground bg-foreground px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-background transition hover:bg-background hover:text-foreground"
                 >
                   View Catalogue / 05
-                </a>
-                <a
-                  href="#process"
-                  className="mono inline-flex items-center border border-border px-6 py-3 text-[11px] uppercase tracking-[0.2em] transition hover:border-foreground"
-                >
-                  The Process →
                 </a>
               </div>
             </div>
@@ -372,49 +365,12 @@ function Sourcing() {
   );
 }
 
-function Process() {
-  const steps = [
-    ["Source", "Raw materials catalogued from Konkan, Madurai, Les Cayes, Calabria and Malabar. Weighed to the milligram."],
-    ["Compose", "Formulas drafted on paper, mixed on the bench. Iterated across 40–60 trial flasks per composition."],
-    ["Macerate", "Each batch rests in amber glass for 6 weeks. Filtered, decanted, and bottled by hand."],
-    ["Dispatch", "Sealed, numbered, and shipped direct. No retailers. No middlemen."],
-  ];
-  return (
-    <section id="process" className="border-b border-border">
-      <div className="mx-auto max-w-[1400px] px-6 py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-          <div className="md:col-span-3 space-y-3">
-            <span className="ticker-label">§ 04 / Process</span>
-            <h2 className="font-display text-4xl tracking-[-0.03em] font-light md:text-5xl">
-              Bench to bottle.
-            </h2>
-          </div>
-          <div className="md:col-span-9">
-            <img src={heroLab} alt="Laboratory still life with glassware" className="mb-10 w-full grayscale" />
-            <ol className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
-              {steps.map(([title, body], i) => (
-                <li key={title} className="flex flex-col gap-3 bg-background p-6">
-                  <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                    Step / 0{i + 1}
-                  </span>
-                  <h3 className="font-display text-xl tracking-[-0.02em]">{title}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{body}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Newsletter() {
   return (
     <section id="lab-notes" className="border-b border-border bg-foreground text-background">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-6 py-20 md:grid-cols-12">
         <div className="md:col-span-6 space-y-4">
-          <span className="mono text-[10px] uppercase tracking-[0.2em] text-background/60">§ 05 / Lab Notes</span>
+          <span className="mono text-[10px] uppercase tracking-[0.2em] text-background/60">§ 04 / Lab Notes</span>
           <h2 className="font-display text-4xl tracking-[-0.03em] font-light md:text-6xl">
             Dispatches from the bench.
           </h2>
