@@ -176,10 +176,10 @@ function Hero() {
                 unfinished.
               </h1>
               <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-                The Aroma Project is a working laboratory.
-                Five compositions, raw materials sourced from
-                Konkan to Calabria, distilled in small batches
-                and shipped direct from the bench.
+                The Aroma Project is building India's modern fragrance lab.
+                Five distinctive, long-lasting formulas sourced from
+                Konkan to Calabria, engineered for people who want everything
+                around them to feel different, rich, and unforgettable.
               </p>
               <div className="flex flex-wrap gap-3 pt-4">
                 <a
@@ -229,13 +229,19 @@ function Manifest() {
         <div className="md:col-span-3">
           <span className="ticker-label">§ 01 / Manifest</span>
         </div>
-        <div className="md:col-span-9">
-          <p className="text-2xl leading-snug tracking-[-0.02em] md:text-4xl">
-            We treat perfumery as <em className="italic text-steel">applied chemistry</em>.
-            Every flask is mixed, macerated and filtered on the bench —
-            then numbered, capped and shipped. The label is the data sheet.
-            The packaging is the packaging.
-          </p>
+        <div className="md:col-span-9 space-y-10">
+          <div>
+            <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Mission</span>
+            <p className="mt-3 text-2xl leading-snug tracking-[-0.02em] md:text-4xl">
+              To create distinctive, long-lasting fragrance formulas inspired by rare aromas from around the world, engineered for people who want everything around them to feel <em className="italic text-steel">different, rich, and unforgettable.</em>
+            </p>
+          </div>
+          <div>
+            <span className="mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Vision</span>
+            <p className="mt-3 text-2xl leading-snug tracking-[-0.02em] md:text-4xl">
+              To make T.A.P India's modern fragrance lab — a global lifestyle scent brand built on raw aromas, bold design, and premium everyday experiences.
+            </p>
+          </div>
         </div>
       </div>
     </section>
