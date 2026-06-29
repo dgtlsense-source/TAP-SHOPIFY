@@ -108,7 +108,6 @@ function Index() {
       <Manifest />
       <Catalogue />
       <Sourcing />
-      <Process />
       <Newsletter />
       <Footer />
     </div>
