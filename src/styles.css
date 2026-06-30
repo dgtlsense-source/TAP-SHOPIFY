@@ -31,9 +31,9 @@
   --color-concrete: var(--concrete);
   --color-steel: var(--steel);
   --color-ink: var(--ink);
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --font-display: "Inter", system-ui, sans-serif;
+  --font-display: "Big Shoulders Display", "Inter", system-ui, sans-serif;
 }
 
 :root {
