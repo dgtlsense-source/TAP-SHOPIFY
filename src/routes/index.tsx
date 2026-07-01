@@ -6,10 +6,7 @@ import bergamote10 from "@/assets/bottles/bergamote-10.jpg.asset.json";
 import spice21 from "@/assets/bottles/spice-21.jpg.asset.json";
 import labBanner from "@/assets/lab-banner.mp4.asset.json";
 import logo from "@/assets/brand/logo-v2.png.asset.json";
-import hands from "@/assets/brand/hands.png.asset.json";
 import collection from "@/assets/brand/collection.png.asset.json";
-import labGiant from "@/assets/brand/lab-giant.png.asset.json";
-import bottleHero from "@/assets/brand/bottle-hero.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
