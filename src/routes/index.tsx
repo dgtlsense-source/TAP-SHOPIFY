@@ -171,60 +171,51 @@ function Hero() {
   return (
     <section className="relative border-b border-border">
       <div className="bg-grid">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 lg:grid-cols-12">
-          <div className="col-span-1 flex flex-col justify-between px-6 py-16 lg:col-span-7 lg:py-24">
-            <div className="space-y-10">
-              <div className="flex items-center gap-3">
-                <span className="h-px w-12 bg-foreground" />
-                <span className="ticker-label">Vol. 01 / 2026 — Edition I</span>
-              </div>
-              <h1 className="font-display text-[clamp(3rem,9vw,8.5rem)] leading-[0.88] tracking-[-0.01em] font-black uppercase">
-                Engineered<br />
-                for modern<br />
-                <span className="text-steel">everyday</span><br />
-                rituals.
-              </h1>
-              <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-                T.A.P is a modern perfumery lab — sourcing rare accords from
-                farmlands across the world and shaping them into precise,
-                long-lasting fragrance formulas. Each scent is crafted to elevate
-                you and your surroundings, leaving a lasting impression.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <a
-                  href="#catalogue"
-                  className="mono inline-flex items-center border border-foreground bg-foreground px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
-                >
-                  Discover the Five ↗
-                </a>
-                <a
-                  href="#story"
-                  className="mono inline-flex items-center border border-foreground bg-transparent px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background"
-                >
-                  Our Story
-                </a>
-              </div>
+        <div className="mx-auto max-w-[1400px] px-6 py-16 lg:py-24">
+          <div className="space-y-10">
+            <div className="flex items-center gap-3">
+              <span className="h-px w-12 bg-foreground" />
+              <span className="ticker-label">Vol. 01 / 2026 — Edition I</span>
             </div>
-            <div className="mt-16 grid grid-cols-4 gap-6 border-t border-border pt-8">
-              {[
-                ["05", "Compositions"],
-                ["48 ml", "Eau de Parfum"],
-                ["₹ 999", "Per Flask"],
-                ["100%", "Phthalate-free"],
-              ].map(([v, l]) => (
-                <div key={l}>
-                  <div className="font-display text-2xl font-medium tracking-tight">{v}</div>
-                  <div className="ticker-label mt-2">{l}</div>
-                </div>
-              ))}
+            <h1 className="font-display text-[clamp(3rem,9vw,8.5rem)] leading-[0.88] tracking-[-0.01em] font-black uppercase">
+              Engineered<br />
+              for modern<br />
+              <span className="text-steel">everyday</span><br />
+              rituals.
+            </h1>
+            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+              T.A.P is a modern perfumery lab — sourcing rare accords from
+              farmlands across the world and shaping them into precise,
+              long-lasting fragrance formulas. Each scent is crafted to elevate
+              you and your surroundings, leaving a lasting impression.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href="#catalogue"
+                className="mono inline-flex items-center border border-foreground bg-foreground px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
+              >
+                Discover the Five ↗
+              </a>
+              <a
+                href="#story"
+                className="mono inline-flex items-center border border-foreground bg-transparent px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background"
+              >
+                Our Story
+              </a>
             </div>
           </div>
-          <div className="col-span-1 relative border-l-0 border-t border-border lg:col-span-5 lg:border-l lg:border-t-0 bg-[#0e0e10]">
-            <img src={hands.url} alt="T.A.P Bergamote 10 — held in hand, editorial shot" className="h-full max-h-[820px] w-full object-cover" />
-            <div className="absolute bottom-0 left-0 right-0 flex justify-between border-t border-border bg-background/90 px-4 py-2 mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground backdrop-blur">
-              <span>FIG. 004 — TAP-04 / Bergamote 10</span>
-              <span>EAU DE PARFUM · 48 ML</span>
-            </div>
+          <div className="mt-16 grid grid-cols-2 gap-6 border-t border-border pt-8 md:grid-cols-4">
+            {[
+              ["05", "Compositions"],
+              ["48 ml", "Eau de Parfum"],
+              ["₹ 999", "Per Flask"],
+              ["100%", "Phthalate-free"],
+            ].map(([v, l]) => (
+              <div key={l}>
+                <div className="font-display text-2xl font-medium tracking-tight">{v}</div>
+                <div className="ticker-label mt-2">{l}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
