@@ -569,9 +569,3 @@ function Footer() {
     </footer>
   );
 }
-
-function BottleHero() {
-  // reserved single-bottle hero image for future use
-  return <img src={bottleHero.url} alt="T.A.P bottle" />;
-}
-void BottleHero;
