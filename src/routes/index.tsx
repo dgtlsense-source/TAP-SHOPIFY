@@ -111,15 +111,14 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <TopBar />
       <Nav />
+      <VideoBanner />
       <Hero />
       <Marquee />
       <BrandStory />
       <Catalogue />
       <Editorial />
       <Sourcing />
-      <VideoBanner />
       <Purpose />
-      <Futuristic />
       <Newsletter />
       <Footer />
     </div>
