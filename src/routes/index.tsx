@@ -115,7 +115,6 @@ function Index() {
       <Catalogue />
       <Editorial />
       <Sourcing />
-      <SourcesCarousel />
       <Purpose />
       <Newsletter />
       <Footer />
@@ -436,96 +435,6 @@ function Sourcing() {
           ))}
         </ol>
       </div>
-    </section>
-  );
-}
-
-function SourcesCarousel() {
-  // Fast-moving dual-row marquee showing every accord source.
-  const items = FRAGRANCES.map((f) => ({
-    image: f.image,
-    name: f.name,
-    origin: f.origin,
-    code: f.code,
-    accord: f.notes.join(" · "),
-  }));
-  const loop = [...items, ...items, ...items, ...items];
-
-  return (
-    <section className="relative overflow-hidden border-b border-border bg-foreground text-background">
-      <div className="mx-auto flex max-w-[1400px] items-end justify-between gap-6 px-6 pt-14 pb-6">
-        <div className="space-y-3">
-          <span className="ticker-label text-background/60">§ 04 / Accord Sources</span>
-          <h2 className="font-display text-4xl font-bold uppercase tracking-tight leading-[0.92] md:text-6xl">
-            Sourced. Studied.<br />
-            <span className="text-background/50">In motion.</span>
-          </h2>
-        </div>
-        <span className="mono hidden text-[10px] uppercase tracking-[0.25em] text-background/50 md:inline">
-          Konkan · Madurai · Les Cayes · Reggio Calabria · Malabar
-        </span>
-      </div>
-
-      <div className="relative py-8">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-foreground to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-foreground to-transparent" />
-
-        <div className="flex gap-4 whitespace-nowrap animate-[srcmarq_18s_linear_infinite]">
-          {loop.map((it, i) => (
-            <article
-              key={`a-${i}`}
-              className="relative flex h-40 w-72 shrink-0 overflow-hidden border border-background/15 bg-background/5 md:h-48 md:w-96"
-            >
-              <div className="flex aspect-square h-full items-center justify-center bg-background/5">
-                <img
-                  src={it.image}
-                  alt={`${it.name} — ${it.origin}`}
-                  className="h-full w-full object-contain"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex flex-1 flex-col justify-between p-4">
-                <div className="flex items-center justify-between mono text-[9px] uppercase tracking-[0.25em] text-background/50">
-                  <span>{it.code}</span>
-                  <span>Origin</span>
-                </div>
-                <div>
-                  <div className="font-display text-lg font-bold uppercase tracking-tight leading-none md:text-xl">
-                    {it.origin}
-                  </div>
-                  <div className="mono mt-2 text-[10px] uppercase tracking-[0.2em] text-background/60">
-                    {it.name}
-                  </div>
-                </div>
-                <div className="mono truncate text-[9px] uppercase tracking-[0.2em] text-background/50">
-                  {it.accord}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-4 flex gap-4 whitespace-nowrap animate-[srcmarqrev_22s_linear_infinite]">
-          {loop.map((it, i) => (
-            <div
-              key={`b-${i}`}
-              className="flex h-14 shrink-0 items-center gap-4 border border-background/15 bg-background/5 px-5 mono text-[10px] uppercase tracking-[0.3em]"
-            >
-              <span className="text-background/50">◆</span>
-              <span className="text-background">{it.origin}</span>
-              <span className="text-background/40">/</span>
-              <span className="text-background/70">{it.name}</span>
-              <span className="text-background/40">/</span>
-              <span className="text-background/50">{it.accord}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes srcmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-        @keyframes srcmarqrev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-      `}</style>
     </section>
   );
 }
