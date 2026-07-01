@@ -502,7 +502,7 @@ function Newsletter() {
     <section id="contact" className="border-b border-border bg-foreground text-background">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-6 py-20 md:grid-cols-12">
         <div className="md:col-span-6 space-y-4">
-          <span className="mono text-[10px] uppercase tracking-[0.25em] text-background/60">§ 06 / Lab Notes</span>
+          <span className="mono text-[10px] uppercase tracking-[0.25em] text-background/60">§ 05 / Lab Notes</span>
           <h2 className="font-display text-5xl font-bold uppercase tracking-tight md:text-7xl">
             Dispatches<br />from the bench.
           </h2>
