@@ -115,6 +115,7 @@ function Index() {
       <Catalogue />
       <Editorial />
       <Sourcing />
+      <SourcesCarousel />
       <Purpose />
       <Newsletter />
       <Footer />
