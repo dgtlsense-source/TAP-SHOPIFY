@@ -496,41 +496,6 @@ function Purpose() {
   );
 }
 
-function Futuristic() {
-  return (
-    <section className="relative border-b border-border bg-[#0d0d0d] text-background overflow-hidden">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 lg:grid-cols-12">
-        <div className="lg:col-span-5 px-6 py-16 lg:px-12 lg:py-24 flex flex-col justify-between gap-10">
-          <div className="space-y-8">
-            <span className="ticker-label text-background/60">§ 05 / Futuristic Approach</span>
-            <h2 className="font-display text-5xl font-bold uppercase tracking-tight leading-[0.92] md:text-7xl">
-              An aroma system.<br /><span className="text-background/50">Not a perfume brand.</span>
-            </h2>
-            <p className="max-w-md text-background/70 leading-relaxed">
-              Starting with fine fragrances, T.A.P is built to expand into a
-              complete scent-led ecosystem — incense, body care, car &amp; room
-              fresheners, essential oils, solid perfumes, and everyday aroma essentials.
-            </p>
-            <p className="mono text-xs tracking-[0.25em] uppercase text-background/60">
-              Retention · Experience · Trust · Expansion · Belonging
-            </p>
-          </div>
-          <ul className="grid grid-cols-2 gap-2 mono text-[11px] tracking-[0.2em] uppercase border-t border-background/20 pt-6">
-            {["Fine Fragrance", "Incense", "Body Wash", "Shampoo", "Car Freshener", "Room Freshener", "Essential Oils", "Solid Perfume"].map((x, i) => (
-              <li key={x} className="flex items-center gap-2 text-background/80">
-                <span className="text-background/40">{String(i + 1).padStart(2, "0")}</span>
-                {x}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="lg:col-span-7 relative min-h-[420px]">
-          <img src={labGiant.url} alt="T.A.P — a giant Mango 12 bottle inside a laboratory, scientists at work" className="h-full w-full object-cover" />
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Newsletter() {
   return (
