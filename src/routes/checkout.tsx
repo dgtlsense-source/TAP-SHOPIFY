@@ -6,6 +6,7 @@ import vetiver16 from "@/assets/bottles/vetiver-16.jpg.asset.json";
 import bergamote10 from "@/assets/bottles/bergamote-10.jpg.asset.json";
 import spice21 from "@/assets/bottles/spice-21.jpg.asset.json";
 import { saveLastOrder, type Order } from "@/lib/order-storage";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({
@@ -96,15 +97,11 @@ function Checkout() {
 
     saveLastOrder(order);
 
-    // Fire the confirmation email — non-blocking for UX.
+    // Fire the confirmation email — failures don't block confirmation.
     try {
-      await fetch("/api/public/send-order-confirmation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(order),
-      });
-    } catch {
-      // Email failure shouldn't block the confirmation page.
+      await supabase.functions.invoke("send-order-confirmation", { body: order });
+    } catch (err) {
+      console.warn("Confirmation email failed to send", err);
     }
 
     navigate({ to: "/order-confirmed" });
