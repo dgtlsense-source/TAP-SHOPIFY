@@ -110,18 +110,18 @@ function Checkout() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
-          <Link to="/" className="mono text-xs tracking-[0.2em]">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+          <Link to="/" className="mono truncate text-[10px] tracking-[0.2em] sm:text-xs">
             ← T.A.P / RETURN TO CATALOGUE
           </Link>
-          <span className="ticker-label">CHECKOUT · SECURE</span>
+          <span className="ticker-label shrink-0">CHECKOUT · SECURE</span>
         </div>
       </header>
 
-      <form onSubmit={handleSubmit} className="mx-auto max-w-[1400px] px-6 py-10 lg:py-16">
-        <div className="mb-10 lg:mb-16">
+      <form onSubmit={handleSubmit} className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10 lg:py-16">
+        <div className="mb-8 sm:mb-10 lg:mb-16">
           <p className="ticker-label">§ 00 / Checkout</p>
-          <h1 className="mt-3 text-3xl font-light tracking-tight lg:text-5xl">
+          <h1 className="mt-3 text-2xl font-light tracking-tight sm:text-3xl lg:text-5xl">
             Complete your order.
           </h1>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
@@ -129,16 +129,16 @@ function Checkout() {
           </p>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-[1fr_420px]">
-          <div className="space-y-12">
+        <div className="grid gap-10 lg:grid-cols-[1fr_420px] lg:gap-12">
+          <div className="space-y-10 sm:space-y-12">
             <section>
               <SectionHead n="01" label="Selection" />
               <ul className="mt-6 divide-y divide-border border-y border-border">
                 {ITEMS.map((it) => {
                   const n = qty[it.code] ?? 0;
                   return (
-                    <li key={it.code} className="flex items-center gap-4 py-4">
-                      <div className="h-16 w-16 shrink-0 overflow-hidden bg-muted">
+                    <li key={it.code} className="flex items-center gap-3 py-4 sm:gap-4">
+                      <div className="h-14 w-14 shrink-0 overflow-hidden bg-muted sm:h-16 sm:w-16">
                         <img src={it.image} alt={it.name} className="h-full w-full object-cover" loading="lazy" />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -147,11 +147,11 @@ function Checkout() {
                         </p>
                         <p className="truncate text-sm">{it.name}</p>
                       </div>
-                      <p className="mono hidden text-xs tabular-nums text-muted-foreground sm:block">
+                      <p className="mono hidden text-xs tabular-nums text-muted-foreground md:block">
                         ₹{UNIT_PRICE}
                       </p>
                       <QtyStepper value={n} onChange={(v) => setQ(it.code, v)} />
-                      <p className="mono w-20 text-right text-sm tabular-nums">₹{n * UNIT_PRICE}</p>
+                      <p className="mono w-14 shrink-0 text-right text-xs tabular-nums sm:w-20 sm:text-sm">₹{n * UNIT_PRICE}</p>
                     </li>
                   );
                 })}
@@ -174,7 +174,7 @@ function Checkout() {
 
             <section>
               <SectionHead n="03" label="Payment" />
-              <div className="mt-6 grid gap-2 sm:grid-cols-3">
+              <div className="mt-6 grid gap-2 grid-cols-1 sm:grid-cols-3">
                 {(
                   [
                     ["upi", "UPI", "GPay · PhonePe · Paytm"],

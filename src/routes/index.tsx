@@ -125,10 +125,10 @@ function Index() {
 function TopBar() {
   return (
     <div className="bg-foreground text-background">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-1.5 mono text-[10px] tracking-[0.25em] uppercase">
-        <span>Batch 0001 — Now Shipping</span>
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-1.5 mono text-[9px] tracking-[0.2em] uppercase sm:px-6 sm:text-[10px] sm:tracking-[0.25em]">
+        <span className="truncate">Batch 0001 — Shipping</span>
         <span className="hidden md:inline">Phthalate-free · Cruelty-free · Made in India</span>
-        <span>Free Ship &gt; ₹2,500</span>
+        <span className="shrink-0">Free Ship &gt; ₹2,500</span>
       </div>
     </div>
   );
@@ -137,7 +137,7 @@ function TopBar() {
 function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
         <a href="/" className="flex items-center gap-3">
           <img src={logoUrl} alt="T.A.P — The Aroma Project" className="h-7 w-auto md:h-8" />
         </a>
@@ -155,7 +155,7 @@ function Nav() {
         </nav>
         <Link
           to="/checkout"
-          className="mono inline-flex items-center border border-foreground bg-foreground px-4 py-2.5 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
+          className="mono inline-flex shrink-0 items-center border border-foreground bg-foreground px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-background transition hover:bg-background hover:text-foreground sm:px-4 sm:py-2.5 sm:text-[11px] sm:tracking-[0.25em]"
         >
           Acquire ↗
         </Link>
@@ -168,19 +168,19 @@ function Hero() {
   return (
     <section className="relative border-b border-border">
       <div className="bg-grid">
-        <div className="mx-auto max-w-[1400px] px-6 py-16 lg:py-24">
-          <div className="space-y-10">
+        <div className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6 sm:py-16 lg:py-24">
+          <div className="space-y-8 sm:space-y-10">
             <div className="flex items-center gap-3">
               <span className="h-px w-12 bg-foreground" />
               <span className="ticker-label">Vol. 01 / 2026 — Edition I</span>
             </div>
-            <h1 className="font-display text-[clamp(3rem,9vw,8.5rem)] leading-[0.88] tracking-[-0.01em] font-black uppercase">
+            <h1 className="font-display text-[clamp(2.25rem,10vw,8.5rem)] leading-[0.9] tracking-[-0.01em] font-black uppercase">
               Engineered<br />
               for modern<br />
               <span className="text-steel">everyday</span><br />
               rituals.
             </h1>
-            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               T.A.P is a modern perfumery lab — sourcing rare accords from
               farmlands across the world and shaping them into precise,
               long-lasting fragrance formulas. Each scent is crafted to elevate
@@ -189,19 +189,19 @@ function Hero() {
             <div className="flex flex-wrap gap-3 pt-2">
               <a
                 href="#catalogue"
-                className="mono inline-flex items-center border border-foreground bg-foreground px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
+                className="mono inline-flex items-center border border-foreground bg-foreground px-5 py-3 text-[10px] uppercase tracking-[0.2em] text-background transition hover:bg-background hover:text-foreground sm:px-6 sm:py-3.5 sm:text-[11px] sm:tracking-[0.25em]"
               >
                 Discover the Five ↗
               </a>
               <a
                 href="#story"
-                className="mono inline-flex items-center border border-foreground bg-transparent px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background"
+                className="mono inline-flex items-center border border-foreground bg-transparent px-5 py-3 text-[10px] uppercase tracking-[0.2em] transition hover:bg-foreground hover:text-background sm:px-6 sm:py-3.5 sm:text-[11px] sm:tracking-[0.25em]"
               >
                 Our Story
               </a>
             </div>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-6 border-t border-border pt-8 md:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-6 border-t border-border pt-8 sm:mt-16 md:grid-cols-4">
             {[
               ["05", "Compositions"],
               ["48 ml", "Eau de Parfum"],
@@ -209,7 +209,7 @@ function Hero() {
               ["100%", "Phthalate-free"],
             ].map(([v, l]) => (
               <div key={l}>
-                <div className="font-display text-2xl font-medium tracking-tight">{v}</div>
+                <div className="font-display text-xl font-medium tracking-tight sm:text-2xl">{v}</div>
                 <div className="ticker-label mt-2">{l}</div>
               </div>
             ))}
@@ -239,27 +239,27 @@ function Marquee() {
 function BrandStory() {
   return (
     <section id="story" className="border-b border-border">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 lg:py-28">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-4 py-16 sm:gap-12 sm:px-6 sm:py-20 md:grid-cols-12 lg:py-28">
         <div className="md:col-span-4">
           <span className="ticker-label">§ 01 / Brand Story</span>
-          <h2 className="font-display mt-4 text-5xl font-bold uppercase tracking-tight leading-[0.92] md:text-6xl">
+          <h2 className="font-display mt-4 text-4xl font-bold uppercase tracking-tight leading-[0.92] sm:text-5xl md:text-6xl">
             A LAB, NOT A BRAND.
           </h2>
         </div>
         <div className="md:col-span-8 space-y-8">
-          <p className="text-2xl leading-snug tracking-[-0.01em] md:text-3xl">
+          <p className="text-xl leading-snug tracking-[-0.01em] sm:text-2xl md:text-3xl">
             T.A.P began as a small perfumery laboratory, sourcing rare accords
             from beautiful farmlands across the world and shaping them into
             <em className="italic text-steel"> precise modern fragrances.</em>
           </p>
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Built on transparency, we reveal the accords behind every scent so
             consumers can discover, understand, and choose what truly becomes
             their signature.
           </p>
           <div className="border-t border-border pt-6">
             <div className="ticker-label mb-4">Core Values</div>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 mono text-sm tracking-[0.2em]">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 mono text-xs tracking-[0.2em] sm:text-sm">
               {CORE_VALUES.map((v, i) => (
                 <span key={v} className="flex items-center gap-3">
                   <span className="text-muted-foreground">0{i + 1}</span>
@@ -277,11 +277,11 @@ function BrandStory() {
 function Catalogue() {
   return (
     <section id="catalogue" className="border-b border-border bg-card">
-      <div className="mx-auto max-w-[1400px] px-6 py-20 lg:py-28">
-        <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-6">
-          <div className="space-y-3">
+      <div className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+        <div className="mb-10 flex flex-col items-start justify-between gap-4 border-b border-border pb-6 sm:mb-12 sm:flex-row sm:items-end sm:gap-6">
+          <div className="min-w-0 space-y-3">
             <span className="ticker-label">§ 02 / Catalogue</span>
-            <h2 className="font-display text-5xl tracking-tight font-bold uppercase md:text-7xl">
+            <h2 className="font-display text-4xl tracking-tight font-bold uppercase sm:text-5xl md:text-7xl">
               Five compositions.
             </h2>
           </div>
@@ -365,16 +365,16 @@ function Editorial() {
     <section className="relative border-b border-border bg-[#0d0d0d] text-background">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-7 relative">
-          <img src={collection.url} alt="T.A.P — five fragrance collection on concrete plinths with lab glassware" className="h-full w-full object-cover" />
+          <img src={collection.url} alt="T.A.P — five fragrance collection on concrete plinths with lab glassware" className="h-64 w-full object-cover sm:h-80 lg:h-full" />
         </div>
-        <div className="lg:col-span-5 flex flex-col justify-between gap-10 px-6 py-16 lg:px-12 lg:py-24">
+        <div className="lg:col-span-5 flex flex-col justify-between gap-8 px-4 py-14 sm:px-6 sm:py-16 lg:gap-10 lg:px-12 lg:py-24">
           <div className="space-y-8">
             <span className="ticker-label text-background/60">§ The Collection</span>
-            <h2 className="font-display text-5xl font-bold uppercase tracking-tight leading-[0.92] md:text-7xl">
+            <h2 className="font-display text-4xl font-bold uppercase tracking-tight leading-[0.92] sm:text-5xl md:text-7xl">
               Raw materials.<br />
               <span className="text-background/50">Studied.</span>
             </h2>
-            <p className="max-w-md text-background/70 leading-relaxed">
+            <p className="max-w-md text-sm text-background/70 leading-relaxed sm:text-base">
               Every accord is shown as a lab material — not a decorative prop.
               Five formulas. One philosophy: raw ingredients, precise composition,
               controlled design.
@@ -397,11 +397,11 @@ function Editorial() {
 function Sourcing() {
   return (
     <section id="sourcing" className="border-b border-border">
-      <div className="mx-auto max-w-[1400px] px-6 py-20 lg:py-28">
-        <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-6">
-          <div className="space-y-3">
+      <div className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+        <div className="mb-10 flex flex-col items-start justify-between gap-4 border-b border-border pb-6 sm:mb-12 sm:flex-row sm:items-end sm:gap-6">
+          <div className="min-w-0 space-y-3">
             <span className="ticker-label">§ 03 / Sourcing</span>
-            <h2 className="font-display text-5xl tracking-tight font-bold uppercase md:text-6xl">
+            <h2 className="font-display text-4xl tracking-tight font-bold uppercase sm:text-5xl md:text-6xl">
               Real places.<br />Rare accords.
             </h2>
           </div>
@@ -461,28 +461,28 @@ function VideoBanner() {
 function Purpose() {
   return (
     <section id="lab" className="border-b border-border bg-card">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 lg:py-28">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-4 py-16 sm:gap-12 sm:px-6 sm:py-20 md:grid-cols-12 lg:py-28">
         <div className="md:col-span-4">
           <span className="ticker-label">§ 04 / Brand Purpose</span>
         </div>
         <div className="md:col-span-8 space-y-8">
-          <p className="font-display text-3xl uppercase font-bold tracking-tight leading-[1.02] md:text-5xl">
+          <p className="font-display text-2xl uppercase font-bold tracking-tight leading-[1.05] sm:text-3xl md:text-5xl">
             To enlighten the world with a deeper understanding of what they wear — bringing clarity, transparency, and sophistication to every fragrance experience.
           </p>
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Through meticulously crafted formulas, we create scents that feel
             indulgent, empowering, and profoundly personal — elevating confidence
             with every spray. Our fragrances are <strong className="text-foreground">phthalate-free, toxin-free, and cruelty-free</strong>,
             created with respect for skin, life, and Mother Earth.
           </p>
-          <div className="grid grid-cols-3 gap-px bg-border border border-border">
+          <div className="grid grid-cols-1 gap-px bg-border border border-border sm:grid-cols-3">
             {[
               ["Phthalate-free", "Skin-safe formulation"],
               ["Toxin-free", "Tested & verified"],
               ["Cruelty-free", "Never on animals"],
             ].map(([k, v]) => (
-              <div key={k} className="bg-background p-5">
-                <div className="font-display text-xl font-bold uppercase tracking-tight">{k}</div>
+              <div key={k} className="bg-background p-4 sm:p-5">
+                <div className="font-display text-lg font-bold uppercase tracking-tight sm:text-xl">{k}</div>
                 <div className="ticker-label mt-1">{v}</div>
               </div>
             ))}
@@ -497,13 +497,13 @@ function Purpose() {
 function Newsletter() {
   return (
     <section id="contact" className="border-b border-border bg-foreground text-background">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-6 py-20 md:grid-cols-12">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 px-4 py-16 sm:gap-10 sm:px-6 sm:py-20 md:grid-cols-12">
         <div className="md:col-span-6 space-y-4">
           <span className="mono text-[10px] uppercase tracking-[0.25em] text-background/60">§ 05 / Lab Notes</span>
-          <h2 className="font-display text-5xl font-bold uppercase tracking-tight md:text-7xl">
+          <h2 className="font-display text-4xl font-bold uppercase tracking-tight sm:text-5xl md:text-7xl">
             Dispatches<br />from the bench.
           </h2>
-          <p className="max-w-md text-background/70">
+          <p className="max-w-md text-sm text-background/70 sm:text-base">
             Formulation diaries, raw material studies, and early access to
             upcoming batches. Sent only when there is something to say.
           </p>
@@ -512,9 +512,9 @@ function Newsletter() {
           <input
             type="email"
             placeholder="you@domain.com"
-            className="mono flex-1 border border-background/30 bg-transparent px-4 py-4 text-sm text-background placeholder:text-background/40 focus:border-background focus:outline-none"
+            className="mono flex-1 border border-background/30 bg-transparent px-4 py-3 text-sm text-background placeholder:text-background/40 focus:border-background focus:outline-none sm:py-4"
           />
-          <button className="mono border border-background bg-background px-6 py-4 text-[11px] uppercase tracking-[0.25em] text-foreground transition hover:bg-transparent hover:text-background">
+          <button className="mono border border-background bg-background px-6 py-3 text-[11px] uppercase tracking-[0.25em] text-foreground transition hover:bg-transparent hover:text-background sm:py-4">
             Subscribe ↗
           </button>
         </form>
@@ -526,8 +526,8 @@ function Newsletter() {
 function Footer() {
   return (
     <footer className="bg-background">
-      <div className="mx-auto max-w-[1400px] px-6 py-16">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
+      <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 sm:py-16">
+        <div className="grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-5">
           <div className="col-span-2 space-y-5">
             <img src={logoUrl} alt="T.A.P" className="h-8 w-auto" />
             <p className="max-w-xs text-sm text-muted-foreground">
