@@ -397,11 +397,11 @@ function Editorial() {
 function Sourcing() {
   return (
     <section id="sourcing" className="border-b border-border">
-      <div className="mx-auto max-w-[1400px] px-6 py-20 lg:py-28">
-        <div className="mb-12 flex items-end justify-between gap-6 border-b border-border pb-6">
-          <div className="space-y-3">
+      <div className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+        <div className="mb-10 flex flex-col items-start justify-between gap-4 border-b border-border pb-6 sm:mb-12 sm:flex-row sm:items-end sm:gap-6">
+          <div className="min-w-0 space-y-3">
             <span className="ticker-label">§ 03 / Sourcing</span>
-            <h2 className="font-display text-5xl tracking-tight font-bold uppercase md:text-6xl">
+            <h2 className="font-display text-4xl tracking-tight font-bold uppercase sm:text-5xl md:text-6xl">
               Real places.<br />Rare accords.
             </h2>
           </div>
