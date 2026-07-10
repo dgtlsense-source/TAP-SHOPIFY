@@ -139,7 +139,7 @@ function Nav() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center gap-3">
-          <img src={logoUrl} alt="T.A.P — The Aroma Project" className="h-9 w-auto md:h-11" />
+          <img src={logoUrl} alt="T.A.P — The Aroma Project" className="h-7 w-auto md:h-8" />
         </a>
         <nav className="hidden gap-8 md:flex">
           {[
@@ -529,7 +529,7 @@ function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 py-16">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
           <div className="col-span-2 space-y-5">
-            <img src={logoUrl} alt="T.A.P" className="h-10 w-auto" />
+            <img src={logoUrl} alt="T.A.P" className="h-8 w-auto" />
             <p className="max-w-xs text-sm text-muted-foreground">
               The Aroma Project — a modern perfumery lab.
               Engineered for modern everyday rituals.
