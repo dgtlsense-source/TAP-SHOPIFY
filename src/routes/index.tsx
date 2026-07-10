@@ -239,27 +239,27 @@ function Marquee() {
 function BrandStory() {
   return (
     <section id="story" className="border-b border-border">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 lg:py-28">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-4 py-16 sm:gap-12 sm:px-6 sm:py-20 md:grid-cols-12 lg:py-28">
         <div className="md:col-span-4">
           <span className="ticker-label">§ 01 / Brand Story</span>
-          <h2 className="font-display mt-4 text-5xl font-bold uppercase tracking-tight leading-[0.92] md:text-6xl">
+          <h2 className="font-display mt-4 text-4xl font-bold uppercase tracking-tight leading-[0.92] sm:text-5xl md:text-6xl">
             A LAB, NOT A BRAND.
           </h2>
         </div>
         <div className="md:col-span-8 space-y-8">
-          <p className="text-2xl leading-snug tracking-[-0.01em] md:text-3xl">
+          <p className="text-xl leading-snug tracking-[-0.01em] sm:text-2xl md:text-3xl">
             T.A.P began as a small perfumery laboratory, sourcing rare accords
             from beautiful farmlands across the world and shaping them into
             <em className="italic text-steel"> precise modern fragrances.</em>
           </p>
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Built on transparency, we reveal the accords behind every scent so
             consumers can discover, understand, and choose what truly becomes
             their signature.
           </p>
           <div className="border-t border-border pt-6">
             <div className="ticker-label mb-4">Core Values</div>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 mono text-sm tracking-[0.2em]">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 mono text-xs tracking-[0.2em] sm:text-sm">
               {CORE_VALUES.map((v, i) => (
                 <span key={v} className="flex items-center gap-3">
                   <span className="text-muted-foreground">0{i + 1}</span>
