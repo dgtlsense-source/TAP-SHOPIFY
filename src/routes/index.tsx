@@ -365,16 +365,16 @@ function Editorial() {
     <section className="relative border-b border-border bg-[#0d0d0d] text-background">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-7 relative">
-          <img src={collection.url} alt="T.A.P — five fragrance collection on concrete plinths with lab glassware" className="h-full w-full object-cover" />
+          <img src={collection.url} alt="T.A.P — five fragrance collection on concrete plinths with lab glassware" className="h-64 w-full object-cover sm:h-80 lg:h-full" />
         </div>
-        <div className="lg:col-span-5 flex flex-col justify-between gap-10 px-6 py-16 lg:px-12 lg:py-24">
+        <div className="lg:col-span-5 flex flex-col justify-between gap-8 px-4 py-14 sm:px-6 sm:py-16 lg:gap-10 lg:px-12 lg:py-24">
           <div className="space-y-8">
             <span className="ticker-label text-background/60">§ The Collection</span>
-            <h2 className="font-display text-5xl font-bold uppercase tracking-tight leading-[0.92] md:text-7xl">
+            <h2 className="font-display text-4xl font-bold uppercase tracking-tight leading-[0.92] sm:text-5xl md:text-7xl">
               Raw materials.<br />
               <span className="text-background/50">Studied.</span>
             </h2>
-            <p className="max-w-md text-background/70 leading-relaxed">
+            <p className="max-w-md text-sm text-background/70 leading-relaxed sm:text-base">
               Every accord is shown as a lab material — not a decorative prop.
               Five formulas. One philosophy: raw ingredients, precise composition,
               controlled design.
