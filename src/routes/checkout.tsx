@@ -174,7 +174,7 @@ function Checkout() {
 
             <section>
               <SectionHead n="03" label="Payment" />
-              <div className="mt-6 grid gap-2 sm:grid-cols-3">
+              <div className="mt-6 grid gap-2 grid-cols-1 sm:grid-cols-3">
                 {(
                   [
                     ["upi", "UPI", "GPay · PhonePe · Paytm"],
