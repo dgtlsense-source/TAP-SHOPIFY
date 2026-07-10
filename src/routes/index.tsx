@@ -526,8 +526,8 @@ function Newsletter() {
 function Footer() {
   return (
     <footer className="bg-background">
-      <div className="mx-auto max-w-[1400px] px-6 py-16">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
+      <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 sm:py-16">
+        <div className="grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-5">
           <div className="col-span-2 space-y-5">
             <img src={logoUrl} alt="T.A.P" className="h-8 w-auto" />
             <p className="max-w-xs text-sm text-muted-foreground">
