@@ -461,28 +461,28 @@ function VideoBanner() {
 function Purpose() {
   return (
     <section id="lab" className="border-b border-border bg-card">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 lg:py-28">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-4 py-16 sm:gap-12 sm:px-6 sm:py-20 md:grid-cols-12 lg:py-28">
         <div className="md:col-span-4">
           <span className="ticker-label">§ 04 / Brand Purpose</span>
         </div>
         <div className="md:col-span-8 space-y-8">
-          <p className="font-display text-3xl uppercase font-bold tracking-tight leading-[1.02] md:text-5xl">
+          <p className="font-display text-2xl uppercase font-bold tracking-tight leading-[1.05] sm:text-3xl md:text-5xl">
             To enlighten the world with a deeper understanding of what they wear — bringing clarity, transparency, and sophistication to every fragrance experience.
           </p>
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Through meticulously crafted formulas, we create scents that feel
             indulgent, empowering, and profoundly personal — elevating confidence
             with every spray. Our fragrances are <strong className="text-foreground">phthalate-free, toxin-free, and cruelty-free</strong>,
             created with respect for skin, life, and Mother Earth.
           </p>
-          <div className="grid grid-cols-3 gap-px bg-border border border-border">
+          <div className="grid grid-cols-1 gap-px bg-border border border-border sm:grid-cols-3">
             {[
               ["Phthalate-free", "Skin-safe formulation"],
               ["Toxin-free", "Tested & verified"],
               ["Cruelty-free", "Never on animals"],
             ].map(([k, v]) => (
-              <div key={k} className="bg-background p-5">
-                <div className="font-display text-xl font-bold uppercase tracking-tight">{k}</div>
+              <div key={k} className="bg-background p-4 sm:p-5">
+                <div className="font-display text-lg font-bold uppercase tracking-tight sm:text-xl">{k}</div>
                 <div className="ticker-label mt-1">{v}</div>
               </div>
             ))}
