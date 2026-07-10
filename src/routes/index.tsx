@@ -497,13 +497,13 @@ function Purpose() {
 function Newsletter() {
   return (
     <section id="contact" className="border-b border-border bg-foreground text-background">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-6 py-20 md:grid-cols-12">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 px-4 py-16 sm:gap-10 sm:px-6 sm:py-20 md:grid-cols-12">
         <div className="md:col-span-6 space-y-4">
           <span className="mono text-[10px] uppercase tracking-[0.25em] text-background/60">§ 05 / Lab Notes</span>
-          <h2 className="font-display text-5xl font-bold uppercase tracking-tight md:text-7xl">
+          <h2 className="font-display text-4xl font-bold uppercase tracking-tight sm:text-5xl md:text-7xl">
             Dispatches<br />from the bench.
           </h2>
-          <p className="max-w-md text-background/70">
+          <p className="max-w-md text-sm text-background/70 sm:text-base">
             Formulation diaries, raw material studies, and early access to
             upcoming batches. Sent only when there is something to say.
           </p>
@@ -512,9 +512,9 @@ function Newsletter() {
           <input
             type="email"
             placeholder="you@domain.com"
-            className="mono flex-1 border border-background/30 bg-transparent px-4 py-4 text-sm text-background placeholder:text-background/40 focus:border-background focus:outline-none"
+            className="mono flex-1 border border-background/30 bg-transparent px-4 py-3 text-sm text-background placeholder:text-background/40 focus:border-background focus:outline-none sm:py-4"
           />
-          <button className="mono border border-background bg-background px-6 py-4 text-[11px] uppercase tracking-[0.25em] text-foreground transition hover:bg-transparent hover:text-background">
+          <button className="mono border border-background bg-background px-6 py-3 text-[11px] uppercase tracking-[0.25em] text-foreground transition hover:bg-transparent hover:text-background sm:py-4">
             Subscribe ↗
           </button>
         </form>
