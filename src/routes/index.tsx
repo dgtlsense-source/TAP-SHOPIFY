@@ -125,10 +125,10 @@ function Index() {
 function TopBar() {
   return (
     <div className="bg-foreground text-background">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-1.5 mono text-[10px] tracking-[0.25em] uppercase">
-        <span>Batch 0001 — Now Shipping</span>
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-1.5 mono text-[9px] tracking-[0.2em] uppercase sm:px-6 sm:text-[10px] sm:tracking-[0.25em]">
+        <span className="truncate">Batch 0001 — Shipping</span>
         <span className="hidden md:inline">Phthalate-free · Cruelty-free · Made in India</span>
-        <span>Free Ship &gt; ₹2,500</span>
+        <span className="shrink-0">Free Ship &gt; ₹2,500</span>
       </div>
     </div>
   );
