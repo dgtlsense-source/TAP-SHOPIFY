@@ -137,7 +137,7 @@ function TopBar() {
 function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
         <a href="/" className="flex items-center gap-3">
           <img src={logoUrl} alt="T.A.P — The Aroma Project" className="h-7 w-auto md:h-8" />
         </a>
@@ -155,7 +155,7 @@ function Nav() {
         </nav>
         <Link
           to="/checkout"
-          className="mono inline-flex items-center border border-foreground bg-foreground px-4 py-2.5 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
+          className="mono inline-flex shrink-0 items-center border border-foreground bg-foreground px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-background transition hover:bg-background hover:text-foreground sm:px-4 sm:py-2.5 sm:text-[11px] sm:tracking-[0.25em]"
         >
           Acquire ↗
         </Link>
