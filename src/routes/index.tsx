@@ -79,7 +79,7 @@ const FRAGRANCES: Fragrance[] = [
   },
   {
     code: "TAP-04",
-    name: "BERGAMOTE 10",
+    name: "BERGAMOTE\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a010",
     family: "CITRUS / LEATHER",
     notes: ["Citrus", "Oriental", "Woody"],
     origin: "Reggio Calabria, Italy",
@@ -243,7 +243,7 @@ function BrandStory() {
         <div className="md:col-span-4">
           <span className="ticker-label">§ 01 / Brand Story</span>
           <h2 className="font-display mt-4 text-5xl font-bold uppercase tracking-tight leading-[0.92] md:text-6xl">
-            A lab,<br />not a<br />brand.
+            A LAB, NOT A BRAND.
           </h2>
         </div>
         <div className="md:col-span-8 space-y-8">
