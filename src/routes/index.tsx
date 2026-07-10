@@ -168,19 +168,19 @@ function Hero() {
   return (
     <section className="relative border-b border-border">
       <div className="bg-grid">
-        <div className="mx-auto max-w-[1400px] px-6 py-16 lg:py-24">
-          <div className="space-y-10">
+        <div className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6 sm:py-16 lg:py-24">
+          <div className="space-y-8 sm:space-y-10">
             <div className="flex items-center gap-3">
               <span className="h-px w-12 bg-foreground" />
               <span className="ticker-label">Vol. 01 / 2026 — Edition I</span>
             </div>
-            <h1 className="font-display text-[clamp(3rem,9vw,8.5rem)] leading-[0.88] tracking-[-0.01em] font-black uppercase">
+            <h1 className="font-display text-[clamp(2.25rem,10vw,8.5rem)] leading-[0.9] tracking-[-0.01em] font-black uppercase">
               Engineered<br />
               for modern<br />
               <span className="text-steel">everyday</span><br />
               rituals.
             </h1>
-            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               T.A.P is a modern perfumery lab — sourcing rare accords from
               farmlands across the world and shaping them into precise,
               long-lasting fragrance formulas. Each scent is crafted to elevate
@@ -189,19 +189,19 @@ function Hero() {
             <div className="flex flex-wrap gap-3 pt-2">
               <a
                 href="#catalogue"
-                className="mono inline-flex items-center border border-foreground bg-foreground px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
+                className="mono inline-flex items-center border border-foreground bg-foreground px-5 py-3 text-[10px] uppercase tracking-[0.2em] text-background transition hover:bg-background hover:text-foreground sm:px-6 sm:py-3.5 sm:text-[11px] sm:tracking-[0.25em]"
               >
                 Discover the Five ↗
               </a>
               <a
                 href="#story"
-                className="mono inline-flex items-center border border-foreground bg-transparent px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background"
+                className="mono inline-flex items-center border border-foreground bg-transparent px-5 py-3 text-[10px] uppercase tracking-[0.2em] transition hover:bg-foreground hover:text-background sm:px-6 sm:py-3.5 sm:text-[11px] sm:tracking-[0.25em]"
               >
                 Our Story
               </a>
             </div>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-6 border-t border-border pt-8 md:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-6 border-t border-border pt-8 sm:mt-16 md:grid-cols-4">
             {[
               ["05", "Compositions"],
               ["48 ml", "Eau de Parfum"],
@@ -209,7 +209,7 @@ function Hero() {
               ["100%", "Phthalate-free"],
             ].map(([v, l]) => (
               <div key={l}>
-                <div className="font-display text-2xl font-medium tracking-tight">{v}</div>
+                <div className="font-display text-xl font-medium tracking-tight sm:text-2xl">{v}</div>
                 <div className="ticker-label mt-2">{l}</div>
               </div>
             ))}
