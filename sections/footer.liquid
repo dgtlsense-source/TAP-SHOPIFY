@@ -1,33 +1,29 @@
 <footer class="bg-background border-t border-border mt-auto">
   <div class="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 sm:py-16">
-    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-12 lg:gap-10">
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-5 lg:gap-10">
       
-      <!-- Col 1: Brand Info (Span 4) -->
-      <div class="space-y-5 md:col-span-4">
+      <!-- Column 1: Info & Brand (Span 2) -->
+      <div class="space-y-5 sm:col-span-2 md:col-span-2">
         {%- if section.settings.logo != blank -%}
           <img src="{{ section.settings.logo | image_url: height: 60 }}" alt="{{ shop.name }}" class="h-8 w-auto" style="object-fit: contain;">
         {%- else -%}
-          <img src="{{ 'logo-v5.svg' | asset_url }}" alt="T.A.P" class="h-8 w-auto">
+          <a href="{{ routes.root_url }}" class="inline-block border border-border px-2.5 py-1 mono text-xs font-bold tracking-[0.2em] text-foreground hover:border-foreground transition">
+            T.A.P
+          </a>
         {%- endif -%}
         
-        <p class="max-w-sm text-sm text-muted-foreground leading-relaxed">
-          {{ section.settings.description | default: 'This is a modern perfumery lab — sourcing rare accords from farmlands across the world and shaping them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings.' }}
+        <p class="max-w-xs text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          {{ section.settings.description | default: 'The Aroma Project — a modern perfumery lab.<br>Engineered for modern everyday rituals.' }}
         </p>
         
-        <div class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground pt-2">
-          {{ section.settings.copyright_brand | default: '© 2024 T.A.P. ALL RIGHTS RESERVED.' }}
-        </div>
-        
-        <div class="flex gap-4 mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          <a href="{{ section.settings.privacy_url | default: '#' }}" class="hover:text-foreground transition">Privacy Policy</a>
-          <span>·</span>
-          <a href="{{ section.settings.terms_url | default: '#' }}" class="hover:text-foreground transition">Terms of Service</a>
+        <div class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground pt-1">
+          {{ section.settings.certifications | default: 'PHTHALATE-FREE · TOXIN-FREE · CRUELTY-FREE' }}
         </div>
       </div>
 
-      <!-- Col 2: Catalogue (Span 3) -->
-      <div class="space-y-3 md:col-span-3">
-        <div class="ticker-label">{{ section.settings.col_1_title | default: 'Catalogue' }}</div>
+      <!-- Column 2: Catalogue -->
+      <div class="space-y-3">
+        <div class="ticker-label">{{ section.settings.col_1_title | default: 'CATALOGUE' }}</div>
         {%- if section.settings.col_1_menu != blank -%}
           {%- for link in section.settings.col_1_menu.links -%}
             <a href="{{ link.url }}" class="mono block text-xs uppercase tracking-[0.15em] text-foreground transition hover:text-muted-foreground">
@@ -35,17 +31,17 @@
             </a>
           {%- endfor -%}
         {%- else -%}
-          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-01 - MANGO 12</a>
-          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-02 - SAMBAC 8</a>
-          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-03 - VETIVER 16</a>
-          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-04 - BERGAMOTE 10</a>
-          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-05 - SPICE 21</a>
+          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-01 — MANGO 12</a>
+          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-02 — SAMBAC 8</a>
+          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-03 — VETIVER 16</a>
+          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-04 — BERGAMOTE 10</a>
+          <a href="#catalogue" class="mono block text-xs uppercase tracking-[0.15em] hover:text-muted-foreground transition">TAP-05 — SPICE 21</a>
         {%- endif -%}
       </div>
 
-      <!-- Col 3: Lab Links (Span 2) -->
-      <div class="space-y-3 md:col-span-2">
-        <div class="ticker-label">{{ section.settings.col_2_title | default: 'Lab' }}</div>
+      <!-- Column 3: Lab Links -->
+      <div class="space-y-3">
+        <div class="ticker-label">{{ section.settings.col_2_title | default: 'LAB' }}</div>
         {%- if section.settings.col_2_menu != blank -%}
           {%- for link in section.settings.col_2_menu.links -%}
             <a href="{{ link.url }}" class="mono block text-xs uppercase tracking-[0.15em] text-foreground transition hover:text-muted-foreground">
@@ -53,41 +49,38 @@
             </a>
           {%- endfor -%}
         {%- else -%}
-          <a href="#scent-finder" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">Scent Finder</a>
-          <a href="#sourcing" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">Sourcing</a>
-          <a href="#lab" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">Philosophy</a>
-          <a href="#editorial" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">Reviews</a>
+          <a href="#story" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">OUR STORY</a>
+          <a href="#sourcing" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">SOURCING</a>
+          <a href="#lab" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">BRAND PURPOSE</a>
           <a href="#faq" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">FAQ</a>
+          <a href="{{ routes.cart_url }}" class="mono block text-xs uppercase tracking-[0.15em] transition hover:text-muted-foreground">CHECKOUT</a>
         {%- endif -%}
       </div>
 
-      <!-- Col 4: Contact & Social (Span 3) -->
-      <div class="space-y-3 md:col-span-3">
-        <div class="ticker-label">{{ section.settings.col_3_title | default: 'Contact' }}</div>
+      <!-- Column 4: Contact -->
+      <div class="space-y-3">
+        <div class="ticker-label">{{ section.settings.col_3_title | default: 'CONTACT' }}</div>
         <div class="mono text-xs">
-          <a href="mailto:{{ section.settings.contact_email | default: 'hello@thearomaproject.com' }}" class="hover:underline">
-            {{ section.settings.contact_email | default: 'hello@thearomaproject.com' }}
+          <a href="mailto:{{ section.settings.contact_email | default: 'admin@thearomaproject.com' }}" class="hover:underline">
+            {{ section.settings.contact_email | default: 'admin@thearomaproject.com' }}
           </a>
         </div>
-        <div class="mono text-xs">{{ section.settings.contact_phone | default: '+91 98765 43210' }}</div>
-        <div class="mono text-xs leading-relaxed text-muted-foreground">
-          {{ section.settings.contact_address | default: 'THE AROMA PROJECT LAB, MUMBAI, INDIA' }}
+        <div class="mono text-xs">
+          <a href="{{ section.settings.contact_website_url | default: 'https://www.thearomaproject.com' }}" class="hover:underline" target="_blank" rel="noreferrer">
+            {{ section.settings.contact_website | default: 'www.thearomaproject.com' }}
+          </a>
         </div>
-        <div class="pt-2 flex flex-wrap gap-3 mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          <a href="{{ section.settings.instagram_url | default: 'https://instagram.com' }}" target="_blank" rel="noreferrer" class="hover:text-foreground transition">Instagram</a>
-          <span>·</span>
-          <a href="{{ section.settings.twitter_url | default: 'https://x.com' }}" target="_blank" rel="noreferrer" class="hover:text-foreground transition">Twitter / X</a>
-          <span>·</span>
-          <a href="{{ section.settings.linkedin_url | default: 'https://linkedin.com' }}" target="_blank" rel="noreferrer" class="hover:text-foreground transition">LinkedIn</a>
+        <div class="mono text-xs leading-relaxed text-muted-foreground pt-1">
+          {{ section.settings.contact_address | default: 'Zion, 1803 Sindhu Bhavan<br>Ahmedabad, India' }}
         </div>
       </div>
 
     </div>
 
-    <!-- Bottom hairline row -->
+    <!-- Bottom copyright row -->
     <div class="hairline mt-12 flex flex-col justify-between gap-3 pt-6 mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground sm:flex-row">
-      <span>{{ section.settings.copyright_text | default: '© 2024 The Aroma Project' }}</span>
-      <span>{{ section.settings.bottom_signature | default: 'All formulas proprietary · Engineered in India' }}</span>
+      <span>{{ section.settings.copyright_text | default: '© 2026 THE AROMA PROJECT' }}</span>
+      <span>{{ section.settings.bottom_signature | default: 'ALL FORMULAS PROPRIETARY · ENGINEERED IN INDIA' }}</span>
     </div>
   </div>
 </footer>
@@ -109,33 +102,23 @@
       "type": "textarea",
       "id": "description",
       "label": "Footer Description",
-      "default": "This is a modern perfumery lab — sourcing rare accords from farmlands across the world and shaping them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings."
+      "default": "The Aroma Project — a modern perfumery lab.<br>Engineered for modern everyday rituals."
     },
     {
       "type": "text",
-      "id": "copyright_brand",
-      "label": "Brand Copyright Tag",
-      "default": "© 2024 T.A.P. ALL RIGHTS RESERVED."
-    },
-    {
-      "type": "url",
-      "id": "privacy_url",
-      "label": "Privacy Policy Link"
-    },
-    {
-      "type": "url",
-      "id": "terms_url",
-      "label": "Terms Link"
+      "id": "certifications",
+      "label": "Certifications Badges",
+      "default": "PHTHALATE-FREE · TOXIN-FREE · CRUELTY-FREE"
     },
     {
       "type": "header",
-      "content": "Navigation Menus"
+      "content": "Columns Configuration"
     },
     {
       "type": "text",
       "id": "col_1_title",
       "label": "Column 1 Title",
-      "default": "Catalogue"
+      "default": "CATALOGUE"
     },
     {
       "type": "link_list",
@@ -146,7 +129,7 @@
       "type": "text",
       "id": "col_2_title",
       "label": "Column 2 Title",
-      "default": "Lab"
+      "default": "LAB"
     },
     {
       "type": "link_list",
@@ -154,47 +137,33 @@
       "label": "Column 2 Menu (Optional)"
     },
     {
-      "type": "header",
-      "content": "Contact Info"
-    },
-    {
       "type": "text",
       "id": "col_3_title",
       "label": "Column 3 Title",
-      "default": "Contact"
+      "default": "CONTACT"
     },
     {
       "type": "text",
       "id": "contact_email",
-      "label": "Email Address",
-      "default": "hello@thearomaproject.com"
+      "label": "Contact Email",
+      "default": "admin@thearomaproject.com"
     },
     {
       "type": "text",
-      "id": "contact_phone",
-      "label": "Phone Number",
-      "default": "+91 98765 43210"
+      "id": "contact_website",
+      "label": "Website Display Text",
+      "default": "www.thearomaproject.com"
+    },
+    {
+      "type": "url",
+      "id": "contact_website_url",
+      "label": "Website Link URL"
     },
     {
       "type": "textarea",
       "id": "contact_address",
-      "label": "Physical Address",
-      "default": "THE AROMA PROJECT LAB, MUMBAI, INDIA"
-    },
-    {
-      "type": "url",
-      "id": "instagram_url",
-      "label": "Instagram URL"
-    },
-    {
-      "type": "url",
-      "id": "twitter_url",
-      "label": "Twitter/X URL"
-    },
-    {
-      "type": "url",
-      "id": "linkedin_url",
-      "label": "LinkedIn URL"
+      "label": "Address Text",
+      "default": "Zion, 1803 Sindhu Bhavan<br>Ahmedabad, India"
     },
     {
       "type": "header",
@@ -204,13 +173,13 @@
       "type": "text",
       "id": "copyright_text",
       "label": "Bottom Copyright Text",
-      "default": "© 2024 The Aroma Project"
+      "default": "© 2026 THE AROMA PROJECT"
     },
     {
       "type": "text",
       "id": "bottom_signature",
       "label": "Bottom Signature",
-      "default": "All formulas proprietary · Engineered in India"
+      "default": "ALL FORMULAS PROPRIETARY · ENGINEERED IN INDIA"
     }
   ]
 }
