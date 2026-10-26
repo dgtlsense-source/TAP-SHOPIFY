@@ -1,0 +1,96 @@
+<section id="contact" class="border-b border-border bg-foreground text-background">
+  <div class="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 px-4 py-16 sm:gap-10 sm:px-6 sm:py-20 md:grid-cols-12">
+    
+    <!-- Text Info -->
+    <div class="md:col-span-6 space-y-4">
+      <span class="mono text-[10px] uppercase tracking-[0.25em] text-background/60">
+        {{ section.settings.label }}
+      </span>
+      <h2 class="font-display text-4xl font-bold uppercase tracking-tight sm:text-5xl md:text-7xl">
+        {{ section.settings.headline }}
+      </h2>
+      <p class="max-w-md text-sm text-background/70 sm:text-base">
+        {{ section.settings.description }}
+      </p>
+    </div>
+    
+    <!-- Shopify Customer Newsletter Form -->
+    {%- form 'customer', class: 'md:col-span-6 flex flex-col justify-end gap-3 sm:flex-row w-full' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      
+      {%- if form.posted_successfully? -%}
+        <div class="mono text-xs text-background/80 self-end py-3">
+          ✓ Thank you for subscribing.
+        </div>
+      {%- else -%}
+        {%- if form.errors -%}
+          <div class="mono text-xs text-destructive self-end py-3">
+            {{ form.errors.translated_fields.email | capitalize }}
+            {{ form.errors.messages.email }}
+          </div>
+        {%- endif -%}
+        
+        <input
+          type="email"
+          name="contact[email]"
+          id="NewsletterForm-{{ section.id }}"
+          value="{{ form.email }}"
+          placeholder="{{ section.settings.placeholder }}"
+          class="mono flex-1 border border-background/30 bg-transparent px-4 py-3 text-sm text-background placeholder:text-background/40 focus:border-background focus:outline-none sm:py-4"
+          required
+        >
+        
+        <button
+          type="submit"
+          class="mono border border-background bg-background px-6 py-3 text-[11px] uppercase tracking-[0.25em] text-foreground transition hover:bg-transparent hover:text-background sm:py-4"
+        >
+          {{ section.settings.button_text }}
+        </button>
+      {%- endif -%}
+    {%- endform -%}
+    
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "§ 05 / Lab Notes"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Section Headline",
+      "default": "Dispatches<br />from the bench."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Text",
+      "default": "Formulation diaries, raw material studies, and early access to upcoming batches. Sent only when there is something to say."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input Placeholder",
+      "default": "you@domain.com"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Subscribe ↗"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

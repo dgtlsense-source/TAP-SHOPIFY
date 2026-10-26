@@ -1,0 +1,15 @@
+{
+  "general": {
+    "search": {
+      "submit": "Search",
+      "placeholder": "Search our store"
+    }
+  },
+  "sections": {
+    "cart": {
+      "title": "Your selections",
+      "empty": "Nothing selected yet",
+      "checkout": "Proceed to checkout"
+    }
+  }
+}

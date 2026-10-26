@@ -1,0 +1,93 @@
+<div class="min-h-screen bg-background text-foreground">
+  <header class="border-b border-border">
+    <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+      <a href="/" class="mono truncate text-[10px] tracking-[0.2em] sm:text-xs text-foreground">
+        ← T.A.P / RETURN TO CATALOGUE
+      </a>
+      <span class="ticker-label shrink-0">SEARCH RESULTS</span>
+    </div>
+  </header>
+
+  <div class="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
+    <div class="mb-10 border-b border-border pb-6">
+      <p class="ticker-label">§ Store Search</p>
+      <h1 class="font-display mt-3 text-4xl font-bold uppercase tracking-tight sm:text-5xl lg:text-6xl">
+        {%- if search.performed -%}
+          Search Results for "{{ search.terms | escape }}"
+        {%- else -%}
+          Search.
+        {%- endif -%}
+      </h1>
+      
+      <!-- Search Form -->
+      <form action="{{ routes.search_url }}" method="get" role="search" class="mt-6 flex max-w-xl gap-3">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="Search compositions..."
+          class="mono flex-1 border-b border-border bg-transparent py-2 text-sm outline-none focus:border-foreground"
+        >
+        <button type="submit" class="mono border border-foreground bg-foreground px-6 py-2 text-xs uppercase tracking-[0.2em] text-background hover:bg-background hover:text-foreground transition">
+          Search
+        </button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      {%- if search.results_count > 0 -%}
+        <div class="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              <article class="group relative flex flex-col bg-background p-5 transition hover:bg-card">
+                <div class="flex items-start justify-between">
+                  <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    {{ item.selected_or_first_available_variant.sku | default: 'TAP-PRODUCT' }}
+                  </span>
+                  <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    № 0{{ forloop.index }}
+                  </span>
+                </div>
+
+                <a href="{{ item.url }}" class="my-6 flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid">
+                  {%- if item.featured_image != blank -%}
+                    <img src="{{ item.featured_image | image_url: width: 400 }}" alt="{{ item.title | escape }}" class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]" loading="lazy">
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]' }}
+                  {%- endif -%}
+                </a>
+
+                <h3 class="font-display text-2xl font-bold uppercase tracking-tight">
+                  <a href="{{ item.url }}">{{ item.title }}</a>
+                </h3>
+                <div class="mono mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{{ item.type | default: 'Fragrance' }}</div>
+                
+                <div class="mt-auto pt-6">
+                  <div class="flex items-end justify-between border-t border-border pt-4">
+                    <div><div class="ticker-label">Vol</div><div class="mono mt-1 text-xs">48 ml</div></div>
+                    <div class="text-right"><div class="ticker-label">Price</div><div class="font-display mt-0.5 text-xl font-bold">{{ item.price | money }}</div></div>
+                  </div>
+                  <form method="post" action="/cart/add" class="mt-4">
+                    <input type="hidden" name="id" value="{{ item.selected_or_first_available_variant.id }}">
+                    <button type="submit" class="mono w-full border border-foreground bg-transparent px-4 py-3 text-center text-[10px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background" {% unless item.available %}disabled{% endunless %}>
+                      {% if item.available %}Acquire ↗{% else %}Sold Out{% endif %}
+                    </button>
+                  </form>
+                </div>
+              </article>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="mono text-xs tracking-wider text-muted-foreground">No results found for your query. Try another search terms.</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search Details",
+  "settings": []
+}
+{% endschema %}

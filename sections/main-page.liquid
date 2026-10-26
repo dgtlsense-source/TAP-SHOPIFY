@@ -1,0 +1,27 @@
+<div class="min-h-screen bg-background text-foreground">
+  <header class="border-b border-border">
+    <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+      <a href="/" class="mono truncate text-[10px] tracking-[0.2em] sm:text-xs text-foreground">
+        ← T.A.P / RETURN TO CATALOGUE
+      </a>
+      <span class="ticker-label shrink-0">{{ page.title | uppercase }}</span>
+    </div>
+  </header>
+
+  <div class="mx-auto max-w-[1000px] px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
+    <h1 class="font-display text-4xl font-bold uppercase tracking-tight sm:text-5xl lg:text-6xl mb-8">
+      {{ page.title }}
+    </h1>
+    
+    <div class="prose max-w-none text-sm leading-relaxed text-muted-foreground">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page Details",
+  "settings": []
+}
+{% endschema %}

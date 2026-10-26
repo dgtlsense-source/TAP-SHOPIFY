@@ -1,0 +1,147 @@
+<section class="relative border-b border-border">
+  <div class="bg-grid">
+    <div class="mx-auto max-w-[1400px] px-4 py-14 sm:px-6 sm:py-16 lg:py-24">
+      <div class="space-y-8 sm:space-y-10">
+        <!-- Subtitle ticker -->
+        <div class="flex items-center gap-3">
+          <span class="h-px w-12 bg-foreground"></span>
+          <span class="ticker-label">{{ section.settings.label }}</span>
+        </div>
+        
+        <!-- Headline -->
+        <h1 class="font-display text-[clamp(2.25rem,10vw,8.5rem)] leading-[0.9] tracking-[-0.01em] font-black uppercase">
+          {{ section.settings.headline }}
+        </h1>
+        
+        <!-- Description -->
+        <p class="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {{ section.settings.description }}
+        </p>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-3 pt-2">
+          {%- if section.settings.primary_btn_text != blank -%}
+            <a
+              href="{{ section.settings.primary_btn_link }}"
+              class="mono inline-flex items-center border border-foreground bg-foreground px-5 py-3 text-[10px] uppercase tracking-[0.2em] text-background transition hover:bg-background hover:text-foreground sm:px-6 sm:py-3.5 sm:text-[11px] sm:tracking-[0.25em]"
+            >
+              {{ section.settings.primary_btn_text }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.secondary_btn_text != blank -%}
+            <a
+              href="{{ section.settings.secondary_btn_link }}"
+              class="mono inline-flex items-center border border-foreground bg-transparent px-5 py-3 text-[10px] uppercase tracking-[0.2em] transition hover:bg-foreground hover:text-background sm:px-6 sm:py-3.5 sm:text-[11px] sm:tracking-[0.25em]"
+            >
+              {{ section.settings.secondary_btn_text }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="mt-12 grid grid-cols-2 gap-6 border-t border-border pt-8 sm:mt-16 md:grid-cols-4">
+        {%- for block in section.blocks -%}
+          <div {{ block.shopify_attributes }}>
+            <div class="font-display text-xl font-medium tracking-tight sm:text-2xl">{{ block.settings.value }}</div>
+            <div class="ticker-label mt-2">{{ block.settings.label }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "Vol. 01 / 2026 — Edition I"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline HTML",
+      "default": "Engineered<br />for modern<br /><span class=\"text-steel\">everyday</span><br />rituals."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Text",
+      "default": "T.A.P is a modern perfumery lab — sourcing rare accords from farmlands across the world and shaping them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings, leaving a lasting impression."
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_text",
+      "label": "Primary Button Text",
+      "default": "Discover the Five ↗"
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_link",
+      "label": "Primary Button Link",
+      "default": "/#catalogue"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_text",
+      "label": "Secondary Button Text",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_link",
+      "label": "Secondary Button Link",
+      "default": "/#story"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat_item",
+      "name": "Stat Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Stat Value",
+          "default": "05"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Stat Label",
+          "default": "Compositions"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section",
+      "blocks": [
+        {
+          "type": "stat_item",
+          "settings": { "value": "05", "label": "Compositions" }
+        },
+        {
+          "type": "stat_item",
+          "settings": { "value": "48 ml", "label": "Eau de Parfum" }
+        },
+        {
+          "type": "stat_item",
+          "settings": { "value": "Rs. 999", "label": "Per Flask" }
+        },
+        {
+          "type": "stat_item",
+          "settings": { "value": "100%", "label": "Phthalate-free" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

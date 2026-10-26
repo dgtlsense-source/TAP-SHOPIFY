@@ -1,0 +1,419 @@
+{
+  "sections": {
+    "video_banner": {
+      "type": "video-banner",
+      "settings": {
+        "ticker_left": "Batch 0001 — Atmosphere Study",
+        "ticker_right": "Vol. 01 / 2026",
+        "height_mobile": 300,
+        "height_desktop": 550
+      }
+    },
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "label": "Vol. 01 / 2026 — Edition I",
+        "headline": "Engineered<br />for modern<br /><span class=\"text-steel\">everyday</span><br />rituals.",
+        "description": "T.A.P is a modern perfumery lab — sourcing rare accords from farmlands across the world and shaping them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings, leaving a lasting impression.",
+        "primary_btn_text": "Discover the Five ↗",
+        "primary_btn_link": "#catalogue",
+        "secondary_btn_text": "Our Story",
+        "secondary_btn_link": "#story"
+      },
+      "blocks": {
+        "stat_1": {
+          "type": "stat_item",
+          "settings": {
+            "value": "05",
+            "label": "Compositions"
+          }
+        },
+        "stat_2": {
+          "type": "stat_item",
+          "settings": {
+            "value": "48 ml",
+            "label": "Eau de Parfum"
+          }
+        },
+        "stat_3": {
+          "type": "stat_item",
+          "settings": {
+            "value": "Rs. 999",
+            "label": "Per Flask"
+          }
+        },
+        "stat_4": {
+          "type": "stat_item",
+          "settings": {
+            "value": "100%",
+            "label": "Phthalate-free"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ]
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "speed": 40
+      },
+      "blocks": {
+        "word_1": {
+          "type": "word",
+          "settings": {
+            "text": "PRECISION"
+          }
+        },
+        "word_2": {
+          "type": "word",
+          "settings": {
+            "text": "ORIGIN"
+          }
+        },
+        "word_3": {
+          "type": "word",
+          "settings": {
+            "text": "RAWNESS"
+          }
+        },
+        "word_4": {
+          "type": "word",
+          "settings": {
+            "text": "CONTROL"
+          }
+        },
+        "word_5": {
+          "type": "word",
+          "settings": {
+            "text": "DISTINCTION"
+          }
+        }
+      },
+      "block_order": [
+        "word_1",
+        "word_2",
+        "word_3",
+        "word_4",
+        "word_5"
+      ]
+    },
+    "brand_story": {
+      "type": "brand-story",
+      "settings": {
+        "label": "§ 01 / Brand Story",
+        "headline": "A LAB, NOT A BRAND.",
+        "highlight_text": "T.A.P began as a small perfumery laboratory, sourcing rare accords from beautiful farmlands across the world and shaping them into <em class=\"italic text-steel\">precise modern fragrances.</em>",
+        "detail_text": "Built on transparency, we reveal the accords behind every scent so consumers can discover, understand, and choose what truly becomes their signature.",
+        "values_title": "Core Values"
+      },
+      "blocks": {
+        "value_1": {
+          "type": "core_value",
+          "settings": {
+            "value_text": "PRECISION"
+          }
+        },
+        "value_2": {
+          "type": "core_value",
+          "settings": {
+            "value_text": "ORIGIN"
+          }
+        },
+        "value_3": {
+          "type": "core_value",
+          "settings": {
+            "value_text": "RAWNESS"
+          }
+        },
+        "value_4": {
+          "type": "core_value",
+          "settings": {
+            "value_text": "CONTROL"
+          }
+        },
+        "value_5": {
+          "type": "core_value",
+          "settings": {
+            "value_text": "DISTINCTION"
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4",
+        "value_5"
+      ]
+    },
+    "catalogue": {
+      "type": "fragrance-list",
+      "settings": {
+        "label": "§ 02 / Catalogue",
+        "title": "Five compositions.",
+        "subtitle": "TAP-01 -> TAP-05"
+      },
+      "blocks": {
+        "fragrance_1": {
+          "type": "fragrance_card",
+          "settings": {
+            "code": "TAP-01",
+            "name": "MANGO 12",
+            "family": "TROPICAL / FRESH",
+            "origin": "Konkan, India",
+            "note1": "Citrus",
+            "note2": "Tropical",
+            "note3": "Amber",
+            "volume": "48 ml",
+            "price": "Rs. 999"
+          }
+        },
+        "fragrance_2": {
+          "type": "fragrance_card",
+          "settings": {
+            "code": "TAP-02",
+            "name": "SAMBAC 8",
+            "family": "FRESH / FLORAL / MUSK",
+            "origin": "Madurai, S. India",
+            "note1": "Jasmine",
+            "note2": "Creamy Vanilla",
+            "note3": "Musk",
+            "volume": "48 ml",
+            "price": "Rs. 999"
+          }
+        },
+        "fragrance_3": {
+          "type": "fragrance_card",
+          "settings": {
+            "code": "TAP-03",
+            "name": "VETIVER 16",
+            "family": "EARTHY / WOODY",
+            "origin": "Les Cayes, Haiti",
+            "note1": "Earthy Vetiver",
+            "note2": "Dry Woods",
+            "note3": "Musk",
+            "volume": "48 ml",
+            "price": "Rs. 999"
+          }
+        },
+        "fragrance_4": {
+          "type": "fragrance_card",
+          "settings": {
+            "code": "TAP-04",
+            "name": "BERGAMOTE 10",
+            "family": "CITRUS / LEATHER",
+            "origin": "Reggio Calabria, Italy",
+            "note1": "Bergamot",
+            "note2": "Spicy Woods",
+            "note3": "Leather",
+            "volume": "48 ml",
+            "price": "Rs. 999"
+          }
+        },
+        "fragrance_5": {
+          "type": "fragrance_card",
+          "settings": {
+            "code": "TAP-05",
+            "name": "SPICE 21",
+            "family": "SPICY / WARM",
+            "origin": "Malabar, W. India",
+            "note1": "Indian Spices",
+            "note2": "Sweet Woods",
+            "note3": "Amber",
+            "volume": "48 ml",
+            "price": "Rs. 999"
+          }
+        }
+      },
+      "block_order": [
+        "fragrance_1",
+        "fragrance_2",
+        "fragrance_3",
+        "fragrance_4",
+        "fragrance_5"
+      ]
+    },
+    "editorial": {
+      "type": "editorial",
+      "settings": {
+        "alt_text": "T.A.P — five fragrance collection on concrete plinths with lab glassware",
+        "label": "§ The Collection",
+        "headline": "Raw materials.<br /><span class=\"text-background/50\">Studied.</span>",
+        "description": "Every accord is shown as a lab material — not a decorative prop. Five formulas. One philosophy: raw ingredients, precise composition, controlled design."
+      },
+      "blocks": {
+        "item_1": {
+          "type": "list_item",
+          "settings": {
+            "title": "MANGO 12",
+            "value": "TAP-01"
+          }
+        },
+        "item_2": {
+          "type": "list_item",
+          "settings": {
+            "title": "SAMBAC 8",
+            "value": "TAP-02"
+          }
+        },
+        "item_3": {
+          "type": "list_item",
+          "settings": {
+            "title": "VETIVER 16",
+            "value": "TAP-03"
+          }
+        },
+        "item_4": {
+          "type": "list_item",
+          "settings": {
+            "title": "BERGAMOTE 10",
+            "value": "TAP-04"
+          }
+        },
+        "item_5": {
+          "type": "list_item",
+          "settings": {
+            "title": "SPICE 21",
+            "value": "TAP-05"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5"
+      ]
+    },
+    "sourcing": {
+      "type": "sourcing",
+      "settings": {
+        "label": "§ 03 / Sourcing",
+        "headline": "Real places.<br />Rare accords.",
+        "subtitle": "5 origins · 4 countries"
+      },
+      "blocks": {
+        "origin_1": {
+          "type": "origin_item",
+          "settings": {
+            "code": "TAP-01",
+            "origin": "Konkan, India",
+            "fragrance_name": "MANGO 12",
+            "story": "Mango 12 captures the essence of vibrant tropical Konkan mangoes blended with crisp citrus and warm woods.",
+            "engineered": "Engineered to feel refreshing and uplifted."
+          }
+        },
+        "origin_2": {
+          "type": "origin_item",
+          "settings": {
+            "code": "TAP-02",
+            "origin": "Madurai, S. India",
+            "fragrance_name": "SAMBAC 8",
+            "story": "Sambac 8 inherits the exceptionally intense sweet floral scent from jasmines of the Madurai region, blended with rich creamy vanilla and musk.",
+            "engineered": "Engineered to feel soft and gentle."
+          }
+        },
+        "origin_3": {
+          "type": "origin_item",
+          "settings": {
+            "code": "TAP-03",
+            "origin": "Les Cayes, Haiti",
+            "fragrance_name": "VETIVER 16",
+            "story": "Vetiver 16 envelops the earthy, damp vibes of Haitian vetiver found in Les Cayes, blended with dry woods and musk.",
+            "engineered": "Engineered for a long-lasting boost."
+          }
+        },
+        "origin_4": {
+          "type": "origin_item",
+          "settings": {
+            "code": "TAP-04",
+            "origin": "Reggio Calabria, Italy",
+            "fragrance_name": "BERGAMOTE 10",
+            "story": "Bergamote 10 brings the complex citrus freshness of bergamot from Reggio Calabria, blended with spicy woods and leather.",
+            "engineered": "Engineered for deep emotional and psychological impact."
+          }
+        },
+        "origin_5": {
+          "type": "origin_item",
+          "settings": {
+            "code": "TAP-05",
+            "origin": "Malabar, W. India",
+            "fragrance_name": "SPICE 21",
+            "story": "Spice 21 lets in the heat of Indian spices from the Malabar coast, blended with sweet, warm woods.",
+            "engineered": "Engineered to boost body and mind."
+          }
+        }
+      },
+      "block_order": [
+        "origin_1",
+        "origin_2",
+        "origin_3",
+        "origin_4",
+        "origin_5"
+      ]
+    },
+    "purpose": {
+      "type": "purpose",
+      "settings": {
+        "label": "§ 04 / Brand Purpose",
+        "headline": "To enlighten the world with a deeper understanding of what they wear — bringing clarity, transparency, and sophistication to every fragrance experience.",
+        "description": "Through meticulously crafted formulas, we create scents that feel indulgent, empowering, and profoundly personal — elevating confidence with every spray. Our fragrances are <strong class=\"text-foreground\">phthalate-free, toxin-free, and cruelty-free</strong>, created with respect for skin, life, and Mother Earth."
+      },
+      "blocks": {
+        "cert_1": {
+          "type": "cert_item",
+          "settings": {
+            "title": "Phthalate-free",
+            "value": "Skin-safe formulation"
+          }
+        },
+        "cert_2": {
+          "type": "cert_item",
+          "settings": {
+            "title": "Toxin-free",
+            "value": "Tested & verified"
+          }
+        },
+        "cert_3": {
+          "type": "cert_item",
+          "settings": {
+            "title": "Cruelty-free",
+            "value": "Never on animals"
+          }
+        }
+      },
+      "block_order": [
+        "cert_1",
+        "cert_2",
+        "cert_3"
+      ]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "label": "§ 05 / Lab Notes",
+        "headline": "Dispatches<br />from the bench.",
+        "description": "Formulation diaries, raw material studies, and early access to upcoming batches. Sent only when there is something to say.",
+        "placeholder": "you@domain.com",
+        "button_text": "Subscribe ↗"
+      }
+    }
+  },
+  "order": [
+    "video_banner",
+    "hero",
+    "marquee",
+    "brand_story",
+    "catalogue",
+    "editorial",
+    "sourcing",
+    "purpose",
+    "newsletter"
+  ]
+}

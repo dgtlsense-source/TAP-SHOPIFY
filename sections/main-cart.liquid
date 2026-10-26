@@ -1,0 +1,157 @@
+<div class="min-h-screen bg-background text-foreground">
+  <header class="border-b border-border">
+    <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+      <a href="/" class="mono truncate text-[10px] tracking-[0.2em] sm:text-xs text-foreground">
+        ← T.A.P / RETURN TO CATALOGUE
+      </a>
+      <span class="ticker-label shrink-0">CART · SECURE</span>
+    </div>
+  </header>
+
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" id="cart" class="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10 lg:py-16">
+      <div class="mb-8 sm:mb-10 lg:mb-16">
+        <p class="ticker-label">§ 00 / Cart</p>
+        <h1 class="mt-3 text-2xl font-light tracking-tight sm:text-3xl lg:text-5xl">
+          Your selections.
+        </h1>
+        <p class="mt-2 max-w-xl text-sm text-muted-foreground">
+          Each flask is 48 ml. Dispatched in 48 hours from the lab.
+        </p>
+      </div>
+
+      <div class="grid gap-10 lg:grid-cols-[1fr_420px] lg:gap-12">
+        <!-- Cart Items List -->
+        <div class="space-y-10">
+          <section>
+            <div class="flex items-baseline justify-between border-b border-border pb-3">
+              <p class="ticker-label">§ 01 / Selection</p>
+              <span class="mono text-[10px] tracking-[0.2em] text-muted-foreground">CONFIRMED</span>
+            </div>
+            
+            <ul class="mt-6 divide-y divide-border border-y border-border">
+              {%- for item in cart.items -%}
+                <li class="flex items-center gap-3 py-4 sm:gap-4">
+                  <!-- Image -->
+                  <div class="h-14 w-14 shrink-0 overflow-hidden bg-muted sm:h-16 sm:w-16 border border-border">
+                    {%- if item.image != blank -%}
+                      <img src="{{ item.image | image_url: width: 150 }}" alt="{{ item.title | escape }}" class="h-full w-full object-cover" loading="lazy">
+                    {%- endif -%}
+                  </div>
+
+                  <!-- Details -->
+                  <div class="min-w-0 flex-1">
+                    <p class="mono text-[10px] tracking-[0.2em] text-muted-foreground">
+                      {{ item.variant.sku | default: 'TAP-ITEM' }} · 48 ML
+                    </p>
+                    <a href="{{ item.url }}" class="truncate text-sm text-foreground block hover:underline">{{ item.product.title }}</a>
+                  </div>
+
+                  <!-- Unit Price -->
+                  <p class="mono hidden text-xs tabular-nums text-muted-foreground md:block">
+                    {{ item.original_price | money }}
+                  </p>
+
+                  <!-- Stepper -->
+                  <div class="flex items-center border border-border bg-background">
+                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="h-8 w-8 text-center leading-8 text-sm hover:bg-muted" aria-label="Decrease">−</</a>
+                    <span class="mono w-8 text-center text-xs tabular-nums">{{ item.quantity }}</span>
+                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="h-8 w-8 text-center leading-8 text-sm hover:bg-muted" aria-label="Increase">+</a>
+                  </div>
+
+                  <!-- Line Price -->
+                  <p class="mono w-14 shrink-0 text-right text-xs tabular-nums sm:w-20 sm:text-sm">
+                    {{ item.final_line_price | money }}
+                  </p>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </section>
+        </div>
+
+        <!-- Sidebar Summary -->
+        <aside class="lg:sticky lg:top-8 lg:self-start">
+          <div class="border border-border p-6 bg-card">
+            <p class="ticker-label">§ Order summary</p>
+            
+            <dl class="mt-6 space-y-2 text-sm">
+              <div class="flex justify-between">
+                <dt class="text-muted-foreground">Subtotal ({{ cart.item_count }} {% if cart.item_count == 1 %}flask{% else %}flasks{% endif %})</dt>
+                <dd class="mono tabular-nums">{{ cart.total_price | money }}</dd>
+              </div>
+
+              <!-- Shipping calculations -->
+              {%- assign free_shipping_threshold = 250000 -%} <!-- 2500 INR in paise -->
+              {%- assign shipping_fee = 9900 -%} <!-- 99 INR in paise -->
+              <div class="flex justify-between">
+                <dt class="text-muted-foreground">Shipping</dt>
+                <dd class="mono tabular-nums">
+                  {%- if cart.total_price >= free_shipping_threshold -%}
+                    Free
+                  {%- else -%}
+                    {{ shipping_fee | money }}
+                  {%- endif -%}
+                </dd>
+              </div>
+
+              {%- if cart.total_price < free_shipping_threshold -%}
+                {%- assign deficit = free_shipping_threshold | minus: cart.total_price -%}
+                <p class="mono pt-1 text-[10px] tracking-[0.15em] text-muted-foreground uppercase">
+                  ADD {{ deficit | money }} FOR FREE SHIPPING
+                </p>
+              {%- endif -%}
+            </dl>
+
+            <div class="mt-6 flex items-baseline justify-between border-t border-border pt-4">
+              <span class="mono text-xs tracking-[0.2em]">TOTAL</span>
+              <span class="text-2xl font-light tabular-nums">
+                {%- if cart.total_price >= free_shipping_threshold -%}
+                  {{ cart.total_price | money }}
+                {%- else -%}
+                  {{ cart.total_price | plus: shipping_fee | money }}
+                {%- endif -%}
+              </span>
+            </div>
+
+            <!-- Submit form to redirect to secure checkout -->
+            <button
+              type="submit"
+              name="checkout"
+              class="mt-6 w-full border border-foreground bg-foreground py-4 text-xs tracking-[0.25em] text-background transition-opacity hover:opacity-90"
+            >
+              PROCEED TO CHECKOUT ->
+            </button>
+
+            <p class="mono mt-4 text-[10px] leading-relaxed tracking-[0.1em] text-muted-foreground uppercase">
+              Secure payments powered by Shopify checkout.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </form>
+  {%- else -%}
+    <!-- Empty Cart Page -->
+    <main class="mx-auto max-w-[1400px] px-6 py-24 text-center">
+      <p class="ticker-label">§ 00 / Cart empty</p>
+      <h1 class="mt-3 text-3xl font-light tracking-tight lg:text-5xl">
+        Nothing selected yet.
+      </h1>
+      <p class="mt-3 max-w-md mx-auto text-sm text-muted-foreground">
+        Select a composition from the catalogue to begin your daily ritual study.
+      </p>
+      <a
+        href="/"
+        class="mono mt-8 inline-block border border-foreground bg-foreground px-6 py-3 text-xs tracking-[0.25em] text-background hover:bg-background hover:text-foreground transition"
+      >
+        RETURN TO CATALOGUE ->
+      </a>
+    </main>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

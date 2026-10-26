@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    <!-- Custom CSS Variables mapped to Shopify Settings -->
+    <style>
+      :root {
+        --background: {{ settings.color_background | default: '#f0f0f0' }};
+        --foreground: {{ settings.color_foreground | default: '#1a1a1a' }};
+        --card: {{ settings.color_card | default: '#f7f7f7' }};
+        --card-foreground: {{ settings.color_foreground | default: '#1a1a1a' }};
+        --popover: {{ settings.color_card | default: '#f7f7f7' }};
+        --popover-foreground: {{ settings.color_foreground | default: '#1a1a1a' }};
+        --primary: {{ settings.color_foreground | default: '#1a1a1a' }};
+        --primary-foreground: {{ settings.color_background | default: '#f0f0f0' }};
+        --secondary: {{ settings.color_secondary | default: '#e0e0e0' }};
+        --secondary-foreground: {{ settings.color_foreground | default: '#1a1a1a' }};
+        --muted: {{ settings.color_muted | default: '#e5e5e5' }};
+        --muted-foreground: {{ settings.color_muted_foreground | default: '#737373' }};
+        --accent: {{ settings.color_accent | default: '#c2c2c2' }};
+        --accent-foreground: {{ settings.color_foreground | default: '#1a1a1a' }};
+        --border: {{ settings.color_border | default: '#c2c2c2' }};
+        --input: {{ settings.color_border | default: '#c2c2c2' }};
+        --ring: {{ settings.color_muted_foreground | default: '#737373' }};
+
+        --concrete: {{ settings.color_concrete | default: '#d9d9d9' }};
+        --steel: {{ settings.color_steel | default: '#8c8c8c' }};
+        --ink: {{ settings.color_ink | default: '#1f1f1f' }};
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-background text-foreground antialiased font-sans">
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="MainContent" class="focus:outline-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    <!-- Javascript -->
+    {{ 'theme.js' | asset_url | script_tag }}
+  </body>
+</html>

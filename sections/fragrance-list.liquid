@@ -1,0 +1,336 @@
+<section id="catalogue" class="border-b border-border bg-card">
+  <div class="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+    
+    <!-- Section Header -->
+    <div class="mb-10 flex flex-col items-start justify-between gap-4 border-b border-border pb-6 sm:mb-12 sm:flex-row sm:items-end sm:gap-6">
+      <div class="min-w-0 space-y-3">
+        <span class="ticker-label">{{ section.settings.label }}</span>
+        <h2 class="font-display text-4xl tracking-tight font-bold uppercase sm:text-5xl md:text-7xl">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+      <span class="mono hidden text-[11px] uppercase tracking-[0.25em] text-muted-foreground md:inline">
+        {{ section.settings.subtitle }}
+      </span>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      {%- assign collection_handle = section.settings.collection | default: 'all' -%}
+      {%- assign collection = collections[collection_handle] -%}
+      {%- assign has_products = false -%}
+
+      {%- if collection != blank -%}
+        {%- if collection.products != blank -%}
+          {%- if collection.products.size > 0 -%}
+            {%- assign has_products = true -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if has_products -%}
+        <!-- Mode 1: Render Dynamic Shopify Collection Products -->
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {%- assign current_variant = product.selected_or_first_available_variant -%}
+          {%- assign code = '' -%}
+          {%- if current_variant != blank -%}
+            {%- assign code = current_variant.sku -%}
+          {%- endif -%}
+          {%- if code == blank -%}
+            {%- assign code = product.metafields.custom.code -%}
+          {%- endif -%}
+          {%- if code == blank -%}
+            {%- if forloop.index < 10 -%}
+              {%- assign code = 'TAP-0' | append: forloop.index -%}
+            {%- else -%}
+              {%- assign code = 'TAP-' | append: forloop.index -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- assign family = product.metafields.custom.family | default: product.type | default: 'Fragrance' -%}
+          {%- assign origin = product.metafields.custom.origin | default: product.vendor | default: 'India' -%}
+          
+          {%- assign note1 = 'Citrus' -%}
+          {%- assign note2 = 'Tropical' -%}
+          {%- assign note3 = 'Amber' -%}
+          {%- for tag in product.tags -%}
+            {%- if tag contains 'note1:' -%}{%- assign note1 = tag | remove: 'note1:' -%}{%- endif -%}
+            {%- if tag contains 'note2:' -%}{%- assign note2 = tag | remove: 'note2:' -%}{%- endif -%}
+            {%- if tag contains 'note3:' -%}{%- assign note3 = tag | remove: 'note3:' -%}{%- endif -%}
+          {%- endfor -%}
+
+          <article class="group relative flex flex-col bg-background p-5 transition hover:bg-card">
+            <!-- Header -->
+            <div class="flex items-start justify-between">
+              <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                {{ code }}
+              </span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                № 0{{ forloop.index }} / 05
+              </span>
+            </div>
+
+            <!-- Image -->
+            <a href="{{ product.url }}" class="my-6 flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid border border-border/10">
+              {%- if product.featured_image != blank -%}
+                <img
+                  src="{{ product.featured_image | image_url: width: 400 }}"
+                  alt="T.A.P {{ product.title | escape }}"
+                  class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]"
+                  loading="lazy"
+                >
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]' }}
+              {%- endif -%}
+            </a>
+
+            <!-- Info -->
+            <h3 class="font-display text-2xl font-bold uppercase tracking-tight">
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </h3>
+            
+          <div class="mono mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            {{ family }}
+          </div>
+          
+          <div class="mono mt-0.5 text-[10px] uppercase tracking-[0.2em] text-steel">
+            > {{ origin }}
+          </div>
+
+            <!-- Notes -->
+            <dl class="mt-5 space-y-1 border-t border-border pt-4 text-xs">
+              <div class="ticker-label mb-2">Notes</div>
+              <div class="flex gap-3 text-foreground/80">
+                <dt class="mono w-6 text-muted-foreground">01</dt>
+                <dd class="mono uppercase tracking-[0.18em]">{{ note1 }}</dd>
+              </div>
+              <div class="flex gap-3 text-foreground/80">
+                <dt class="mono w-6 text-muted-foreground">02</dt>
+                <dd class="mono uppercase tracking-[0.18em]">{{ note2 }}</dd>
+              </div>
+              <div class="flex gap-3 text-foreground/80">
+                <dt class="mono w-6 text-muted-foreground">03</dt>
+                <dd class="mono uppercase tracking-[0.18em]">{{ note3 }}</dd>
+              </div>
+            </dl>
+
+            <!-- Price / Volume -->
+            <div class="mt-5 flex items-end justify-between border-t border-border pt-4">
+              <div>
+                <div class="ticker-label">Vol</div>
+                <div class="mono mt-1 text-xs">48 ml</div>
+              </div>
+              <div class="text-right">
+                <div class="ticker-label">Price</div>
+                <div class="font-display mt-0.5 text-xl font-bold">{{ product.price | money }}</div>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <form method="post" action="/cart/add" class="mt-4">
+              {%- if current_variant != blank -%}
+                <input type="hidden" name="id" value="{{ current_variant.id }}">
+              {%- endif -%}
+              <button
+                type="submit"
+                class="mono w-full border border-foreground bg-transparent px-4 py-3 text-center text-[10px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background"
+                {% unless product.available %}disabled{% endunless %}
+              >
+                {% if product.available %}Acquire ↗{% else %}Sold Out{% endif %}
+              </button>
+            </form>
+
+          </article>
+        {%- endfor -%}
+
+        {%- assign products_count = collection.products.size -%}
+        {%- if products_count < 5 -%}
+          {%- if products_count == 1 -%}
+            <div class="hidden sm:block bg-background"></div>
+            <div class="hidden lg:block bg-background"></div>
+            <div class="hidden xl:block bg-background"></div>
+            <div class="hidden xl:block bg-background"></div>
+          {%- elsif products_count == 2 -%}
+            <div class="hidden lg:block bg-background"></div>
+            <div class="hidden xl:block bg-background"></div>
+            <div class="hidden xl:block bg-background"></div>
+          {%- elsif products_count == 3 -%}
+            <div class="hidden xl:block bg-background"></div>
+            <div class="hidden xl:block bg-background"></div>
+          {%- elsif products_count == 4 -%}
+            <div class="hidden xl:block bg-background"></div>
+          {%- endif -%}
+        {%- endif -%}
+
+      {%- else -%}
+        <!-- Mode 2: Render Default Fallback Cards if nothing is selected or collection is empty -->
+        <!-- Card 1: Mango 12 -->
+        <article class="group relative flex flex-col bg-background p-5 transition hover:bg-card">
+          <div class="flex items-start justify-between">
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">TAP-01</span>
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">№ 01 / 05</span>
+          </div>
+          <div class="my-6 flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid border border-border/10">
+            <img src="{{ 'mango-12.jpg' | asset_url }}" alt="T.A.P MANGO 12" class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+          <h3 class="font-display text-2xl font-bold uppercase tracking-tight">MANGO 12</h3>
+          <div class="mono mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">TROPICAL / FRESH</div>
+          <div class="mono mt-0.5 text-[10px] uppercase tracking-[0.2em] text-steel">> Konkan, India</div>
+          <dl class="mt-5 space-y-1 border-t border-border pt-4 text-xs">
+            <div class="ticker-label mb-2">Notes</div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">01</dt><dd class="mono uppercase tracking-[0.18em]">Citrus</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">02</dt><dd class="mono uppercase tracking-[0.18em]">Tropical</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">03</dt><dd class="mono uppercase tracking-[0.18em]">Amber</dd></div>
+          </dl>
+          <div class="mt-5 flex items-end justify-between border-t border-border pt-4">
+            <div><div class="ticker-label">Vol</div><div class="mono mt-1 text-xs">48 ml</div></div>
+            <div class="text-right"><div class="ticker-label">Price</div><div class="font-display mt-0.5 text-xl font-bold">Rs. 999</div></div>
+          </div>
+          <a href="/cart/add" class="mono mt-4 border border-foreground bg-transparent px-4 py-3 text-center text-[10px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background">Acquire ↗</a>
+        </article>
+
+        <!-- Card 2: Sambac 8 -->
+        <article class="group relative flex flex-col bg-background p-5 transition hover:bg-card">
+          <div class="flex items-start justify-between">
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">TAP-02</span>
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">№ 02 / 05</span>
+          </div>
+          <div class="my-6 flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid border border-border/10">
+            <img src="{{ 'sambac-8.jpg' | asset_url }}" alt="T.A.P SAMBAC 8" class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+          <h3 class="font-display text-2xl font-bold uppercase tracking-tight">SAMBAC 8</h3>
+          <div class="mono mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">FRESH / FLORAL / MUSK</div>
+          <div class="mono mt-0.5 text-[10px] uppercase tracking-[0.2em] text-steel">> Madurai, S. India</div>
+          <dl class="mt-5 space-y-1 border-t border-border pt-4 text-xs">
+            <div class="ticker-label mb-2">Notes</div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">01</dt><dd class="mono uppercase tracking-[0.18em]">Jasmine</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">02</dt><dd class="mono uppercase tracking-[0.18em]">Creamy Vanilla</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">03</dt><dd class="mono uppercase tracking-[0.18em]">Musk</dd></div>
+          </dl>
+          <div class="mt-5 flex items-end justify-between border-t border-border pt-4">
+            <div><div class="ticker-label">Vol</div><div class="mono mt-1 text-xs">48 ml</div></div>
+            <div class="text-right"><div class="ticker-label">Price</div><div class="font-display mt-0.5 text-xl font-bold">Rs. 999</div></div>
+          </div>
+          <a href="/cart/add" class="mono mt-4 border border-foreground bg-transparent px-4 py-3 text-center text-[10px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background">Acquire ↗</a>
+        </article>
+
+        <!-- Card 3: Vetiver 16 -->
+        <article class="group relative flex flex-col bg-background p-5 transition hover:bg-card">
+          <div class="flex items-start justify-between">
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">TAP-03</span>
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">№ 03 / 05</span>
+          </div>
+          <div class="my-6 flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid border border-border/10">
+            <img src="{{ 'vetiver-16.jpg' | asset_url }}" alt="T.A.P VETIVER 16" class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+          <h3 class="font-display text-2xl font-bold uppercase tracking-tight">VETIVER 16</h3>
+          <div class="mono mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">EARTHY / WOODY</div>
+          <div class="mono mt-0.5 text-[10px] uppercase tracking-[0.2em] text-steel">> Les Cayes, Haiti</div>
+          <dl class="mt-5 space-y-1 border-t border-border pt-4 text-xs">
+            <div class="ticker-label mb-2">Notes</div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">01</dt><dd class="mono uppercase tracking-[0.18em]">Earthy Vetiver</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">02</dt><dd class="mono uppercase tracking-[0.18em]">Dry Woods</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">03</dt><dd class="mono uppercase tracking-[0.18em]">Musk</dd></div>
+          </dl>
+          <div class="mt-5 flex items-end justify-between border-t border-border pt-4">
+            <div><div class="ticker-label">Vol</div><div class="mono mt-1 text-xs">48 ml</div></div>
+            <div class="text-right"><div class="ticker-label">Price</div><div class="font-display mt-0.5 text-xl font-bold">Rs. 999</div></div>
+          </div>
+          <a href="/cart/add" class="mono mt-4 border border-foreground bg-transparent px-4 py-3 text-center text-[10px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background">Acquire ↗</a>
+        </article>
+
+        <!-- Card 4: Bergamote 10 -->
+        <article class="group relative flex flex-col bg-background p-5 transition hover:bg-card">
+          <div class="flex items-start justify-between">
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">TAP-04</span>
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">№ 04 / 05</span>
+          </div>
+          <div class="my-6 flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid border border-border/10">
+            <img src="{{ 'bergamote-10.jpg' | asset_url }}" alt="T.A.P BERGAMOTE 10" class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+          <h3 class="font-display text-2xl font-bold uppercase tracking-tight">BERGAMOTE 10</h3>
+          <div class="mono mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">CITRUS / LEATHER</div>
+          <div class="mono mt-0.5 text-[10px] uppercase tracking-[0.2em] text-steel">> Reggio Calabria, Italy</div>
+          <dl class="mt-5 space-y-1 border-t border-border pt-4 text-xs">
+            <div class="ticker-label mb-2">Notes</div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">01</dt><dd class="mono uppercase tracking-[0.18em]">Bergamot</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">02</dt><dd class="mono uppercase tracking-[0.18em]">Spicy Woods</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">03</dt><dd class="mono uppercase tracking-[0.18em]">Leather</dd></div>
+          </dl>
+          <div class="mt-5 flex items-end justify-between border-t border-border pt-4">
+            <div><div class="ticker-label">Vol</div><div class="mono mt-1 text-xs">48 ml</div></div>
+            <div class="text-right"><div class="ticker-label">Price</div><div class="font-display mt-0.5 text-xl font-bold">Rs. 999</div></div>
+          </div>
+          <a href="/cart/add" class="mono mt-4 border border-foreground bg-transparent px-4 py-3 text-center text-[10px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background">Acquire ↗</a>
+        </article>
+
+        <!-- Card 5: Spice 21 -->
+        <article class="group relative flex flex-col bg-background p-5 transition hover:bg-card">
+          <div class="flex items-start justify-between">
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">TAP-05</span>
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">№ 05 / 05</span>
+          </div>
+          <div class="my-6 flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid border border-border/10">
+            <img src="{{ 'spice-21.jpg' | asset_url }}" alt="T.A.P SPICE 21" class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]" loading="lazy">
+          </div>
+          <h3 class="font-display text-2xl font-bold uppercase tracking-tight">SPICE 21</h3>
+          <div class="mono mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">SPICY / WARM</div>
+          <div class="mono mt-0.5 text-[10px] uppercase tracking-[0.2em] text-steel">> ... Malabar, W. India</div>
+          <dl class="mt-5 space-y-1 border-t border-border pt-4 text-xs">
+            <div class="ticker-label mb-2">Notes</div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">01</dt><dd class="mono uppercase tracking-[0.18em]">Indian Spices</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">02</dt><dd class="mono uppercase tracking-[0.18em]">Sweet Woods</dd></div>
+            <div class="flex gap-3 text-foreground/80"><dt class="mono w-6 text-muted-foreground">03</dt><dd class="mono uppercase tracking-[0.18em]">Amber</dd></div>
+          </dl>
+          <div class="mt-5 flex items-end justify-between border-t border-border pt-4">
+            <div><div class="ticker-label">Vol</div><div class="mono mt-1 text-xs">48 ml</div></div>
+            <div class="text-right"><div class="ticker-label">Price</div><div class="font-display mt-0.5 text-xl font-bold">Rs. 999</div></div>
+          </div>
+          <a href="/cart/add" class="mono mt-4 border border-foreground bg-transparent px-4 py-3 text-center text-[10px] uppercase tracking-[0.25em] transition hover:bg-foreground hover:text-background">Acquire ↗</a>
+        </article>
+      {%- endif -%}
+    </div>
+    
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Catalogue Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "§ 02 / Catalogue"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Five compositions."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle Ticker",
+      "default": "TAP-01 -> TAP-05"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Shopify Collection",
+      "info": "Link a real Shopify collection to load dynamic products. Leave empty to use hardcoded fallbacks."
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "label": "Products to Show",
+      "default": 5
+    }
+  ]
+}
+{% endschema %}
