@@ -1,22 +1,11 @@
 <section id="scent-finder" class="border-b border-border bg-background text-foreground">
-  
-  <!-- Top Botanical/Lab Image Strip from Video -->
-  <div class="w-full h-36 sm:h-48 md:h-56 overflow-hidden border-b border-border relative bg-muted">
-    {%- if section.settings.banner_image != blank -%}
-      <img src="{{ section.settings.banner_image | image_url: width: 1800 }}" alt="T.A.P Lab and Botanticals" class="h-full w-full object-cover">
-    {%- else -%}
-      <img src="{{ 'collection.png' | asset_url }}" alt="T.A.P Lab and Botanticals" class="h-full w-full object-cover opacity-90">
-    {%- endif -%}
-    <div class="absolute inset-0 bg-background/20 backdrop-blur-[1px]"></div>
-  </div>
-
-  <div class="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+  <div class="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
     
     <!-- Top Section Header -->
-    <div class="border-b border-border pb-6 mb-10 sm:mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div class="border-b border-border pb-6 mb-8 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
       <div class="space-y-3">
         <span class="ticker-label">{{ section.settings.label | default: '// SCENT FINDER' }}</span>
-        <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight">
+        <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[0.95]">
           {{ section.settings.title | default: 'FIND YOUR FORMULA.' }}
         </h2>
       </div>
@@ -26,7 +15,7 @@
     </div>
 
     <!-- Quiz Interactive Container -->
-    <div id="scent-finder-quiz" class="min-h-[420px]">
+    <div id="scent-finder-quiz" class="min-h-[380px]">
       
       <!-- STEP VIEW -->
       <div id="sf-step-container" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start transition-opacity duration-300">
@@ -36,15 +25,15 @@
           <div class="mono text-xs uppercase tracking-[0.25em] text-steel" id="sf-q-category">
             01 / FEEL
           </div>
-          <h3 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight leading-tight text-foreground" id="sf-q-title">
+          <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight leading-tight text-foreground" id="sf-q-title">
             HOW DO YOU WANT TO FEEL?
           </h3>
-          <p class="text-sm text-muted-foreground max-w-sm" id="sf-q-desc">
+          <p class="text-xs sm:text-sm text-muted-foreground max-w-sm leading-relaxed" id="sf-q-desc">
             Select the atmosphere that matches your state of mind. Each composition is formulated around specific emotional accords.
           </p>
 
           <!-- Back button (hidden on step 1) -->
-          <div class="pt-4">
+          <div class="pt-2 sm:pt-4">
             <button
               type="button"
               id="sf-prev-btn"
@@ -67,17 +56,17 @@
 
       <!-- RESULT VIEW (Hidden initially) -->
       <div id="sf-result-container" class="hidden transition-opacity duration-500">
-        <div class="border border-border bg-card p-6 sm:p-10 lg:p-12">
+        <div class="border border-border bg-card p-5 sm:p-8 lg:p-10">
           
-          <div class="flex items-center justify-between border-b border-border pb-4 mb-8">
+          <div class="flex items-center justify-between border-b border-border pb-4 mb-6 sm:mb-8">
             <span class="ticker-label text-steel">FORMULATION STUDY // RECOMMENDED</span>
             <span class="mono text-xs uppercase tracking-[0.2em] text-muted-foreground" id="sf-result-code">TAP-01</span>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
             
             <!-- Bottle Image -->
-            <div class="lg:col-span-5 flex aspect-square items-center justify-center overflow-hidden bg-background border border-border p-6">
+            <div class="md:col-span-5 flex aspect-square max-w-[280px] mx-auto md:max-w-none items-center justify-center overflow-hidden bg-background border border-border p-6">
               <img
                 id="sf-result-image"
                 src="{{ 'mango-12.jpg' | asset_url }}"
@@ -87,18 +76,18 @@
             </div>
 
             <!-- Details -->
-            <div class="lg:col-span-7 space-y-6">
+            <div class="md:col-span-7 space-y-5 sm:space-y-6">
               <div>
                 <span class="mono text-xs uppercase tracking-[0.2em] text-steel" id="sf-result-origin">↳ Konkan, India</span>
-                <h3 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-tight mt-1" id="sf-result-title">
+                <h3 class="font-display text-3xl sm:text-4xl font-bold uppercase tracking-tight mt-1" id="sf-result-title">
                   MANGO 12
                 </h3>
-                <div class="mono text-xs uppercase tracking-[0.25em] text-muted-foreground mt-2" id="sf-result-family">
+                <div class="mono text-xs uppercase tracking-[0.25em] text-muted-foreground mt-1.5" id="sf-result-family">
                   TROPICAL // SWEET
                 </div>
               </div>
 
-              <p class="text-sm text-muted-foreground leading-relaxed" id="sf-result-desc">
+              <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed" id="sf-result-desc">
                 Engineered for crisp vitality. Sun-ripened tropical fruit blended with sparkling citrus zest and an intimate amber base.
               </p>
 
@@ -113,17 +102,17 @@
               </div>
 
               <!-- Price & CTA -->
-              <div class="border-t border-border pt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div class="border-t border-border pt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                 <div>
                   <div class="ticker-label">Flask Volume</div>
-                  <div class="mono text-sm mt-0.5">48 ML · 1.62 FL.OZ · ₹ 999</div>
+                  <div class="mono text-xs sm:text-sm mt-0.5">48 ML · 1.62 FL.OZ · ₹ 999</div>
                 </div>
 
                 <div class="flex items-center gap-3">
                   <button
                     type="button"
                     onclick="window.scentFinderReset()"
-                    class="mono border border-border bg-transparent px-4 py-3.5 text-[10px] uppercase tracking-[0.2em] transition hover:bg-muted"
+                    class="mono border border-border bg-transparent px-4 py-3 text-[10px] uppercase tracking-[0.2em] transition hover:bg-muted"
                   >
                     ↻ Retake
                   </button>
@@ -131,7 +120,7 @@
                   <a
                     id="sf-result-link"
                     href="/cart/add"
-                    class="mono border border-foreground bg-foreground px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-transparent hover:text-foreground text-center"
+                    class="mono flex-1 sm:flex-none border border-foreground bg-foreground px-6 py-3 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-transparent hover:text-foreground text-center"
                   >
                     Acquire Formula >
                   </a>
@@ -281,20 +270,20 @@
     data.options.forEach((opt) => {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'group flex flex-col justify-between text-left bg-background p-6 sm:p-8 transition-all duration-200 hover:bg-foreground hover:text-background cursor-pointer border-0';
+      btn.className = 'group flex flex-col justify-between text-left bg-background p-5 sm:p-7 transition-all duration-200 hover:bg-foreground hover:text-background cursor-pointer border-0';
       btn.innerHTML = `
         <div>
           <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground group-hover:text-background/70">
             ${opt.num}
           </span>
-          <div class="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-foreground group-hover:text-background mt-4 transition-transform">
+          <div class="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-foreground group-hover:text-background mt-3 transition-transform">
             ${opt.title}
           </div>
-          <div class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-muted-foreground group-hover:text-background/80 mt-2">
+          <div class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-muted-foreground group-hover:text-background/80 mt-1.5">
             ${opt.desc}
           </div>
         </div>
-        <div class="mt-6 pt-4 border-t border-border group-hover:border-background/20 flex items-center justify-between mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground group-hover:text-background">
+        <div class="mt-5 pt-3 border-t border-border group-hover:border-background/20 flex items-center justify-between mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground group-hover:text-background">
           <span>SELECT</span>
           <span>></span>
         </div>
@@ -381,11 +370,6 @@
       "id": "title",
       "label": "Section Title",
       "default": "FIND YOUR FORMULA."
-    },
-    {
-      "type": "image_picker",
-      "id": "banner_image",
-      "label": "Top Banner Image"
     }
   ],
   "presets": [

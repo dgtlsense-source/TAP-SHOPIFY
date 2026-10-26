@@ -1,94 +1,98 @@
 <section id="discovery-set" class="border-b border-border bg-card">
-  <div class="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-4 py-16 sm:gap-12 sm:px-6 sm:py-20 md:grid-cols-12 lg:py-28">
-    
-    <!-- Image Column (Left) -->
-    <div class="md:col-span-6 relative flex items-center justify-center overflow-hidden border border-border bg-muted bg-grid">
-      {%- if section.settings.image != blank -%}
-        <img
-          src="{{ section.settings.image | image_url: width: 1200 }}"
-          alt="{{ section.settings.title | escape }}"
-          class="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
-        >
-      {%- else -%}
-        <img
-          src="{{ 'collection.png' | asset_url }}"
-          alt="T.A.P — Discovery Set: All Five 10ml vials"
-          class="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
-        >
-      {%- endif -%}
-    </div>
-
-    <!-- Details Column (Right) -->
-    <div class="md:col-span-6 flex flex-col justify-between space-y-8">
-      <div class="space-y-6">
-        <div class="flex items-center gap-3">
-          <span class="ticker-label">{{ section.settings.label | default: '// THE DISCOVERY SET' }}</span>
-        </div>
-
-        <h2 class="font-display text-4xl font-bold uppercase tracking-tight leading-[0.92] sm:text-5xl md:text-6xl">
-          {{ section.settings.title | default: 'ALL FIVE. ONE SET.' }}
-        </h2>
-
-        <p class="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-          {{ section.settings.description | default: 'The complete T.A.P line in five 10 ml vials — Mango 12, Sambac 8, Vetiver 16, Bergamote 10, and Spice 21. Find your signature before you commit to a full flask.' }}
-        </p>
-
-        <!-- Product Specs list -->
-        <div class="grid grid-cols-2 gap-4 border-t border-border pt-6 mono text-xs">
-          <div>
-            <div class="ticker-label">Contains</div>
-            <div class="mt-1 text-foreground uppercase tracking-[0.15em]">{{ section.settings.contains_text | default: '5x 10 ml · TAP-01 – TAP-05' }}</div>
-          </div>
-          <div>
-            <div class="ticker-label">Format</div>
-            <div class="mt-1 text-foreground uppercase tracking-[0.15em]">{{ section.settings.format_text | default: 'Travel Spray Vials' }}</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Price & Purchase Action -->
-      <div class="border-t border-border pt-6 space-y-4">
-        <div class="flex items-baseline justify-between">
-          <div>
-            <div class="ticker-label">Price</div>
-            <div class="font-display mt-1 text-3xl font-bold sm:text-4xl">
-              {%- if section.settings.product != blank -%}
-                {{ section.settings.product.price | money }}
-              {%- else -%}
-                {{ section.settings.price | default: '₹ 1,299' }}
-              {%- endif -%}
-            </div>
-          </div>
-          <div class="mono text-right text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-            Tax Included · Free Shipping
-          </div>
-        </div>
-
-        {%- if section.settings.product != blank -%}
-          {%- assign product = section.settings.product -%}
-          {%- assign current_variant = product.selected_or_first_available_variant -%}
-          <form method="post" action="/cart/add" class="w-full">
-            <input type="hidden" name="id" value="{{ current_variant.id }}">
-            <button
-              type="submit"
-              class="mono w-full border border-foreground bg-foreground px-6 py-4 text-center text-xs uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
-              {% unless product.available %}disabled{% endunless %}
-            >
-              {% if product.available %}{{ section.settings.button_text | default: 'Acquire The Set >' }}{% else %}Sold Out{% endif %}
-            </button>
-          </form>
-        {%- else -%}
-          <a
-            href="{{ section.settings.button_link | default: routes.cart_url }}"
-            class="mono block w-full border border-foreground bg-foreground px-6 py-4 text-center text-xs uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
+  <div class="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
+    <div class="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-12 md:gap-12 lg:gap-16 items-center">
+      
+      <!-- Image Column (Left) -->
+      <div class="md:col-span-6 relative flex items-center justify-center overflow-hidden border border-border bg-muted bg-grid aspect-[4/3] sm:aspect-[16/10] md:aspect-square w-full">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1200 }}"
+            alt="{{ section.settings.title | escape }}"
+            class="h-full w-full object-cover object-center transition duration-500 hover:scale-[1.02]"
+            loading="lazy"
           >
-            {{ section.settings.button_text | default: 'Acquire The Set >' }}
-          </a>
+        {%- else -%}
+          <img
+            src="{{ 'collection.png' | asset_url }}"
+            alt="T.A.P — Discovery Set: All Five 10ml vials"
+            class="h-full w-full object-cover object-center transition duration-500 hover:scale-[1.02]"
+            loading="lazy"
+          >
         {%- endif -%}
       </div>
 
-    </div>
+      <!-- Details Column (Right) -->
+      <div class="md:col-span-6 flex flex-col justify-center space-y-6 sm:space-y-8">
+        <div class="space-y-4 sm:space-y-5">
+          <div class="flex items-center gap-3">
+            <span class="ticker-label">{{ section.settings.label | default: '// THE DISCOVERY SET' }}</span>
+          </div>
 
+          <h2 class="font-display text-3xl font-bold uppercase tracking-tight leading-[0.95] sm:text-5xl lg:text-6xl">
+            {{ section.settings.title | default: 'ALL FIVE. ONE SET.' }}
+          </h2>
+
+          <p class="max-w-xl text-xs sm:text-sm leading-relaxed text-muted-foreground sm:text-base">
+            {{ section.settings.description | default: 'The complete T.A.P line in five 10 ml vials — Mango 12, Sambac 8, Vetiver 16, Bergamote 10, and Spice 21. Find your signature before you commit to a full flask.' }}
+          </p>
+
+          <!-- Product Specs list -->
+          <div class="grid grid-cols-2 gap-4 border-t border-border pt-4 sm:pt-6 mono text-[11px] sm:text-xs">
+            <div>
+              <div class="ticker-label">Contains</div>
+              <div class="mt-1 text-foreground uppercase tracking-[0.15em] font-medium">{{ section.settings.contains_text | default: '5x 10 ml · TAP-01 – TAP-05' }}</div>
+            </div>
+            <div>
+              <div class="ticker-label">Format</div>
+              <div class="mt-1 text-foreground uppercase tracking-[0.15em] font-medium">{{ section.settings.format_text | default: 'Travel Spray Vials' }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price & Purchase Action -->
+        <div class="border-t border-border pt-5 sm:pt-6 space-y-4">
+          <div class="flex items-baseline justify-between">
+            <div>
+              <div class="ticker-label">Price</div>
+              <div class="font-display mt-0.5 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+                {%- if section.settings.product != blank -%}
+                  {{ section.settings.product.price | money }}
+                {%- else -%}
+                  {{ section.settings.price | default: '₹ 1,299' }}
+                {%- endif -%}
+              </div>
+            </div>
+            <div class="mono text-right text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              Tax Included · Free Shipping
+            </div>
+          </div>
+
+          {%- if section.settings.product != blank -%}
+            {%- assign product = section.settings.product -%}
+            {%- assign current_variant = product.selected_or_first_available_variant -%}
+            <form method="post" action="/cart/add" class="w-full">
+              <input type="hidden" name="id" value="{{ current_variant.id }}">
+              <button
+                type="submit"
+                class="mono w-full border border-foreground bg-foreground px-6 py-3.5 sm:py-4 text-center text-xs uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
+                {% unless product.available %}disabled{% endunless %}
+              >
+                {% if product.available %}{{ section.settings.button_text | default: 'Acquire The Set >' }}{% else %}Sold Out{% endif %}
+              </button>
+            </form>
+          {%- else -%}
+            <a
+              href="{{ section.settings.button_link | default: routes.cart_url }}"
+              class="mono block w-full border border-foreground bg-foreground px-6 py-3.5 sm:py-4 text-center text-xs uppercase tracking-[0.25em] text-background transition hover:bg-background hover:text-foreground"
+            >
+              {{ section.settings.button_text | default: 'Acquire The Set >' }}
+            </a>
+          {%- endif -%}
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </section>
 
