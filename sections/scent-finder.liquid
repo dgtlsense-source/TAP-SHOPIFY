@@ -1,0 +1,397 @@
+<section id="scent-finder" class="border-b border-border bg-background text-foreground">
+  
+  <!-- Top Botanical/Lab Image Strip from Video -->
+  <div class="w-full h-36 sm:h-48 md:h-56 overflow-hidden border-b border-border relative bg-muted">
+    {%- if section.settings.banner_image != blank -%}
+      <img src="{{ section.settings.banner_image | image_url: width: 1800 }}" alt="T.A.P Lab and Botanticals" class="h-full w-full object-cover">
+    {%- else -%}
+      <img src="{{ 'collection.png' | asset_url }}" alt="T.A.P Lab and Botanticals" class="h-full w-full object-cover opacity-90">
+    {%- endif -%}
+    <div class="absolute inset-0 bg-background/20 backdrop-blur-[1px]"></div>
+  </div>
+
+  <div class="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+    
+    <!-- Top Section Header -->
+    <div class="border-b border-border pb-6 mb-10 sm:mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div class="space-y-3">
+        <span class="ticker-label">{{ section.settings.label | default: '// SCENT FINDER' }}</span>
+        <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight">
+          {{ section.settings.title | default: 'FIND YOUR FORMULA.' }}
+        </h2>
+      </div>
+      <div class="mono text-xs uppercase tracking-[0.25em] text-muted-foreground flex items-center gap-3">
+        <span id="sf-step-ticker">STEP 1 / 4</span>
+      </div>
+    </div>
+
+    <!-- Quiz Interactive Container -->
+    <div id="scent-finder-quiz" class="min-h-[420px]">
+      
+      <!-- STEP VIEW -->
+      <div id="sf-step-container" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start transition-opacity duration-300">
+        
+        <!-- Left: Question Info -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="mono text-xs uppercase tracking-[0.25em] text-steel" id="sf-q-category">
+            01 / FEEL
+          </div>
+          <h3 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight leading-tight text-foreground" id="sf-q-title">
+            HOW DO YOU WANT TO FEEL?
+          </h3>
+          <p class="text-sm text-muted-foreground max-w-sm" id="sf-q-desc">
+            Select the atmosphere that matches your state of mind. Each composition is formulated around specific emotional accords.
+          </p>
+
+          <!-- Back button (hidden on step 1) -->
+          <div class="pt-4">
+            <button
+              type="button"
+              id="sf-prev-btn"
+              onclick="window.scentFinderPrev()"
+              class="hidden mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition items-center gap-2"
+            >
+              ← PREVIOUS STEP
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: 2x2 Option Boxes -->
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border border border-border" id="sf-options-grid">
+            <!-- Rendered dynamically by JavaScript -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RESULT VIEW (Hidden initially) -->
+      <div id="sf-result-container" class="hidden transition-opacity duration-500">
+        <div class="border border-border bg-card p-6 sm:p-10 lg:p-12">
+          
+          <div class="flex items-center justify-between border-b border-border pb-4 mb-8">
+            <span class="ticker-label text-steel">FORMULATION STUDY // RECOMMENDED</span>
+            <span class="mono text-xs uppercase tracking-[0.2em] text-muted-foreground" id="sf-result-code">TAP-01</span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Bottle Image -->
+            <div class="lg:col-span-5 flex aspect-square items-center justify-center overflow-hidden bg-background border border-border p-6">
+              <img
+                id="sf-result-image"
+                src="{{ 'mango-12.jpg' | asset_url }}"
+                alt="Recommended Formula"
+                class="max-h-full max-w-full object-contain"
+              >
+            </div>
+
+            <!-- Details -->
+            <div class="lg:col-span-7 space-y-6">
+              <div>
+                <span class="mono text-xs uppercase tracking-[0.2em] text-steel" id="sf-result-origin">↳ Konkan, India</span>
+                <h3 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-tight mt-1" id="sf-result-title">
+                  MANGO 12
+                </h3>
+                <div class="mono text-xs uppercase tracking-[0.25em] text-muted-foreground mt-2" id="sf-result-family">
+                  TROPICAL // SWEET
+                </div>
+              </div>
+
+              <p class="text-sm text-muted-foreground leading-relaxed" id="sf-result-desc">
+                Engineered for crisp vitality. Sun-ripened tropical fruit blended with sparkling citrus zest and an intimate amber base.
+              </p>
+
+              <!-- Notes Pill Row -->
+              <div class="border-t border-border pt-4">
+                <div class="ticker-label mb-2">Key Accords</div>
+                <div class="flex flex-wrap gap-2 mono text-[10px] uppercase tracking-[0.18em]" id="sf-result-notes">
+                  <span class="border border-border bg-background px-3 py-1.5">01 / CITRUS</span>
+                  <span class="border border-border bg-background px-3 py-1.5">02 / TROPICAL</span>
+                  <span class="border border-border bg-background px-3 py-1.5">03 / AMBER</span>
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="border-t border-border pt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                <div>
+                  <div class="ticker-label">Flask Volume</div>
+                  <div class="mono text-sm mt-0.5">48 ML · 1.62 FL.OZ · ₹ 999</div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onclick="window.scentFinderReset()"
+                    class="mono border border-border bg-transparent px-4 py-3.5 text-[10px] uppercase tracking-[0.2em] transition hover:bg-muted"
+                  >
+                    ↻ Retake
+                  </button>
+
+                  <a
+                    id="sf-result-link"
+                    href="/cart/add"
+                    class="mono border border-foreground bg-foreground px-6 py-3.5 text-[11px] uppercase tracking-[0.25em] text-background transition hover:bg-transparent hover:text-foreground text-center"
+                  >
+                    Acquire Formula >
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  const stepsData = [
+    {
+      step: 1,
+      category: "01 / FEEL",
+      title: "HOW DO YOU WANT TO FEEL?",
+      desc: "Select the atmosphere that matches your state of mind. Each composition is formulated around specific emotional accords.",
+      options: [
+        { num: "01", title: "REFRESHED", desc: "BRIGHT, AMBER, TROPICAL", formula: "TAP-01" },
+        { num: "02", title: "SOFT", desc: "GENTLE, CREAMY, CLEAN", formula: "TAP-02" },
+        { num: "03", title: "GROUNDED", desc: "EARTHY, STEADY, RAW", formula: "TAP-03" },
+        { num: "04", title: "CHARGED", desc: "DARK, SPICY, ALIVE", formula: "TAP-05" }
+      ]
+    },
+    {
+      step: 2,
+      category: "02 / OCCASION",
+      title: "WHERE WILL YOU WEAR IT?",
+      desc: "Choose the environment where this study will be experienced most frequently.",
+      options: [
+        { num: "01", title: "DAILY RITUAL", desc: "MORNING, WORK, EVERYDAY", formula: "TAP-01" },
+        { num: "02", title: "INTIMATE EVENINGS", desc: "NIGHT, DINNER, CLOSE SPACES", formula: "TAP-02" },
+        { num: "03", title: "OUTDOOR LAB", desc: "SUN, TRAVEL, OPEN AIR", formula: "TAP-04" },
+        { num: "04", title: "SPECIAL OCCASION", desc: "BOLD, CELEBRATION, MEMORABLE", formula: "TAP-05" }
+      ]
+    },
+    {
+      step: 3,
+      category: "03 / SILLAGE",
+      title: "HOW CLOSE SHOULD IT STAY?",
+      desc: "Define the projection intensity and intimate bubble of your scent cloud.",
+      options: [
+        { num: "01", title: "SKIN SCENT", desc: "INTIMATE, SUBTLE, PERSONAL", formula: "TAP-02" },
+        { num: "02", title: "MODERATE RADIANCE", desc: "NOTICED WITHIN ARM'S LENGTH", formula: "TAP-01" },
+        { num: "03", title: "SIGNATURE TRAIL", desc: "LINGERING, CRISP, DISTINCT", formula: "TAP-04" },
+        { num: "04", title: "POWERFUL PROJECTION", desc: "DEEP, COMMANDING, ALL-DAY", formula: "TAP-03" }
+      ]
+    },
+    {
+      step: 4,
+      category: "04 / ACCORD PROFILE",
+      title: "WHICH PROFILE DRAWS YOU?",
+      desc: "Select your fundamental raw ingredient preference.",
+      options: [
+        { num: "01", title: "TROPICAL CITRUS", desc: "KONKAN MANGO, CITRUS ZEST", formula: "TAP-01" },
+        { num: "02", title: "WHITE FLORAL MUSK", desc: "MADURAI JASMINE, VANILLA", formula: "TAP-02" },
+        { num: "03", title: "SMOKY WOODS", desc: "HAITIAN VETIVER, DRY WOODS", formula: "TAP-03" },
+        { num: "04", title: "EXOTIC SPICE", desc: "MALABAR SPICES, SWEET WOODS", formula: "TAP-05" }
+      ]
+    }
+  ];
+
+  const formulas = {
+    "TAP-01": {
+      code: "TAP-01",
+      title: "MANGO 12",
+      family: "TROPICAL // SWEET",
+      origin: "↳ KONKAN, INDIA",
+      desc: "Engineered for crisp vitality. Sun-ripened tropical fruit blended with sparkling citrus zest and an intimate amber base.",
+      image: "{{ 'mango-12.jpg' | asset_url }}",
+      notes: ["01 / CITRUS", "02 / TROPICAL", "03 / AMBER"],
+      url: "/cart/add?id="
+    },
+    "TAP-02": {
+      code: "TAP-02",
+      title: "SAMBAC 8",
+      family: "FLORAL // FRESH",
+      origin: "↳ MADURAI, S. INDIA",
+      desc: "A soft, intoxicating white floral extraction. Pure night-blooming jasmine paired with creamy vanilla and clean musk.",
+      image: "{{ 'sambac-8.jpg' | asset_url }}",
+      notes: ["01 / FRESH", "02 / FLORAL", "03 / MUSK"],
+      url: "/cart/add?id="
+    },
+    "TAP-03": {
+      code: "TAP-03",
+      title: "VETIVER 16",
+      family: "WOODY // EARTHY",
+      origin: "↳ LES CAYES, HAITI",
+      desc: "Deep roots and quiet strength. Haitian vetiver distilled with dry cedarwood, resinous woods and mineral accord.",
+      image: "{{ 'vetiver-16.jpg' | asset_url }}",
+      notes: ["01 / CITRUS", "02 / WOODY", "03 / RESIN"],
+      url: "/cart/add?id="
+    },
+    "TAP-04": {
+      code: "TAP-04",
+      title: "BERGAMOTE 10",
+      family: "CITRUS // LEATHER",
+      origin: "↳ REGGIO CALABRIA, ITALY",
+      desc: "Sun-drenched Calabrian bergamot sharpened with fresh peppercorn, fine Italian leather and blonde woods.",
+      image: "{{ 'bergamote-10.jpg' | asset_url }}",
+      notes: ["01 / CITRUS", "02 / ORIENTAL", "03 / GREEN"],
+      url: "/cart/add?id="
+    },
+    "TAP-05": {
+      code: "TAP-05",
+      title: "SPICE 21",
+      family: "WARM // SPICY",
+      origin: "↳ MALABAR, S. INDIA",
+      desc: "Warm intensity from the ancient spice trails. Cardamom, nutmeg, and smoked cinnamon wrapped in smooth amber.",
+      image: "{{ 'spice-21.jpg' | asset_url }}",
+      notes: ["01 / WARM", "02 / SPICY", "03 / AMBER"],
+      url: "/cart/add?id="
+    }
+  };
+
+  let currentStep = 0;
+  let formulaScores = { "TAP-01": 0, "TAP-02": 0, "TAP-03": 0, "TAP-04": 0, "TAP-05": 0 };
+
+  function renderStep(idx) {
+    const data = stepsData[idx];
+    document.getElementById('sf-step-ticker').textContent = `STEP ${data.step} / 4`;
+    document.getElementById('sf-q-category').textContent = data.category;
+    document.getElementById('sf-q-title').textContent = data.title;
+    document.getElementById('sf-q-desc').textContent = data.desc;
+    
+    const prevBtn = document.getElementById('sf-prev-btn');
+    if (idx > 0) {
+      prevBtn.classList.remove('hidden');
+      prevBtn.classList.add('inline-flex');
+    } else {
+      prevBtn.classList.add('hidden');
+      prevBtn.classList.remove('inline-flex');
+    }
+
+    const grid = document.getElementById('sf-options-grid');
+    grid.innerHTML = '';
+
+    data.options.forEach((opt) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'group flex flex-col justify-between text-left bg-background p-6 sm:p-8 transition-all duration-200 hover:bg-foreground hover:text-background cursor-pointer border-0';
+      btn.innerHTML = `
+        <div>
+          <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground group-hover:text-background/70">
+            ${opt.num}
+          </span>
+          <div class="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-foreground group-hover:text-background mt-4 transition-transform">
+            ${opt.title}
+          </div>
+          <div class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-muted-foreground group-hover:text-background/80 mt-2">
+            ${opt.desc}
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-border group-hover:border-background/20 flex items-center justify-between mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground group-hover:text-background">
+          <span>SELECT</span>
+          <span>></span>
+        </div>
+      `;
+      btn.addEventListener('click', function() {
+        formulaScores[opt.formula] = (formulaScores[opt.formula] || 0) + 1;
+        if (currentStep < stepsData.length - 1) {
+          currentStep++;
+          renderStep(currentStep);
+        } else {
+          showResult();
+        }
+      });
+      grid.appendChild(btn);
+    });
+  }
+
+  function showResult() {
+    let topFormula = "TAP-01";
+    let maxScore = -1;
+    for (const [key, score] of Object.entries(formulaScores)) {
+      if (score > maxScore) {
+        maxScore = score;
+        topFormula = key;
+      }
+    }
+
+    const formula = formulas[topFormula] || formulas["TAP-01"];
+    document.getElementById('sf-result-code').textContent = formula.code;
+    document.getElementById('sf-result-origin').textContent = formula.origin;
+    document.getElementById('sf-result-title').textContent = formula.title;
+    document.getElementById('sf-result-family').textContent = formula.family;
+    document.getElementById('sf-result-desc').textContent = formula.desc;
+    document.getElementById('sf-result-image').src = formula.image;
+    document.getElementById('sf-result-image').alt = formula.title;
+
+    const notesContainer = document.getElementById('sf-result-notes');
+    notesContainer.innerHTML = '';
+    formula.notes.forEach(note => {
+      const span = document.createElement('span');
+      span.className = 'border border-border bg-background px-3 py-1.5';
+      span.textContent = note;
+      notesContainer.appendChild(span);
+    });
+
+    document.getElementById('sf-step-container').classList.add('hidden');
+    document.getElementById('sf-result-container').classList.remove('hidden');
+    document.getElementById('sf-step-ticker').textContent = 'FORMULA IDENTIFIED';
+  }
+
+  window.scentFinderPrev = function() {
+    if (currentStep > 0) {
+      currentStep--;
+      renderStep(currentStep);
+    }
+  };
+
+  window.scentFinderReset = function() {
+    currentStep = 0;
+    formulaScores = { "TAP-01": 0, "TAP-02": 0, "TAP-03": 0, "TAP-04": 0, "TAP-05": 0 };
+    document.getElementById('sf-result-container').classList.add('hidden');
+    document.getElementById('sf-step-container').classList.remove('hidden');
+    renderStep(0);
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    renderStep(0);
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Scent Finder",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "// SCENT FINDER"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "FIND YOUR FORMULA."
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Top Banner Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scent Finder"
+    }
+  ]
+}
+{% endschema %}

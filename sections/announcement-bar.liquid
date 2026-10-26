@@ -1,8 +1,12 @@
 <div class="bg-foreground text-background" style="{% if section.settings.bg_color != blank %}background-color: {{ section.settings.bg_color }};{% endif %}{% if section.settings.text_color != blank %}color: {{ section.settings.text_color }};{% endif %}">
   <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-1.5 mono text-[9px] tracking-[0.2em] uppercase sm:px-6 sm:text-[10px] sm:tracking-[0.25em]">
-    <span class="truncate">{{ section.settings.text_left }}</span>
-    <span class="hidden md:inline">{{ section.settings.text_center }}</span>
-    <span class="shrink-0">{{ section.settings.text_right }}</span>
+    <span class="truncate">{{ section.settings.text_left | default: 'BATCH 0001 - NOW SHIPPING' }}</span>
+    <span class="hidden md:inline">{{ section.settings.text_center | default: 'PHTHALATE-FREE · CRUELTY-FREE · MADE IN INDIA' }}</span>
+    <span class="shrink-0 flex items-center gap-2">
+      <span>{{ section.settings.text_right | default: 'FREE SHIP > ₹2,500' }}</span>
+      <span class="text-background/60">|</span>
+      <a href="{{ routes.cart_url }}" class="hover:underline">CART [{{ cart.item_count }}]</a>
+    </span>
   </div>
 </div>
 
@@ -14,19 +18,19 @@
       "type": "text",
       "id": "text_left",
       "label": "Left Text",
-      "default": "Batch 0001 — Shipping"
+      "default": "BATCH 0001 - NOW SHIPPING"
     },
     {
       "type": "text",
       "id": "text_center",
       "label": "Center Text",
-      "default": "Phthalate-free · Cruelty-free · Made in India"
+      "default": "PHTHALATE-FREE · CRUELTY-FREE · MADE IN INDIA"
     },
     {
       "type": "text",
       "id": "text_right",
       "label": "Right Text",
-      "default": "Free Ship > Rs.2,500"
+      "default": "FREE SHIP > ₹2,500"
     },
     {
       "type": "color",

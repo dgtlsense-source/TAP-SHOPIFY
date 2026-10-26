@@ -1,0 +1,162 @@
+<section id="faq" class="border-b border-border bg-background">
+  <div class="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+    
+    <!-- Section Header -->
+    <div class="mb-10 flex flex-col items-start justify-between gap-4 border-b border-border pb-6 sm:mb-12 sm:flex-row sm:items-end sm:gap-6">
+      <div class="min-w-0 space-y-3">
+        <span class="ticker-label">{{ section.settings.label | default: '// 06 / FAQ' }}</span>
+        <h2 class="font-display text-4xl font-bold uppercase tracking-tight sm:text-5xl md:text-6xl">
+          {{ section.settings.title | default: 'BEFORE YOU COMMIT.' }}
+        </h2>
+      </div>
+      <a
+        href="mailto:{{ section.settings.contact_email | default: 'hello@thearomaproject.com' }}"
+        class="mono text-xs uppercase tracking-[0.2em] text-muted-foreground transition hover:text-foreground"
+      >
+        {{ section.settings.sub_link_text | default: 'STILL UNSURE? HELLO@THEAROMAPROJECT.COM' }}
+      </a>
+    </div>
+
+    <!-- 2 Columns FAQ Grid -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12">
+      
+      <!-- Col 1 -->
+      <div class="space-y-4">
+        {%- assign half_count = section.blocks.size | divided_by: 2 | plus: 1 -%}
+        {%- for block in section.blocks -%}
+          {%- if forloop.index <= half_count -%}
+            <details class="group border border-border bg-card p-5 transition-colors open:bg-background" {{ block.shopify_attributes }}>
+              <summary class="flex cursor-pointer items-center justify-between font-display text-base font-bold uppercase tracking-tight list-none select-none sm:text-lg">
+                <span>{{ block.settings.question }}</span>
+                <span class="mono ml-4 text-sm transition-transform duration-200 group-open:rotate-45">+</span>
+              </summary>
+              <div class="mt-4 border-t border-border/40 pt-4 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <!-- Col 2 -->
+      <div class="space-y-4">
+        {%- for block in section.blocks -%}
+          {%- if forloop.index > half_count -%}
+            <details class="group border border-border bg-card p-5 transition-colors open:bg-background" {{ block.shopify_attributes }}>
+              <summary class="flex cursor-pointer items-center justify-between font-display text-base font-bold uppercase tracking-tight list-none select-none sm:text-lg">
+                <span>{{ block.settings.question }}</span>
+                <span class="mono ml-4 text-sm transition-transform duration-200 group-open:rotate-45">+</span>
+              </summary>
+              <div class="mt-4 border-t border-border/40 pt-4 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "// 06 / FAQ"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "BEFORE YOU COMMIT."
+    },
+    {
+      "type": "text",
+      "id": "sub_link_text",
+      "label": "Sub Link Text",
+      "default": "STILL UNSURE? HELLO@THEAROMAPROJECT.COM"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email",
+      "default": "hello@thearomaproject.com"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question & Answer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "WHAT SIZE ARE THE BOTTLES?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Each full flask is 48 ml / 1.62 fl.oz of eau de parfum. The Discovery Set contains all five fragrances in 10 ml vials — the smart way to find your signature first."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "WHAT SIZE ARE THE BOTTLES?",
+            "answer": "Each full flask is 48 ml / 1.62 fl.oz of eau de parfum. The Discovery Set contains all five fragrances in 10 ml vials — the smart way to find your signature first."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "WHICH PAYMENT METHOD DO YOU ACCEPT?",
+            "answer": "UPI (GPay/PhonePe), Paytm, all major Cards, and Cash on Delivery."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "HOW LONG DOES THE FRAGRANCE LAST?",
+            "answer": "Each formula is engineered for longevity — expect a full workday of wear, with better endurance on fabric. Bergamote 10 and Vetiver 16 are the strongest performers."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "HOW MUCH IS SHIPPING?",
+            "answer": "₹99 for orders under ₹500, and completely free on orders above ₹500. Orders are dispatched from the lab within 48 hours."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "ARE THE FORMULAS SKIN-SAFE?",
+            "answer": "Yes — every composition is phthalate-free, toxin-free, and cruelty-free. Formulated with respect for skin and sourced raw materials."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "CAN I RETURN A FRAGRANCE?",
+            "answer": "Unopened flacons can be returned within 7 days of delivery — write to admin@thearomaproject.com with your order ID and we'll arrange the pick-up."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

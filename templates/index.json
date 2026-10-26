@@ -4,8 +4,8 @@
       "type": "video-banner",
       "settings": {
         "video_url": "",
-        "ticker_left": "Batch 0001 — Atmosphere Study",
-        "ticker_right": "Vol. 01 / 2026",
+        "ticker_left": "Batch 0001 · Atmosphere Study",
+        "ticker_right": "Vol. 01 / 2024",
         "height_mobile": 300,
         "height_desktop": 550
       }
@@ -30,7 +30,7 @@
         "stat_3": {
           "type": "stat_item",
           "settings": {
-            "value": "Rs. 999",
+            "value": "₹ 999",
             "label": "Per Flask"
           }
         },
@@ -49,10 +49,10 @@
         "stat_4"
       ],
       "settings": {
-        "label": "Vol. 01 / 2026 — Edition I",
-        "headline": "INDIA'S<br>FIrST modern<br><span class=\"text-steel\">FRAGRANCE</span><br>LAB.",
-        "description": "T.A.P is a modern fragrance lab — sourcing rare accords from farmlands across the world and shaping them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings, leaving a lasting impression.",
-        "primary_btn_text": "Discover the Five ↗",
+        "label": "VOL. 01 / 2024 · SECTION I",
+        "headline": "ENGINEERED<br />FOR MODERN<br /><span class=\"text-steel\">EVERYDAY</span><br />RITUALS.",
+        "description": "T.A.P is a modern perfumery lab — sourcing rare accords from farmlands across the world and shaping them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings, leaving a lasting impression.",
+        "primary_btn_text": "Discover the Five >",
         "primary_btn_link": "#catalogue",
         "secondary_btn_text": "Our Story",
         "secondary_btn_link": "#story"
@@ -64,31 +64,31 @@
         "word_1": {
           "type": "word",
           "settings": {
-            "text": "PRECISION"
+            "text": "RAWNESS"
           }
         },
         "word_2": {
           "type": "word",
           "settings": {
-            "text": "ORIGIN"
+            "text": "CONTROL"
           }
         },
         "word_3": {
           "type": "word",
           "settings": {
-            "text": "RAWNESS"
+            "text": "DISTINCTION"
           }
         },
         "word_4": {
           "type": "word",
           "settings": {
-            "text": "CONTROL"
+            "text": "PRECISION"
           }
         },
         "word_5": {
           "type": "word",
           "settings": {
-            "text": "DISTINCTION"
+            "text": "ORIGIN"
           }
         }
       },
@@ -147,72 +147,38 @@
         "value_5"
       ],
       "settings": {
-        "label": "§ 01 / Brand Story",
+        "label": "// 01 / BRAND STORY",
         "headline": "A LAB, NOT A BRAND.",
-        "highlight_text": "T.A.P began as a modern fragrance laboratory, sourcing rare accords from beautiful farmlands across the world and shaping them into <em class=\"italic text-steel\">precise modern fragrances.</em>",
+        "highlight_text": "T.A.P began as a small perfumery laboratory, sourcing rare accords from beautiful farmlands across the world and shaping them into <em class=\"italic text-steel\">precise modern fragrances.</em>",
         "detail_text": "Built on transparency, we reveal the accords behind every scent so consumers can discover, understand, and choose what truly becomes their signature.",
         "values_title": "Core Values"
-      }
-    },
-    "editorial": {
-      "type": "editorial",
-      "blocks": {
-        "item_1": {
-          "type": "list_item",
-          "settings": {
-            "title": "MANGO 12",
-            "value": "TAP-01"
-          }
-        },
-        "item_2": {
-          "type": "list_item",
-          "settings": {
-            "title": "SAMBAC 8",
-            "value": "TAP-02"
-          }
-        },
-        "item_3": {
-          "type": "list_item",
-          "settings": {
-            "title": "VETIVER 16",
-            "value": "TAP-03"
-          }
-        },
-        "item_4": {
-          "type": "list_item",
-          "settings": {
-            "title": "BERGAMOTE 10",
-            "value": "TAP-04"
-          }
-        },
-        "item_5": {
-          "type": "list_item",
-          "settings": {
-            "title": "SPICE 21",
-            "value": "TAP-05"
-          }
-        }
-      },
-      "block_order": [
-        "item_1",
-        "item_2",
-        "item_3",
-        "item_4",
-        "item_5"
-      ],
-      "settings": {
-        "alt_text": "T.A.P — five fragrance collection on concrete plinths with lab glassware",
-        "label": "§ The Collection",
-        "headline": "Raw materials.<br><span class=\"text-background/50\">Studied.</span>",
-        "description": "Every accord is shown as a lab material — not a decorative prop. Five formulas. One philosophy: raw ingredients, precise composition, controlled design."
       }
     },
     "catalogue": {
       "type": "fragrance-list",
       "settings": {
-        "label": "§ 02 / Catalogue",
-        "title": "Five compositions.",
-        "subtitle": "TAP-01 -> TAP-05"
+        "label": "// 02 / THE COLLECTION",
+        "title": "FIVE COMPOSITIONS.",
+        "subtitle": "TAP-01 → TAP-05"
+      }
+    },
+    "discovery_set": {
+      "type": "discovery-set",
+      "settings": {
+        "label": "// THE DISCOVERY SET",
+        "title": "ALL FIVE. ONE SET.",
+        "description": "The complete T.A.P line in five 10 ml vials — Mango 12, Sambac 8, Vetiver 16, Bergamote 10, and Spice 21. Find your signature before you commit to a full flask.",
+        "price": "₹ 1,299",
+        "contains_text": "5x 10 ml · TAP-01 – TAP-05",
+        "format_text": "Travel Spray Vials",
+        "button_text": "Acquire The Set >"
+      }
+    },
+    "scent_finder": {
+      "type": "scent-finder",
+      "settings": {
+        "label": "// SCENT FINDER",
+        "title": "FIND YOUR FORMULA."
       }
     },
     "sourcing": {
@@ -222,50 +188,50 @@
           "type": "origin_item",
           "settings": {
             "code": "TAP-01",
-            "origin": "Konkan, India",
+            "origin": "KONKAN, INDIA",
             "fragrance_name": "MANGO 12",
-            "story": "Mango 12 captures the essence of vibrant tropical Konkan mangoes blended with crisp citrus and warm woods.",
-            "engineered": "Engineered to feel refreshing and uplifted."
+            "story": "Sun-drenched Alphonso mangoes from coastal orchards. A rare extraction that captures tropical brightness without synthetic sweetness.",
+            "engineered": "ENGINEERED TO FEEL REFRESHING AND UPLIFTING."
           }
         },
         "origin_2": {
           "type": "origin_item",
           "settings": {
             "code": "TAP-02",
-            "origin": "Madurai, S. India",
+            "origin": "MADURAI, S. INDIA",
             "fragrance_name": "SAMBAC 8",
-            "story": "Sambac 8 inherits the exceptionally intense sweet floral scent from jasmines of the Madurai region, blended with rich creamy vanilla and musk.",
-            "engineered": "Engineered to feel soft and gentle."
+            "story": "Night-blooming Jasmine Sambac plucked before sunrise. Distilled in copper vats using a centuries-old steam process.",
+            "engineered": "ENGINEERED TO FEEL SOFT AND SENSUAL."
           }
         },
         "origin_3": {
           "type": "origin_item",
           "settings": {
             "code": "TAP-03",
-            "origin": "Les Cayes, Haiti",
+            "origin": "LES CAYES, HAITI",
             "fragrance_name": "VETIVER 16",
-            "story": "Vetiver 16 envelops the earthy, damp vibes of Haitian vetiver found in Les Cayes, blended with dry woods and musk.",
-            "engineered": "Engineered for a long-lasting boost."
+            "story": "Roots grown in volcanic soil, aged for eighteen months before harvesting. Deep, smoky vetiver with unprecedented earthy complexity.",
+            "engineered": "ENGINEERED FOR A LONG-LASTING IMPRINT."
           }
         },
         "origin_4": {
           "type": "origin_item",
           "settings": {
             "code": "TAP-04",
-            "origin": "Reggio Calabria, Italy",
+            "origin": "REGGIO CALABRIA, ITALY",
             "fragrance_name": "BERGAMOTE 10",
-            "story": "Bergamote 10 brings the complex citrus freshness of bergamot from Reggio Calabria, blended with spicy woods and leather.",
-            "engineered": "Engineered for deep emotional and psychological impact."
+            "story": "Bergamot harvested along the Ionian coast. Cold-pressed rind oils blended with subtle leather accords for sophistication.",
+            "engineered": "ENGINEERED FOR DEEP EMOTIONAL AND PSYCHOLOGICAL IMPACT."
           }
         },
         "origin_5": {
           "type": "origin_item",
           "settings": {
             "code": "TAP-05",
-            "origin": "Malabar, W. India",
+            "origin": "MALABAR, N. INDIA",
             "fragrance_name": "SPICE 21",
-            "story": "Spice 21 lets in the heat of Indian spices from the Malabar coast, blended with sweet, warm woods.",
-            "engineered": "Engineered to boost body and mind."
+            "story": "Black pepper and cardamom dried on mountain slopes. Warm, resonant spices with an unforgettable dry-down.",
+            "engineered": "ENGINEERED TO BOOST BODY AND MIND."
           }
         }
       },
@@ -277,8 +243,8 @@
         "origin_5"
       ],
       "settings": {
-        "label": "§ 03 / Sourcing",
-        "headline": "Real places.<br />Rare accords.",
+        "label": "// SOURCING",
+        "headline": "REAL PLACES.<br />RARE ACCORDS.",
         "subtitle": "5 origins · 4 countries"
       }
     },
@@ -288,22 +254,22 @@
         "cert_1": {
           "type": "cert_item",
           "settings": {
-            "title": "Phthalate-free",
-            "value": "Skin-safe formulation"
+            "title": "PHTHALATE-FREE",
+            "value": "ZERO TOXIC FORMULATION"
           }
         },
         "cert_2": {
           "type": "cert_item",
           "settings": {
-            "title": "Toxin-free",
-            "value": "Tested & verified"
+            "title": "TOXIN-FREE",
+            "value": "SKIN-FIRST SAFETY"
           }
         },
         "cert_3": {
           "type": "cert_item",
           "settings": {
-            "title": "Cruelty-free",
-            "value": "Never on animals"
+            "title": "CRUELTY-FREE",
+            "value": "NEVER ON ANIMALS"
           }
         }
       },
@@ -313,9 +279,80 @@
         "cert_3"
       ],
       "settings": {
-        "label": "§ 04 / Brand Purpose",
-        "headline": "To enlighten the world with a deeper understanding of what they wear — bringing clarity, transparency, and sophistication to every fragrance experience.",
+        "label": "// 05 / BRAND PURPOSE",
+        "headline": "TO ENLIGHTEN THE WORLD WITH A DEEPER UNDERSTANDING OF WHAT THEY WEAR — BRINGING CLARITY, TRANSPARENCY, AND SOPHISTICATION TO EVERY FRAGRANCE EXPERIENCE.",
         "description": "Through meticulously crafted formulas, we create scents that feel indulgent, empowering, and profoundly personal — elevating confidence with every spray. Our fragrances are <strong class=\"text-foreground\">phthalate-free, toxin-free, and cruelty-free</strong>, created with respect for skin, life, and Mother Earth."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "WHAT SIZE ARE THE BOTTLES?",
+            "answer": "Each full flask is 48 ml / 1.62 fl.oz of eau de parfum. The Discovery Set contains all five fragrances in 10 ml vials — the smart way to find your signature first."
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "WHICH PAYMENT METHOD DO YOU ACCEPT?",
+            "answer": "UPI (GPay/PhonePe), Paytm, all major Cards, and Cash on Delivery."
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "HOW LONG DOES THE FRAGRANCE LAST?",
+            "answer": "Each formula is engineered for longevity — expect a full workday of wear, with better endurance on fabric. Bergamote 10 and Vetiver 16 are the strongest performers."
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "HOW MUCH IS SHIPPING?",
+            "answer": "₹99 for orders under ₹500, and completely free on orders above ₹500. Orders are dispatched from the lab within 48 hours."
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "ARE THE FORMULAS SKIN-SAFE?",
+            "answer": "Yes — every composition is phthalate-free, toxin-free, and cruelty-free. Formulated with respect for skin and sourced raw materials."
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "CAN I RETURN A FRAGRANCE?",
+            "answer": "Unopened flacons can be returned within 7 days of delivery — write to admin@thearomaproject.com with your order ID and we'll arrange the pick-up."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
+      ],
+      "settings": {
+        "label": "// 06 / FAQ",
+        "title": "BEFORE YOU COMMIT.",
+        "sub_link_text": "STILL UNSURE? HELLO@THEAROMAPROJECT.COM",
+        "contact_email": "hello@thearomaproject.com"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "label": "// 07 / LAB NOTES",
+        "headline": "DISPATCHES<br />FROM THE BENCH.",
+        "description": "Formulation diaries, raw material studies, and early access to upcoming batches. Sent only when there is something to say.",
+        "placeholder": "you@domain.com",
+        "button_text": "SUBSCRIBE >"
       }
     }
   },
@@ -325,8 +362,11 @@
     "marquee",
     "brand_story",
     "catalogue",
+    "discovery_set",
+    "scent_finder",
     "sourcing",
     "purpose",
-    "editorial"
+    "faq",
+    "newsletter"
   ]
 }
