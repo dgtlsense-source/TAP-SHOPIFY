@@ -1,102 +1,248 @@
-<div class="min-h-screen bg-background text-foreground">
-  <header class="border-b border-border">
-    <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
-      <a href="{{ section.settings.return_link | default: '/' }}" class="mono truncate text-[10px] tracking-[0.2em] sm:text-xs text-foreground">
-        {{ section.settings.return_text | default: '← T.A.P / RETURN TO CATALOGUE' }}
+<div class="min-h-screen bg-background text-foreground pb-20">
+  <!-- Top Minimal Bar -->
+  <header class="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-30">
+    <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <a href="{{ section.settings.return_link | default: '/' }}" class="mono flex items-center gap-2 text-[10px] tracking-[0.2em] sm:text-xs text-foreground hover:text-muted-foreground transition">
+        <span>←</span>
+        <span>{{ section.settings.return_text | default: 'T.A.P / CATALOGUE' }}</span>
       </a>
-      <span class="ticker-label shrink-0">{{ section.settings.ticker_label | default: 'COMPOSITION · STUDY' }}</span>
+      <div class="flex items-center gap-3">
+        <span class="mono hidden sm:inline-block text-[10px] tracking-[0.2em] text-muted-foreground">FORMULATION BENCH</span>
+        <span class="ticker-label shrink-0">{{ section.settings.ticker_label | default: 'COMPOSITION · STUDY' }}</span>
+      </div>
     </div>
   </header>
 
-  <div class="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-10 lg:py-16">
-    <div class="grid gap-10 lg:grid-cols-2 lg:gap-16">
+  <div class="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 lg:py-14">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-14 items-start">
       
-      <!-- Product Image -->
-      <div class="flex aspect-[3/4] items-center justify-center overflow-hidden bg-muted bg-grid border border-border">
-        {%- if product.featured_image != blank -%}
-          <img
-            src="{{ product.featured_image | image_url: width: 800 }}"
-            alt="{{ product.title | escape }}"
-            class="h-full w-full object-contain"
-          >
-        {%- else -%}
-          {{ 'product-1' | placeholder_svg_tag: 'h-full w-full object-contain' }}
+      <!-- LEFT: Luxury Image Showcase (7 Cols) -->
+      <div class="lg:col-span-7 flex flex-col gap-4">
+        <!-- Main Product Stage -->
+        <div class="relative flex aspect-[4/5] sm:aspect-square md:aspect-[4/5] max-h-[580px] w-full items-center justify-center overflow-hidden border border-border bg-card p-6 sm:p-10 group">
+          
+          <!-- Badge overlay -->
+          <div class="absolute top-4 left-4 z-10 flex flex-col gap-1.5">
+            <span class="mono text-[9px] uppercase tracking-[0.2em] bg-background/90 border border-border px-2.5 py-1 text-foreground backdrop-blur-sm">
+              {{ product.selected_or_first_available_variant.sku | default: 'TAP-STUDY' }}
+            </span>
+            {%- if product.available -%}
+              <span class="mono text-[9px] uppercase tracking-[0.2em] bg-foreground text-background px-2.5 py-1">
+                IN STOCK · BATCH 001
+              </span>
+            {%- else -%}
+              <span class="mono text-[9px] uppercase tracking-[0.2em] bg-muted-foreground text-background px-2.5 py-1">
+                SOLD OUT
+              </span>
+            {%- endif -%}
+          </div>
+
+          <div class="absolute top-4 right-4 z-10 mono text-[10px] tracking-[0.25em] text-muted-foreground hidden sm:block">
+            48 ML EXTRACT
+          </div>
+
+          <!-- Product Image with luxury subtle hover zoom -->
+          {%- if product.featured_image != blank -%}
+            <img
+              id="MainProductImage"
+              src="{{ product.featured_image | image_url: width: 1000 }}"
+              alt="{{ product.title | escape }}"
+              class="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+              loading="eager"
+            >
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'h-full w-full object-contain' }}
+          {%- endif -%}
+        </div>
+
+        <!-- Thumbnails Gallery if multiple images -->
+        {%- if product.images.size > 1 -%}
+          <div class="grid grid-cols-4 sm:grid-cols-5 gap-3 pt-2">
+            {%- for image in product.images -%}
+              <button
+                type="button"
+                onclick="document.getElementById('MainProductImage').src = '{{ image | image_url: width: 1000 }}'; document.querySelectorAll('.thumb-btn').forEach(b => b.classList.remove('border-foreground')); this.classList.add('border-foreground');"
+                class="thumb-btn relative aspect-square overflow-hidden border border-border bg-card p-2 transition hover:border-foreground {% if forloop.first %}border-foreground{% endif %}"
+                aria-label="View product image {{ forloop.index }}"
+              >
+                <img
+                  src="{{ image | image_url: width: 160 }}"
+                  alt="{{ image.alt | default: product.title | escape }}"
+                  class="h-full w-full object-contain"
+                  loading="lazy"
+                >
+              </button>
+            {%- endfor -%}
+          </div>
         {%- endif -%}
       </div>
 
-      <!-- Product Info Details -->
-      <div class="flex flex-col justify-between space-y-8 lg:space-y-12">
-        <div class="space-y-6">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-                {{ product.selected_or_first_available_variant.sku | default: 'TAP-PRODUCT' }}
-              </span>
-              <span class="mono text-[11px] uppercase tracking-[0.25em] text-steel">
-                ↳ {{ product.vendor | default: 'India' }}
-              </span>
-            </div>
-            <h1 class="font-display mt-2 text-4xl font-bold uppercase tracking-tight sm:text-5xl lg:text-6xl">
-              {{ product.title }}
-            </h1>
-            <div class="mono mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              {{ product.type | default: 'Eau de Parfum' }}
-            </div>
+      <!-- RIGHT: Sticky Product Details & Purchase Form (5 Cols) -->
+      <div class="lg:col-span-5 lg:sticky lg:top-20 space-y-6">
+        
+        <!-- Header Info -->
+        <div class="space-y-3 border-b border-border pb-6">
+          <div class="flex items-center justify-between">
+            <span class="mono text-[11px] uppercase tracking-[0.25em] text-steel">
+              > Origin: {{ product.metafields.custom.origin | default: product.vendor | default: 'India' }}
+            </span>
+            <span class="mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              № 01 / FORMULA
+            </span>
           </div>
 
-          <div class="prose max-w-none text-sm leading-relaxed text-muted-foreground">
-            {{ product.description }}
+          <h1 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-tight text-foreground">
+            {{ product.title }}
+          </h1>
+
+          <div class="mono text-xs uppercase tracking-[0.22em] text-muted-foreground flex items-center gap-3">
+            <span>{{ product.metafields.custom.family | default: product.type | default: 'Extrait de Parfum' }}</span>
+            <span>·</span>
+            <span>{{ section.settings.vol_text | default: '48 ML · 1.62 FL.OZ' }}</span>
           </div>
 
-          <!-- Notes -->
-          {%- assign note1 = 'Citrus' -%}
-          {%- assign note2 = 'Tropical' -%}{%- assign note3 = 'Amber' -%}
-          {%- for tag in product.tags -%}
-            {%- if tag contains 'note1:' -%}{%- assign note1 = tag | remove: 'note1:' -%}{%- endif -%}
-            {%- if tag contains 'note2:' -%}{%- assign note2 = tag | remove: 'note2:' -%}{%- endif -%}
-            {%- if tag contains 'note3:' -%}{%- assign note3 = tag | remove: 'note3:' -%}{%- endif -%}
-          {%- endfor -%}
-          <dl class="space-y-1 border-t border-border pt-6 text-xs">
-            <div class="ticker-label mb-3">{{ section.settings.notes_title | default: 'Fragrance Accord Accords' }}</div>
-            <div class="flex gap-4 text-foreground/80"><dt class="mono w-6 text-muted-foreground">01</dt><dd class="mono uppercase tracking-[0.18em]">{{ note1 }}</dd></div>
-            <div class="flex gap-4 text-foreground/80"><dt class="mono w-6 text-muted-foreground">02</dt><dd class="mono uppercase tracking-[0.18em]">{{ note2 }}</dd></div>
-            <div class="flex gap-4 text-foreground/80"><dt class="mono w-6 text-muted-foreground">03</dt><dd class="mono uppercase tracking-[0.18em]">{{ note3 }}</dd></div>
-          </dl>
+          <!-- Price Block -->
+          <div class="pt-2 flex items-baseline gap-4">
+            <span class="font-display text-3xl font-bold tracking-tight text-foreground">
+              {{ product.price | money }}
+            </span>
+            {%- if product.compare_at_price > product.price -%}
+              <span class="mono text-sm text-muted-foreground line-through">
+                {{ product.compare_at_price | money }}
+              </span>
+              <span class="mono text-[10px] uppercase tracking-wider bg-foreground text-background px-2 py-0.5">
+                SAVE {{ product.compare_at_price | minus: product.price | money }}
+              </span>
+            {%- endif -%}
+          </div>
+          <p class="mono text-[10px] tracking-[0.15em] text-muted-foreground uppercase">
+            Taxes included · Free express shipping across India
+          </p>
         </div>
 
-        <div class="border-t border-border pt-6 space-y-6">
-          <div class="flex items-baseline justify-between">
-            <div>
-              <div class="ticker-label">Vol</div>
-              <div class="mono mt-1 text-xs">{{ section.settings.vol_text | default: '48 ml · 1.62 fl.oz' }}</div>
+        <!-- Description -->
+        {%- if product.description != blank -%}
+          <div class="text-sm leading-relaxed text-muted-foreground border-b border-border pb-6">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+
+        <!-- Fragrance Notes Breakdown (3 Columns) -->
+        {%- assign note1 = 'Citrus & Bergamot' -%}
+        {%- assign note2 = 'Tropical Mango Pulp' -%}
+        {%- assign note3 = 'Warm Amber Woods' -%}
+        {%- for tag in product.tags -%}
+          {%- if tag contains 'note1:' -%}{%- assign note1 = tag | remove: 'note1:' -%}{%- endif -%}
+          {%- if tag contains 'note2:' -%}{%- assign note2 = tag | remove: 'note2:' -%}{%- endif -%}
+          {%- if tag contains 'note3:' -%}{%- assign note3 = tag | remove: 'note3:' -%}{%- endif -%}
+        {%- endfor -%}
+
+        <div class="border-b border-border pb-6 space-y-3">
+          <div class="ticker-label">{{ section.settings.notes_title | default: 'Olfactory Architecture / Notes' }}</div>
+          <div class="grid grid-cols-3 gap-2 border border-border bg-card p-3">
+            <div class="space-y-1">
+              <span class="mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">01 / TOP</span>
+              <p class="mono text-xs uppercase font-medium tracking-[0.12em] text-foreground">{{ note1 }}</p>
             </div>
-            <div class="text-right">
-              <div class="ticker-label">Price</div>
-              <div class="font-display mt-0.5 text-2xl font-bold">{{ product.price | money }}</div>
+            <div class="space-y-1 border-l border-border pl-3">
+              <span class="mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">02 / HEART</span>
+              <p class="mono text-xs uppercase font-medium tracking-[0.12em] text-foreground">{{ note2 }}</p>
+            </div>
+            <div class="space-y-1 border-l border-border pl-3">
+              <span class="mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">03 / BASE</span>
+              <p class="mono text-xs uppercase font-medium tracking-[0.12em] text-foreground">{{ note3 }}</p>
             </div>
           </div>
+        </div>
 
-          <!-- Form / Buy -->
-          <form method="post" action="/cart/add" class="w-full">
+        <!-- Purchase & Add to Cart Section -->
+        <div class="space-y-4">
+          <form method="post" action="/cart/add" class="w-full space-y-3">
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
             
             <div class="flex gap-3">
               <!-- Quantity Stepper -->
               <div class="flex items-center border border-border bg-background">
-                <button type="button" onclick="this.parentNode.querySelector('input').stepDown()" class="h-12 w-12 text-sm hover:bg-muted" aria-label="Decrease">−</button>
-                <input type="number" name="quantity" value="1" min="1" max="9" class="mono w-10 text-center text-xs bg-transparent border-0 outline-none p-0" style="-moz-appearance: textfield;">
-                <button type="button" onclick="this.parentNode.querySelector('input').stepUp()" class="h-12 w-12 text-sm hover:bg-muted" aria-label="Increase">+</button>
+                <button
+                  type="button"
+                  onclick="const input = this.parentNode.querySelector('input'); if(input.value > 1) input.value--;"
+                  class="h-13 w-12 text-base flex items-center justify-center hover:bg-card transition"
+                  aria-label="Decrease quantity"
+                >−</button>
+                <input
+                  type="number"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                  max="9"
+                  class="mono w-10 text-center text-xs bg-transparent border-0 outline-none p-0 font-medium"
+                  style="-moz-appearance: textfield;"
+                >
+                <button
+                  type="button"
+                  onclick="const input = this.parentNode.querySelector('input'); if(input.value < 9) input.value++;"
+                  class="h-13 w-12 text-base flex items-center justify-center hover:bg-card transition"
+                  aria-label="Increase quantity"
+                >+</button>
               </div>
 
+              <!-- Main Acquire Button -->
               <button
                 type="submit"
-                class="flex-1 border border-foreground bg-foreground py-4 text-xs tracking-[0.25em] text-background transition hover:bg-transparent hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed"
+                class="mono flex-1 border border-foreground bg-foreground py-4 text-xs tracking-[0.25em] text-background transition hover:bg-transparent hover:text-foreground disabled:opacity-40 disabled:cursor-not-allowed font-medium text-center uppercase"
                 {% unless product.available %}disabled{% endunless %}
               >
-                {% if product.available %}{{ section.settings.buy_button_text | default: 'ACQUIRE NOW ->' }}{% else %}SOLD OUT{% endif %}
+                {% if product.available %}
+                  {{ section.settings.buy_button_text | default: 'ACQUIRE COMPOSITION ->' }}
+                {% else %}
+                  SOLD OUT
+                {% endif %}
               </button>
             </div>
           </form>
+        </div>
+
+        <!-- Trust & Philosophy Badges (Luxury Guarantee) -->
+        <div class="border-t border-border pt-6 grid grid-cols-2 gap-y-4 gap-x-3 mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground">
+          <div class="flex items-center gap-2">
+            <span class="text-foreground">✓</span>
+            <span>Phthalate & Toxin Free</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground">✓</span>
+            <span>Cruelty-Free / Vegan</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground">✓</span>
+            <span>Ships In 48 Hours</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-foreground">✓</span>
+            <span>Direct Lab Sourced</span>
+          </div>
+        </div>
+
+        <!-- Collapsible Details Tab (Accordion) -->
+        <div class="border-t border-border pt-4 divide-y divide-border text-xs">
+          <details class="group py-3 cursor-pointer">
+            <summary class="mono flex justify-between items-center tracking-[0.18em] uppercase text-foreground">
+              <span>Application & Longevity</span>
+              <span class="transition group-open:rotate-180">↓</span>
+            </summary>
+            <p class="mt-3 text-muted-foreground leading-relaxed pl-2">
+              Apply 2-3 sprays directly on pulse points (wrists, neck, chest). Formulated with high concentration essential oils ensuring an 8-12 hour scent trajectory.
+            </p>
+          </details>
+
+          <details class="group py-3 cursor-pointer">
+            <summary class="mono flex justify-between items-center tracking-[0.18em] uppercase text-foreground">
+              <span>Packaging & Glassware</span>
+              <span class="transition group-open:rotate-180">↓</span>
+            </summary>
+            <p class="mt-3 text-muted-foreground leading-relaxed pl-2">
+              Encased in heavy-weight laboratory-grade Italian flint glass with an industrial fine-mist atomizer designed for optimal fragrance dispersion.
+            </p>
+          </details>
         </div>
 
       </div>
@@ -112,7 +258,7 @@
       "type": "text",
       "id": "return_text",
       "label": "Return Link Text",
-      "default": "← T.A.P / RETURN TO CATALOGUE"
+      "default": "T.A.P / CATALOGUE"
     },
     {
       "type": "url",
@@ -128,20 +274,20 @@
     {
       "type": "text",
       "id": "notes_title",
-      "label": "Notes Title",
-      "default": "Fragrance Accord Accords"
+      "label": "Notes Section Title",
+      "default": "Olfactory Architecture / Notes"
     },
     {
       "type": "text",
       "id": "vol_text",
-      "label": "Volume Details Text",
-      "default": "48 ml · 1.62 fl.oz"
+      "label": "Volume Display Text",
+      "default": "48 ML · 1.62 FL.OZ"
     },
     {
       "type": "text",
       "id": "buy_button_text",
       "label": "Buy Button Text",
-      "default": "ACQUIRE NOW ->"
+      "default": "ACQUIRE COMPOSITION ->"
     }
   ]
 }
