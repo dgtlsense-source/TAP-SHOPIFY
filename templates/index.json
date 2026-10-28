@@ -114,6 +114,16 @@
         "text_color": ""
       }
     },
+    "catalogue": {
+      "type": "fragrance-list",
+      "settings": {
+        "label": "// 02 / THE COLLECTION",
+        "title": "FIVE COMPOSITIONS.",
+        "subtitle": "TAP-01 → TAP-05",
+        "collection": "",
+        "products_to_show": 5
+      }
+    },
     "brand_story": {
       "type": "brand-story",
       "blocks": {
@@ -161,16 +171,6 @@
         "highlight_text": "T.A.P began as a modern fragrance  laboratory, sourcing rare accords from beautiful farmlands across the world and shaping them into <em class=\"italic text-steel\">precise modern fragrances.</em>",
         "detail_text": "Built on transparency, we reveal the accords behind every scent so consumers can discover, understand, and choose what truly becomes their signature.",
         "values_title": "Core Values"
-      }
-    },
-    "catalogue": {
-      "type": "fragrance-list",
-      "settings": {
-        "label": "// 02 / THE COLLECTION",
-        "title": "FIVE COMPOSITIONS.",
-        "subtitle": "TAP-01 → TAP-05",
-        "collection": "",
-        "products_to_show": 5
       }
     },
     "discovery_set": {
@@ -373,9 +373,9 @@
     "video_banner",
     "hero",
     "marquee",
-    "brand_story",
     "catalogue",
     "discovery_set",
+    "brand_story",
     "scent_finder",
     "sourcing",
     "purpose",
