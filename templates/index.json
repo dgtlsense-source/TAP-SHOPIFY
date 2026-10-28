@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "video_banner": {
@@ -50,7 +59,7 @@
       ],
       "settings": {
         "label": "VOL. 01 / 2024 · SECTION I",
-        "headline": "ENGINEERED<br />FOR MODERN<br /><span class=\"text-steel\">EVERYDAY</span><br />RITUALS.",
+        "headline": "INDIA'S<br>FIRST MODERN<br><span class=\"text-steel\">FRAGRANCE</span><br>LAB.",
         "description": "T.A.P is a modern perfumery lab — sourcing rare accords from farmlands across the world and shaping them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings, leaving a lasting impression.",
         "primary_btn_text": "Discover the Five >",
         "primary_btn_link": "#catalogue",
@@ -149,7 +158,7 @@
       "settings": {
         "label": "// 01 / BRAND STORY",
         "headline": "A LAB, NOT A BRAND.",
-        "highlight_text": "T.A.P began as a small perfumery laboratory, sourcing rare accords from beautiful farmlands across the world and shaping them into <em class=\"italic text-steel\">precise modern fragrances.</em>",
+        "highlight_text": "T.A.P began as a modern fragrance  laboratory, sourcing rare accords from beautiful farmlands across the world and shaping them into <em class=\"italic text-steel\">precise modern fragrances.</em>",
         "detail_text": "Built on transparency, we reveal the accords behind every scent so consumers can discover, understand, and choose what truly becomes their signature.",
         "values_title": "Core Values"
       }
@@ -159,7 +168,9 @@
       "settings": {
         "label": "// 02 / THE COLLECTION",
         "title": "FIVE COMPOSITIONS.",
-        "subtitle": "TAP-01 → TAP-05"
+        "subtitle": "TAP-01 → TAP-05",
+        "collection": "",
+        "products_to_show": 5
       }
     },
     "discovery_set": {
@@ -168,10 +179,12 @@
         "label": "// THE DISCOVERY SET",
         "title": "ALL FIVE. ONE SET.",
         "description": "The complete T.A.P line in five 10 ml vials — Mango 12, Sambac 8, Vetiver 16, Bergamote 10, and Spice 21. Find your signature before you commit to a full flask.",
+        "product": "",
         "price": "₹ 1,299",
         "contains_text": "5x 10 ml · TAP-01 – TAP-05",
         "format_text": "Travel Spray Vials",
-        "button_text": "Acquire The Set >"
+        "button_text": "Acquire The Set >",
+        "button_link": ""
       }
     },
     "scent_finder": {
@@ -244,7 +257,7 @@
       ],
       "settings": {
         "label": "// SOURCING",
-        "headline": "REAL PLACES.<br />RARE ACCORDS.",
+        "headline": "REAL PLACES.<br>RARE ACCORDS.",
         "subtitle": "5 origins · 4 countries"
       }
     },
@@ -349,7 +362,7 @@
       "type": "newsletter",
       "settings": {
         "label": "// 07 / LAB NOTES",
-        "headline": "DISPATCHES<br />FROM THE BENCH.",
+        "headline": "DISPATCHES<br>FROM THE BENCH.",
         "description": "Formulation diaries, raw material studies, and early access to upcoming batches. Sent only when there is something to say.",
         "placeholder": "you@domain.com",
         "button_text": "SUBSCRIBE >"
