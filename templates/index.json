@@ -60,7 +60,7 @@
       "settings": {
         "label": "VOL. 01 / 2024 · SECTION I",
         "headline": "INDIA'S<br>FIRST MODERN<br><span class=\"text-steel\">FRAGRANCE</span><br>LAB.",
-        "description": "T.A.P is a modern perfumery lab — sourcing rare accords from farmlands across the world and shaping them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings, leaving a lasting impression.",
+        "description": "T.A.P is a modern perfumery lab — sourcing rare accords from farmlands across the world and blending them into precise, long-lasting fragrance formulas. Each scent is crafted to elevate you and your surroundings, leaving a lasting impression.",
         "primary_btn_text": "Discover the Five >",
         "primary_btn_link": "#catalogue",
         "secondary_btn_text": "Our Story",
@@ -124,6 +124,20 @@
         "products_to_show": 5
       }
     },
+    "discovery_set": {
+      "type": "discovery-set",
+      "settings": {
+        "label": "// THE DISCOVERY SET",
+        "title": "ALL FIVE. ONE SET.",
+        "description": "The complete T.A.P line in five 10 ml vials — Mango 12, Sambac 8, Vetiver 16, Bergamote 10, and Spice 21. Find your signature before you commit to a full flask.",
+        "product": "",
+        "price": "₹ 1,299",
+        "contains_text": "5x 10 ml · TAP-01 – TAP-05",
+        "format_text": "Travel Spray Vials",
+        "button_text": "Acquire The Set >",
+        "button_link": ""
+      }
+    },
     "brand_story": {
       "type": "brand-story",
       "blocks": {
@@ -171,20 +185,6 @@
         "highlight_text": "T.A.P began as a modern fragrance  laboratory, sourcing rare accords from beautiful farmlands across the world and shaping them into <em class=\"italic text-steel\">precise modern fragrances.</em>",
         "detail_text": "Built on transparency, we reveal the accords behind every scent so consumers can discover, understand, and choose what truly becomes their signature.",
         "values_title": "Core Values"
-      }
-    },
-    "discovery_set": {
-      "type": "discovery-set",
-      "settings": {
-        "label": "// THE DISCOVERY SET",
-        "title": "ALL FIVE. ONE SET.",
-        "description": "The complete T.A.P line in five 10 ml vials — Mango 12, Sambac 8, Vetiver 16, Bergamote 10, and Spice 21. Find your signature before you commit to a full flask.",
-        "product": "",
-        "price": "₹ 1,299",
-        "contains_text": "5x 10 ml · TAP-01 – TAP-05",
-        "format_text": "Travel Spray Vials",
-        "button_text": "Acquire The Set >",
-        "button_link": ""
       }
     },
     "scent_finder": {
